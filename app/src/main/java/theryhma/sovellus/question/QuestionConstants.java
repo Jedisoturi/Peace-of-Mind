@@ -1,8 +1,10 @@
-package theryhma.sovellus.status;
+package theryhma.sovellus.question;
 
 import java.util.ArrayList;
 
-public class QuestionContainer {
+import theryhma.sovellus.status.Status;
+
+public class QuestionConstants {
     private static final ArrayList<Question> questions = new ArrayList<Question>() {
         {
             add(new Question("Kuinka väsyneeksi koet itsesi?", new ArrayList<String>() {

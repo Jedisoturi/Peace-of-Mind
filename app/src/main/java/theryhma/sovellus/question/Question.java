@@ -1,8 +1,10 @@
-package theryhma.sovellus.status;
+package theryhma.sovellus.question;
 
 import android.util.Log;
 
 import java.util.ArrayList;
+
+import theryhma.sovellus.status.Status;
 
 public class Question {
     private String questionText;

@@ -1,12 +1,8 @@
 package theryhma.sovellus;
 
-import android.util.Log;
-
 import java.util.ArrayList;
 
-import theryhma.sovellus.status.Answer;
-import theryhma.sovellus.status.Question;
-import theryhma.sovellus.status.Questionnaire;
+import theryhma.sovellus.question.Questionnaire;
 import theryhma.sovellus.status.Status;
 
 public class GlobalModel {

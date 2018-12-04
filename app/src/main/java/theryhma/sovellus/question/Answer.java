@@ -1,4 +1,4 @@
-package theryhma.sovellus.status;
+package theryhma.sovellus.question;
 
 public enum Answer {
     NEUTRAL, BAD, WORST, GOOD, BEST;

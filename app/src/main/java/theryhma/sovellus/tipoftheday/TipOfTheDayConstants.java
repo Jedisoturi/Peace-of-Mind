@@ -8,7 +8,7 @@ import theryhma.sovellus.tipoftheday.TipOfTheDay;
 Contains all tips of the day
  */
 
-public class TipOfTheDayContainer {
+public class TipOfTheDayConstants {
     private static final ArrayList<TipOfTheDay> tips = new ArrayList<TipOfTheDay>() {
         {
             add(new TipOfTheDay("Arvosta itseäsi.", "Palkitse itsesi arvostuksella ja vältä itsekritiikkiä."));

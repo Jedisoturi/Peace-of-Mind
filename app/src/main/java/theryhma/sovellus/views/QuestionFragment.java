@@ -11,9 +11,9 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import theryhma.sovellus.GlobalModel;
 import theryhma.sovellus.R;
-import theryhma.sovellus.status.Answer;
-import theryhma.sovellus.status.Question;
-import theryhma.sovellus.status.Questionnaire;
+import theryhma.sovellus.question.Answer;
+import theryhma.sovellus.question.Question;
+import theryhma.sovellus.question.Questionnaire;
 
 public class QuestionFragment extends Fragment {
     private TextView textView;

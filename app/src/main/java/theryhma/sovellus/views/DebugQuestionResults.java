@@ -10,8 +10,9 @@ import android.widget.TextView;
 
 import theryhma.sovellus.GlobalModel;
 import theryhma.sovellus.R;
-import theryhma.sovellus.status.Questionnaire;
+import theryhma.sovellus.question.Questionnaire;
 import theryhma.sovellus.status.Status;
+import theryhma.sovellus.status.StatusTools;
 
 public class DebugQuestionResults extends Fragment {
     private View v;
@@ -42,7 +43,7 @@ public class DebugQuestionResults extends Fragment {
         super.onResume();
         TextView textView = v.findViewById(R.id.results);
         Questionnaire questionnaire = GlobalModel.getInstance().getQuestionnaire();
-        Status result = questionnaire.getResult();
+        Status result = StatusTools.getNonZeroMean(questionnaire.getResults());
         textView.setText(result.toString());
     }
 }

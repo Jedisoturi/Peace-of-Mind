@@ -17,7 +17,7 @@ public class TipOfTheDayGenerator {
         }
         int i = getNewIndex();
         saveIndex(i);
-        TipOfTheDay tip = TipOfTheDayContainer.get(i);
+        TipOfTheDay tip = TipOfTheDayConstants.get(i);
         return tip;
     }
 
@@ -30,7 +30,7 @@ public class TipOfTheDayGenerator {
 
     private static ArrayList<Integer> createPossibleIndices(ArrayList<Integer> offLimits) {
         ArrayList<Integer> indices = new ArrayList<>();
-        for (int i = 0; i < TipOfTheDayContainer.size(); i++) {
+        for (int i = 0; i < TipOfTheDayConstants.size(); i++) {
             if (!offLimits.contains(i)) {
                 indices.add(i);
             }
@@ -48,7 +48,7 @@ public class TipOfTheDayGenerator {
 
     private static boolean isAllSeen() {
         int seenSize = GlobalModel.getInstance().getIndicesOfTipsSeen().size();
-        if (TipOfTheDayContainer.size() <= seenSize) {
+        if (TipOfTheDayConstants.size() <= seenSize) {
             return true;
         } else {
             return false;
