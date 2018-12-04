@@ -1,7 +1,5 @@
 package theryhma.sovellus.status;
 
-import android.util.Log;
-
 import java.util.ArrayList;
 
 public class Questionnaire {
@@ -24,7 +22,7 @@ public class Questionnaire {
             statuses.add(q.getStatus());
             //Log.d("supergetresult", q.getText() + " " + q.getAnswer() + " " + q.getStatus().toString());
         }
-        Status result = StatusTools.getNonZeroMeanStatus(statuses);
+        Status result = StatusTools.getNonZeroMean(statuses);
         return result;
     }
 }

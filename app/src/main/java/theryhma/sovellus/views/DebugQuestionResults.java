@@ -22,16 +22,16 @@ public class DebugQuestionResults extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        v = inflater.inflate(R.layout.fragment_debug_question_results, container, false);
+               Bundle savedInstanceState) {
+                // Inflate the layout for this fragment
+                v = inflater.inflate(R.layout.fragment_debug_question_results, container, false);
 
-        Button button = v.findViewById(R.id.calc);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+                Button button = v.findViewById(R.id.calc);
+                button.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
 
-            }
+                    }
         });
 
         return v;

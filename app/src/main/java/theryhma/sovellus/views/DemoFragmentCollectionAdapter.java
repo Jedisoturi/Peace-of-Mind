@@ -57,7 +57,7 @@ public class DemoFragmentCollectionAdapter extends FragmentStatePagerAdapter {
             double s = indices.get(Maths.getRandomIntegerBetweenRange(0, 4));
             Status status = new Status(e, m, a, s);
             GlobalModel.getInstance().addStatuses(status);
-            Status meanStatus = StatusTools.getNonZeroMeanStatus(GlobalModel.getInstance().getStatuses());
+            Status meanStatus = StatusTools.getNonZeroMean(GlobalModel.getInstance().getStatuses());
             bundle.putString("status", status.toString());
             bundle.putString("mean", meanStatus.toString());
             ArrayList<Status> list = GlobalModel.getInstance().getStatuses();

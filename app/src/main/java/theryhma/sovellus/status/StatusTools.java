@@ -8,7 +8,7 @@ import theryhma.sovellus.GlobalModel;
 import theryhma.sovellus.tools.Maths;
 
 public class StatusTools {
-    public static Status getNonZeroMeanStatus(ArrayList<Status> statuses) {
+    public static Status getNonZeroMean(ArrayList<Status> statuses) {
         final double IS_ZERO_THRESHOLD = 0.01;
         double absEnergy = 0;
         double absMood = 0;
@@ -64,7 +64,7 @@ public class StatusTools {
         return status;
     }
 
-    public static Status getMeanStatus(ArrayList<Status> statuses) {
+    public static Status getMean(ArrayList<Status> statuses) {
         double absEnergy = 0;
         double absMood = 0;
         double absAnxiety = 0;
