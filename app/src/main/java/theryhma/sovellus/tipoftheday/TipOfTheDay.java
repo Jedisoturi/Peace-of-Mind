@@ -1,4 +1,4 @@
-package theryhma.sovellus;
+package theryhma.sovellus.tipoftheday;
 /*
 Basic class for tips
  */
