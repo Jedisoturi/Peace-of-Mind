@@ -1,6 +1,9 @@
-package theryhma.sovellus;
+package theryhma.sovellus.tipoftheday;
 
 import java.util.ArrayList;
+
+import theryhma.sovellus.GlobalModel;
+import theryhma.sovellus.tools.Maths;
 
 /*
 Communicates with GlobalModel to generate a new TipOfTheDay that is random and not the same as the last one
@@ -36,7 +39,7 @@ public class TipOfTheDayGenerator {
     }
 
     private static int getRandomIndex(ArrayList<Integer> possibleIndices) {
-        return possibleIndices.get(getRandomIntegerBetweenRange(0, possibleIndices.size() - 1));
+        return possibleIndices.get(Maths.getRandomIntegerBetweenRange(0, possibleIndices.size() - 1));
     }
 
     private static void saveIndex(int i) {
@@ -60,10 +63,5 @@ public class TipOfTheDayGenerator {
 
     private static void clear() {
         GlobalModel.getInstance().clearIndicesOfTipsSeen();
-    }
-
-    private static int getRandomIntegerBetweenRange(int min, int max){
-        int x = (int)(Math.random()*((max-min)+1))+min;
-        return x;
     }
 }

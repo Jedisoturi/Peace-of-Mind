@@ -1,4 +1,4 @@
-package theryhma.sovellus;
+package theryhma.sovellus.views;
 
 
 import android.graphics.drawable.AnimationDrawable;
@@ -8,6 +8,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+
+import theryhma.sovellus.R;
 
 
 /**

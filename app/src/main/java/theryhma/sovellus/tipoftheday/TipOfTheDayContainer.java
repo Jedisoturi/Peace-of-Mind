@@ -1,6 +1,8 @@
-package theryhma.sovellus;
+package theryhma.sovellus.tipoftheday;
 
 import java.util.ArrayList;
+
+import theryhma.sovellus.tipoftheday.TipOfTheDay;
 
 /*
 Contains all tips of the day
@@ -36,34 +38,6 @@ public class TipOfTheDayContainer {
             add(new TipOfTheDay("Nuku riittävästi.", "Univajeella on merkittävä negatiivinen merkitys terveyteesi. Muista siis nukkua tarpeeksi paljon."));
         }
     };
-    /*
-    "Arvosta itseäsi. Palkitse itsesi arvostuksella ja vältä itsekritiikkiä.",
-            "Pidä huolta vartalostasi. Muista liikkua ja syödä terveellisesti.",
-            "Ympäröi itsesi hyvillä ihmisillä. Ihmiset, joilla on vahvat sosiaaliset suhteet omaavat yleensä paremman terveyden.",
-            "Anna itsellesi hyvä mieli. Auttamalla muita saat hyvän olon tunteen ja saatat luoda uusia suhteita.",
-            "Opi käsittelemään stressiä",
-            "Rauhoita mielesi.",
-            "Aseta realistisia tavoitteita. Aloita helpoista tehtävistä ja etenee vaikeampiin myöhemmin.",
-            "Vietä aikaa auringossa, kun voit. Aurinko tuottaa d-vitamiinia, joka asiantuntijoiden mukaan nostattaa mielialaa. (Muista aurinkorasva!)",
-            "Vältä alkoholia ja muita päihteitä. Käytä alkoholia maltilla ja pysy poissa muista päihteistä.",
-            "Hanki apua, kun tarvitset sitä. Avun hakeminen on vahvuuden merkki, ei heikkouden! Apua hakevat selviävät koettelemuksistaan ja onnistuvat elämässään!",
-            "Harjoita vahvuuksiasi. Tee jotain, jossa olet hyvä vahvistaaksesi itsevarmuuttasi, tämän jälkeen käy vaikeampien tehtävien kimppuun.",
-            "\"Sinun ei tarvitse nähdä koko portaikkoa, kunhan otat ensimmäisen askeleen.\" -Martin Luther King Jr",
-            "Osoita rakkautta muille. Se on avain iloiseen ja terveellisen elämään.",
-            "Väritä. Kaiva värikynät esiin ja piirrä. Tämä on hyvät tapa tyhjentää mielesi.",
-            "Muista nauraa. Katso hauska elokuva. Nauraminen vähentää ahdistuneisuutta.",
-            "Rentoudu kylvyssä kerran viikossa. Kylpy auttaa ruumista rauhoittumaan. Kokeile erilaisia kylpysuolia.",
-            "Harjoita anteeksiantoa. Tilanteessa kuin tilanteessa, ihmiset jotka antavat anteeksi omaavat paremman mielenterveyden.",
-            "Muista hymyillä. Hymyily saattaa auttaa alentamaan sykettäsi ja rauhoittamaan sinua.",
-            "Vietä aikaa perheen ja ystävien kanssa. Läheisten kanssa ajan viettämisen on osoitettu alentavan stressiä ja tuomaan iloisuuden tunnetta.",
-            "\"Se kuka ei ole ikinä epäonnistunut, ei ole ikinä yrittänyt.\" -Albert Einstein.",
-            "Ole kokeilunhaluinen. Uusi resepti, kirjoita runo, maalaa. Luovalla ilmaisulla ja yleisellä hyvinvoinnilla on yhteys.",
-            "Pysy aktiivisena.",
-            "Hyväksy itsesi. Saat olla juuri sellainen kuin haluat olla.",
-            "Kirjoita ylös asioita, joista olet kiitollinen. Tämä kasvattaa kiitollisuutesi tunnetta. ",
-            "Nuku riittävästi. Univajeella on merkittävä negatiivinen merkitys terveyteesi. Muista siis nukkua tarpeeksi paljon."
-     */
-
 
     public static TipOfTheDay get(int i) {
         return tips.get(i);
@@ -71,10 +45,5 @@ public class TipOfTheDayContainer {
 
     public static int size() {
         return tips.size();
-    }
-
-    private static int getRandomIntegerBetweenRange(int min, int max){
-        int x = (int)(Math.random()*((max-min)+1))+min;
-        return x;
     }
 }

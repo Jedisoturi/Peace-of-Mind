@@ -1,4 +1,4 @@
-package theryhma.sovellus;
+package theryhma.sovellus.views;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -7,6 +7,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+
+import theryhma.sovellus.R;
 
 public class ButtonFragment extends Fragment {
     private TextView textView;
@@ -22,7 +24,7 @@ public class ButtonFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_button, container, false);
         textView = view.findViewById(R.id.txt_display);
-        String message = getArguments().getString("message");
+        String message = getArguments().getString("status") + "\n\n" + getArguments().getString("mean");
         textView.setText(message);
 
         button = view.findViewById(R.id.button);
