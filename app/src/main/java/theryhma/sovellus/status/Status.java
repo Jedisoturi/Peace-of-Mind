@@ -4,47 +4,83 @@ import android.util.Log;
 
 import java.util.ArrayList;
 
-public class Status {
-    private double energy;
-    private double mood;
-    private double anxiety;
-    private double stress;
+import theryhma.sovellus.attribute.Attribute;
+import theryhma.sovellus.attribute.AttributeType;
 
-    public Status(double energy, double mood, double anxiety, double stress) {
-        this.energy = energy;
-        this.mood = mood;
-        this.anxiety = anxiety;
-        this.stress = stress;
-        //Log.d("supergetstatus", "CREATE: " + getEnergy());
-        if (!isValid()) {
-            throw new IllegalArgumentException("Status values cannot be over 1 or under -1");
+/**
+ * This is basically an AttributeContainer with a rule: "no duplicate attributes"
+ */
+
+public class Status {
+    private ArrayList<Attribute> attributes;
+
+    public Status(ArrayList<Attribute> attributes) {
+        if (hasDuplicateAttribute(attributes)) {
+            throw new IllegalArgumentException("Status cannot contain more than one attribute of each type");
         }
+        this.attributes = attributes;
+    }
+
+    public Status() {
+        this.attributes = new ArrayList<>();
     }
 
     public Status(Status reference) {
-        this.energy = reference.energy;
-        this.mood = reference.mood;
-        this.anxiety = reference.anxiety;
-        this.stress = reference.stress;
+        this.attributes = reference.attributes;
     }
 
-    private boolean isValid() {
-        if (isValidValue(this.energy) && isValidValue(this.mood) && isValidValue(this.anxiety) && isValidValue(this.stress)) {
-            return true;
-        } else {
-            return false;
+    public void addAttribute(Attribute attribute) {
+        // todo: move the check in front of the assignment
+        attributes.add(attribute);
+        if (hasDuplicateAttribute(attributes)) {
+            throw new IllegalArgumentException("Status cannot contain more than one attribute of each type");
         }
     }
 
-    private static boolean isValidValue(double val) {
-        if (-1.0 <= val && val <= 1.0) {
-            return true;
-        } else {
-            return false;
+    public void setAllAttributeValues(double value) {
+        for (Attribute a : attributes) {
+            a.setValue(value);
         }
     }
 
-    public void scale(double scale) {
+    public Attribute getAttribute(AttributeType type) {
+        for (Attribute a : attributes) {
+            if (a.getType() == type) {
+                return a;
+            }
+        }
+        throw new IllegalArgumentException("Doesn't contain this attribute");
+    }
+
+    public boolean containsAttribute(AttributeType type) {
+        for (Attribute a : attributes) {
+            if (a.getType() == type) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    // todo: this method is confusing in its idea
+    public boolean hasDuplicateAttribute(ArrayList<Attribute> attributes) {
+        ArrayList<AttributeType> typesFound = new ArrayList<>();
+        for (Attribute a : attributes) {
+            AttributeType type = a.getType();
+            for (AttributeType foundType : typesFound) {
+                if (type == foundType) {
+                    return true;
+                }
+            }
+            typesFound.add(a.getType());
+        }
+        return false;
+    }
+
+    public ArrayList<Attribute> getAttributes() {
+        return attributes;
+    }
+
+    /*public void scale(double scale) {
         if (!isValidValue(scale)) {
             throw new IllegalArgumentException("Scale cannot be over 1 or under -1");
         }
@@ -52,29 +88,15 @@ public class Status {
         this.mood = this.mood * scale;
         this.anxiety = this.anxiety * scale;
         this.stress = this.stress * scale;
-    }
-
-    public double getEnergy() {
-        return this.energy;
-    }
-
-    public double getMood() {
-        return this.mood;
-    }
-
-    public double getAnxiety() {
-        return this.anxiety;
-    }
-
-    public double getStress() {
-        return this.stress;
-    }
+    }*/
 
     @Override
     public String toString() {
-        return Double.toString(this.energy) + "\n" +
-                Double.toString(this.mood) + "\n" +
-                Double.toString(this.anxiety) + "\n" +
-                Double.toString(this.stress) + ";";
+        String s = "Status:\n";
+        for (Attribute a : attributes) {
+            s = s + a.toString() + "\n";
+        }
+        s = s + "----\n";
+        return s;
     }
 }

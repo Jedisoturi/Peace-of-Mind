@@ -15,7 +15,7 @@ public class QuestionConstants {
                         add("Väsyttää jonkin verran.");
                         add("Väsynyt kuin nukkuneen rukous.");
                     }
-                }, new Status(1, 0, 0, 0))
+                }, new Status())
             );
             add(new Question("Koin mielialani tänään:", new ArrayList<String>() {
                         {
@@ -25,7 +25,7 @@ public class QuestionConstants {
                             add("surulliseksi");
                             add("masentuneeksi");
                         }
-                    }, new Status(0, 1, 0, 0))
+                    }, new Status())
             );
             add(new Question("Kuinka motivoitunut olo?", new ArrayList<String>() {
                         {
@@ -35,7 +35,7 @@ public class QuestionConstants {
                             add("Epämotivoitunut");
                             add("Mikään ei kiinnosta");
                         }
-                    }, new Status(0.6, 0.6, 0, 0))
+                    }, new Status())
             );
         }
     };

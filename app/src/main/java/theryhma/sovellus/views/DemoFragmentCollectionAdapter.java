@@ -44,7 +44,7 @@ public class DemoFragmentCollectionAdapter extends FragmentStatePagerAdapter {
         } else if (Constant.DEBUG_STATUS) {
             ButtonFragment buttonFragment = new ButtonFragment();
             Bundle bundle = new Bundle();
-
+            /*
             ArrayList<Double> indices = new ArrayList<>();
             indices.add(1.0);
             indices.add(0.5);
@@ -65,7 +65,7 @@ public class DemoFragmentCollectionAdapter extends FragmentStatePagerAdapter {
                 Log.d("supersovellus", stat.toString());
             }
             Log.d("supersovellus", "mean(" + GlobalModel.getInstance().getStatuses().size() + "):" + meanStatus.toString());
-
+            */
             buttonFragment.setArguments(bundle);
             return buttonFragment;
         } else if (Constant.DEBUG_TIP) {

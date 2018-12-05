@@ -3,6 +3,7 @@ package theryhma.sovellus.question;
 public enum Answer {
     NEUTRAL, BAD, WORST, GOOD, BEST;
 
+
     @Override
     public String toString() {
         switch (this) {

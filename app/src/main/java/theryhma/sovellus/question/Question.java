@@ -19,6 +19,7 @@ public class Question {
     private static final double BAD_WEIGHT = -0.5;
     private static final double WORST_WEIGHT = -1.0;
 
+
     public Question(String text, ArrayList<String> answers, Status weights) {
         if (answers.size() != ANSWERS_AMOUNT) {
             throw new IllegalArgumentException("A question must have 5 answers");
@@ -64,7 +65,7 @@ public class Question {
         }
         //Log.d("supergetstatus", getText() + " " + getAnswer() + " weight:" + Double.toString(weight) + " status:" + this.weights);
         Status status = new Status(this.weights);
-        status.scale(weight);
+        //status.scale(weight);
         return status;
     }
 }
