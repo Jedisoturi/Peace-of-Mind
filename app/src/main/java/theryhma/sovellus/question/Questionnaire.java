@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 import theryhma.sovellus.status.Status;
 
+// todo: questionnaire generator
+
 public class Questionnaire {
     private ArrayList<Question> questions;
 
