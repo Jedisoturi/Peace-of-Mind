@@ -1,7 +1,7 @@
 package theryhma.sovellus.attribute;
 
 public enum AttributeType {
-    ENERGY, MOOD, ANXIETY, STRESS;
+    ENERGY, MOOD, ANXIETY, STRESS, NUTRITION;
 
     @Override
     public String toString() {
@@ -14,6 +14,8 @@ public enum AttributeType {
                 return "Anxiety";
             case STRESS:
                 return "Stress";
+            case NUTRITION:
+                return "Nutrition";
             default:
                 return "NULL";
         }

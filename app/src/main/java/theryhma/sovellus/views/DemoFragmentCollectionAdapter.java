@@ -28,7 +28,7 @@ public class DemoFragmentCollectionAdapter extends FragmentStatePagerAdapter {
         if (i==1) {
             DemoFragment demoFragment = new DemoFragment();
             return demoFragment;
-        } else if (Constant.DEBUG_QUESTIONNAIRE && i==5) {
+        } else if (Constant.DEBUG_QUESTIONNAIRE && i==6) {
             DebugQuestionResults debugQuestionResults = new DebugQuestionResults();
             Bundle bundle = new Bundle();
 
@@ -90,7 +90,7 @@ public class DemoFragmentCollectionAdapter extends FragmentStatePagerAdapter {
     @Override
     public int getCount() {
         if (Constant.DEBUG_QUESTIONNAIRE) {
-            return 5;
+            return 6;
         } else {
             return 100;
         }

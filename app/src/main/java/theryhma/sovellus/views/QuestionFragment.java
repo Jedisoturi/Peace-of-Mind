@@ -2,6 +2,7 @@ package theryhma.sovellus.views;
 
 
 import android.os.Bundle;
+import android.support.constraint.ConstraintLayout;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,6 +18,7 @@ import theryhma.sovellus.question.Questionnaire;
 
 public class QuestionFragment extends Fragment {
     private View v;
+    private int index;
     private Question q;
     public QuestionFragment() {
         // Required empty public constructor
@@ -29,12 +31,13 @@ public class QuestionFragment extends Fragment {
         // Inflate the layout for this fragment
         v = inflater.inflate(R.layout.fragment_question, container, false);
 
-        final int index = getArguments().getInt("index");
+        index = getArguments().getInt("index");
         Questionnaire questionnaire = GlobalModel.getInstance().getQuestionnaire();
         q = questionnaire.getQuestion(index);
 
         updateRadioGroup();
         updateUI();
+
 
         RadioGroup radioGroup = v.findViewById(R.id.group);
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener()
@@ -79,6 +82,29 @@ public class QuestionFragment extends Fragment {
         negative.setText(q.getAnswerMap().get(AnswerType.NEGATIVE));
         RadioButton veryNegative = v.findViewById(R.id.worst);
         veryNegative.setText(q.getAnswerMap().get(AnswerType.VERY_NEGATIVE));
+
+        ConstraintLayout constraintLayout = (ConstraintLayout) v.findViewById(R.id.tausta);
+        constraintLayout.setBackgroundResource(R.drawable.panorama1);
+
+        switch (index) {
+            case 0:
+                constraintLayout.setBackgroundResource(R.drawable.panorama1);
+                break;
+            case 1:
+                constraintLayout.setBackgroundResource(R.drawable.panorama2);
+                break;
+            case 2:
+                constraintLayout.setBackgroundResource(R.drawable.panorama3);
+                break;
+            case 3:
+                constraintLayout.setBackgroundResource(R.drawable.panorama4);
+                break;
+            case 4:
+                constraintLayout.setBackgroundResource(R.drawable.panorama5);
+                break;
+            default:
+                break;
+        }
     }
 
     public void updateRadioGroup() {
