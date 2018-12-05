@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import theryhma.sovellus.GlobalModel;
+import theryhma.sovellus.Instruction.InstructionTools;
 import theryhma.sovellus.R;
 import theryhma.sovellus.question.Questionnaire;
 import theryhma.sovellus.status.Status;
@@ -22,18 +23,10 @@ public class DebugQuestionResults extends Fragment {
 
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-               Bundle savedInstanceState) {
-                // Inflate the layout for this fragment
-                v = inflater.inflate(R.layout.fragment_debug_question_results, container, false);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        v = inflater.inflate(R.layout.fragment_debug_question_results, container, false);
 
-                Button button = v.findViewById(R.id.calc);
-                button.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-
-                    }
-        });
 
         return v;
     }
@@ -45,5 +38,8 @@ public class DebugQuestionResults extends Fragment {
         Questionnaire questionnaire = GlobalModel.getInstance().getQuestionnaire();
         Status result = StatusTools.createMeanStatus(questionnaire.getResults());
         textView.setText(result.toString());
+
+        TextView instructions = v.findViewById(R.id.instructions);
+        instructions.setText(InstructionTools.instructionArrayToString(InstructionTools.createPossibleInstructions(result)));
     }
 }
