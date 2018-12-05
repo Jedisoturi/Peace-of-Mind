@@ -40,6 +40,6 @@ public class DebugQuestionResults extends Fragment {
         textView.setText(result.toString());
 
         TextView instructions = v.findViewById(R.id.instructions);
-        instructions.setText(InstructionTools.instructionArrayToString(InstructionTools.createPossibleInstructions(result)));
+        instructions.setText(InstructionTools.instructionArrayToString(InstructionTools.generateRandomInstructions(result)));
     }
 }
