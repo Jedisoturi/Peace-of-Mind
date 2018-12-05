@@ -11,12 +11,13 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import theryhma.sovellus.GlobalModel;
 import theryhma.sovellus.R;
-import theryhma.sovellus.question.Answer;
+import theryhma.sovellus.question.AnswerType;
 import theryhma.sovellus.question.Question;
 import theryhma.sovellus.question.Questionnaire;
 
 public class QuestionFragment extends Fragment {
-    private TextView textView;
+    private View v;
+    private Question q;
     public QuestionFragment() {
         // Required empty public constructor
     }
@@ -26,17 +27,16 @@ public class QuestionFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_question, container, false);
+        v = inflater.inflate(R.layout.fragment_question, container, false);
 
-        textView = view.findViewById(R.id.question);
         final int index = getArguments().getInt("index");
         Questionnaire questionnaire = GlobalModel.getInstance().getQuestionnaire();
-        Question q = questionnaire.getQuestion(index);
-        textView.setText(q.getText());
+        q = questionnaire.getQuestion(index);
 
-        updateRadioGroup(q.getAnswer(), view);
+        updateRadioGroup();
+        updateUI();
 
-        RadioGroup radioGroup = view.findViewById(R.id.group);
+        RadioGroup radioGroup = v.findViewById(R.id.group);
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener()
         {
             @Override
@@ -45,42 +45,59 @@ public class QuestionFragment extends Fragment {
                 Question q = questionnaire.getQuestion(index);
                 switch(checkedId) {
                     case R.id.best:
-                        q.setAnswer(Answer.BEST);
+                        q.setAnswer(AnswerType.VERY_POSITIVE);
                         break;
                     case R.id.good:
-                        q.setAnswer(Answer.GOOD);
+                        q.setAnswer(AnswerType.POSITIVE);
                         break;
                     case R.id.neutral:
-                        q.setAnswer(Answer.NEUTRAL);
+                        q.setAnswer(AnswerType.NEUTRAL);
                         break;
                     case R.id.bad:
-                        q.setAnswer(Answer.BAD);
+                        q.setAnswer(AnswerType.NEGATIVE);
                         break;
                     case R.id.worst:
-                        q.setAnswer(Answer.WORST);
+                        q.setAnswer(AnswerType.VERY_NEGATIVE);
                         break;
                 }
             }
         });
-        return view;
+        return v;
     }
 
-    public void updateRadioGroup(Answer answer, View view) {
-        switch (answer) {
-            case BEST:
-                ((RadioButton) view.findViewById(R.id.best)).setChecked(true);
+    public void updateUI() {
+        TextView questionText = v.findViewById(R.id.question);
+        questionText.setText(q.getQuestionText());
+
+        RadioButton veryPositive = v.findViewById(R.id.best);
+        veryPositive.setText(q.getAnswerMap().get(AnswerType.VERY_POSITIVE));
+        RadioButton positive = v.findViewById(R.id.good);
+        positive.setText(q.getAnswerMap().get(AnswerType.POSITIVE));
+        RadioButton neutral = v.findViewById(R.id.neutral);
+        neutral.setText(q.getAnswerMap().get(AnswerType.NEUTRAL));
+        RadioButton negative = v.findViewById(R.id.bad);
+        negative.setText(q.getAnswerMap().get(AnswerType.NEGATIVE));
+        RadioButton veryNegative = v.findViewById(R.id.worst);
+        veryNegative.setText(q.getAnswerMap().get(AnswerType.VERY_NEGATIVE));
+    }
+
+    public void updateRadioGroup() {
+        AnswerType answerType = q.getAnswer();
+        switch (answerType) {
+            case VERY_POSITIVE:
+                ((RadioButton) v.findViewById(R.id.best)).setChecked(true);
                 break;
-            case GOOD:
-                ((RadioButton) view.findViewById(R.id.good)).setChecked(true);
+            case POSITIVE:
+                ((RadioButton) v.findViewById(R.id.good)).setChecked(true);
                 break;
             case NEUTRAL:
-                ((RadioButton) view.findViewById(R.id.neutral)).setChecked(true);
+                ((RadioButton) v.findViewById(R.id.neutral)).setChecked(true);
                 break;
-            case BAD:
-                ((RadioButton) view.findViewById(R.id.bad)).setChecked(true);
+            case NEGATIVE:
+                ((RadioButton) v.findViewById(R.id.bad)).setChecked(true);
                 break;
-            case WORST:
-                ((RadioButton) view.findViewById(R.id.worst)).setChecked(true);
+            case VERY_NEGATIVE:
+                ((RadioButton) v.findViewById(R.id.worst)).setChecked(true);
                 break;
             default:
                 break;

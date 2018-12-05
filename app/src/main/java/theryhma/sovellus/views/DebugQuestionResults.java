@@ -43,7 +43,7 @@ public class DebugQuestionResults extends Fragment {
         super.onResume();
         TextView textView = v.findViewById(R.id.results);
         Questionnaire questionnaire = GlobalModel.getInstance().getQuestionnaire();
-        //Status result = StatusTools.getNonZeroMean(questionnaire.getResults());
-        //textView.setText(result.toString());
+        Status result = StatusTools.createMeanStatus(questionnaire.getResults());
+        textView.setText(result.toString());
     }
 }

@@ -31,20 +31,20 @@
 
     <RadioGroup
         android:id="@+id/group"
-        android:layout_width="125dp"
+        android:layout_width="293dp"
         android:layout_height="240dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/guideline2"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/question">
 
         <RadioButton
             android:id="@+id/best"
-            android:layout_width="83dp"
+            android:layout_width="256dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
@@ -59,7 +59,7 @@
 
         <RadioButton
             android:id="@+id/good"
-            android:layout_width="82dp"
+            android:layout_width="254dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
@@ -74,7 +74,7 @@
 
         <RadioButton
             android:id="@+id/neutral"
-            android:layout_width="88dp"
+            android:layout_width="252dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
@@ -89,7 +89,7 @@
 
         <RadioButton
             android:id="@+id/bad"
-            android:layout_width="78dp"
+            android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
@@ -104,7 +104,7 @@
 
         <RadioButton
             android:id="@+id/worst"
-            android:layout_width="82dp"
+            android:layout_width="252dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"

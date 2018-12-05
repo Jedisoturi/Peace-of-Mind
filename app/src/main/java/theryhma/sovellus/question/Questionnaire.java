@@ -21,7 +21,7 @@ public class Questionnaire {
     public ArrayList<Status> getResults() {
         ArrayList<Status> statuses = new ArrayList<>();
         for (Question q : questions) {
-            statuses.add(q.getStatus());
+            statuses.add(q.getResultStatus());
             //Log.d("supergetresult", q.getText() + " " + q.getAnswer() + " " + q.getStatus().toString());
         }
         return statuses;

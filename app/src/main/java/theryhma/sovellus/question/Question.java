@@ -1,73 +1,61 @@
 package theryhma.sovellus.question;
 
-import android.util.Log;
-
 import java.util.ArrayList;
 import java.util.Map;
 
+import theryhma.sovellus.attribute.Attribute;
 import theryhma.sovellus.attribute.AttributeType;
 import theryhma.sovellus.status.Status;
 
 public class Question {
     private String questionText;
-    private ArrayList<String> answersTexts;
-    private Answer answer;
-    private Status weights;
+    private Map<AnswerType, String> answersMap;
+    private Map<AttributeType, Double> weightMap;
+    private AnswerType answer;
 
     private static final int ANSWERS_AMOUNT = 5;
-    private static final double BEST_WEIGHT = 1.0;
-    private static final double GOOD_WEIGHT = 0.5;
-    private static final double MED_WEIGHT = 0.0;
-    private static final double BAD_WEIGHT = -0.5;
-    private static final double WORST_WEIGHT = -1.0;
 
-
-    public Question(String questionText, ArrayList<String> answersTexts, Map<AttributeType, Double> weightMap) {
-        if (answersTexts.size() != ANSWERS_AMOUNT) {
+    public Question(String questionText, Map<AnswerType, String> answersMap, Map<AttributeType, Double> weightMap) {
+        if (answersMap.size() != ANSWERS_AMOUNT) {
             throw new IllegalArgumentException("A question must have 5 answers");
         }
+        // todo: check that weights are correct
+        // remember that maps don't have duplicate keys
         this.questionText = questionText;
-        this.answersTexts = answersTexts;
-        this.weights = weights;
-        this.answer = Answer.NEUTRAL;
-        //Log.d("supergetstatus", "CREATE: " + getText() + " " + getAnswer() + " answer:" + answer + " status:" + this.weights);
+        this.answersMap = answersMap;
+        this.weightMap = weightMap;
+        this.answer = AnswerType.NEUTRAL;
+        //Log.d("supergetstatus", "CREATE: " + getText() + " " + getAnswer() + " answerType:" + answerType + " status:" + this.weights);
     }
 
-    public void setAnswer(Answer answer) {
-        //Log.d("supergetstatus", getText() + " " + getAnswer() + " answer:" + answer + " status:" + this.weights);
-        this.answer = answer;
+    public Status getResultStatus() {
+        ArrayList<Attribute> attributes = new ArrayList<>();
+        for (Map.Entry<AttributeType, Double> entry : weightMap.entrySet())
+        {
+            Attribute a = new Attribute(entry.getKey(), AnswerType.getValue(answer), entry.getValue());
+            attributes.add(a);
+        }
+        Status result = new Status(attributes);
+        return result;
     }
 
-    public Answer getAnswer() {
-        return this.answer;
-    }
-
-    public String getText() {
+    public String getQuestionText() {
         return this.questionText;
     }
 
-    public Status getStatus() {
-        double weight = 0;
-        switch (this.answer) {
-            case BEST:
-                weight = BEST_WEIGHT;
-                break;
-            case GOOD:
-                weight = GOOD_WEIGHT;
-                break;
-            case NEUTRAL:
-                weight = MED_WEIGHT;
-                break;
-            case BAD:
-                weight = BAD_WEIGHT;
-                break;
-            case WORST:
-                weight = WORST_WEIGHT;
-                break;
-        }
-        //Log.d("supergetstatus", getText() + " " + getAnswer() + " weight:" + Double.toString(weight) + " status:" + this.weights);
-        Status status = new Status(this.weights);
-        //status.scale(weight);
-        return status;
+    public Map<AnswerType, String> getAnswerMap() {
+        return answersMap;
+    }
+
+    public Map<AttributeType, Double> getWeightMap() {
+        return weightMap;
+    }
+
+    public AnswerType getAnswer() {
+        return answer;
+    }
+
+    public void setAnswer(AnswerType answer) {
+        this.answer = answer;
     }
 }

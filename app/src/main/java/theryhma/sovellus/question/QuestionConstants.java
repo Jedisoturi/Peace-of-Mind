@@ -9,50 +9,51 @@ import theryhma.sovellus.status.Status;
 public class QuestionConstants {
     private static final ArrayList<Question> questions = new ArrayList<Question>() {
         {
-            add(new Question("Kuinka väsyneeksi koet itsesi?", new ArrayList<String>() {
+            add(new Question("Kuinka pirteäksi koet itsesi?",
+                new HashMap<AnswerType, String>() {
                     {
-                        add("TOSI ENERGINEN!");
-                        add("Olen melko pirteä.");
-                        add("Normaali.");
-                        add("Väsyttää jonkin verran.");
-                        add("Väsynyt kuin nukkuneen rukous.");
+                        put(AnswerType.VERY_POSITIVE, "Tosi");
+                        put(AnswerType.POSITIVE, "Melko");
+                        put(AnswerType.NEUTRAL, "Neutraali");
+                        put(AnswerType.NEGATIVE, "Vähän");
+                        put(AnswerType.VERY_NEGATIVE, "En yhtään");
                     }
                 }, new HashMap<AttributeType, Double>() {
                     {
                         put(AttributeType.ENERGY, 1.0);
-
                     }
                 })
             );
-            add(new Question("Koin mielialani tänään:", new ArrayList<String>() {
-                        {
-                            add("Tosi iloiseksi");
-                            add("iloiseksi");
-                            add("neutraaliksi");
-                            add("surulliseksi");
-                            add("masentuneeksi");
-                        }
-                    }, new HashMap<AttributeType, Double>() {
-                        {
-                            put(AttributeType.MOOD, 1.0);
-
-                        }
-                    })
+            add(new Question("Koin mielialani tänään:",
+                new HashMap<AnswerType, String>() {
+                    {
+                        put(AnswerType.VERY_POSITIVE, "");
+                        put(AnswerType.POSITIVE, "Melko");
+                        put(AnswerType.NEUTRAL, "Neutraali");
+                        put(AnswerType.NEGATIVE, "Vähän");
+                        put(AnswerType.VERY_NEGATIVE, "En yhtään");
+                    }
+                }, new HashMap<AttributeType, Double>() {
+                    {
+                        put(AttributeType.MOOD, 1.0);
+                    }
+                })
             );
-            add(new Question("Kuinka motivoitunut olo?", new ArrayList<String>() {
-                        {
-                            add("Todella motivoitunut");
-                            add("Motivoitunut");
-                            add("Neutraali");
-                            add("Epämotivoitunut");
-                            add("Mikään ei kiinnosta");
-                        }
-                    }, new HashMap<AttributeType, Double>() {
-                        {
-                            put(AttributeType.ENERGY, 0.5);
-                            put(AttributeType.MOOD, 0.5);
-                        }
-                    })
+            add(new Question("Kuinka motivoitunut olo?",
+                new HashMap<AnswerType, String>() {
+                    {
+                        put(AnswerType.VERY_POSITIVE, "Tosi");
+                        put(AnswerType.POSITIVE, "Melko");
+                        put(AnswerType.NEUTRAL, "Neutraali");
+                        put(AnswerType.NEGATIVE, "Vähän");
+                        put(AnswerType.VERY_NEGATIVE, "En yhtään");
+                    }
+                }, new HashMap<AttributeType, Double>() {
+                    {
+                        put(AttributeType.ENERGY, 0.5);
+                        put(AttributeType.MOOD, 0.5);
+                    }
+                })
             );
         }
     };

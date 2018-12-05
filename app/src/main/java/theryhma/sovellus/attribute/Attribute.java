@@ -21,7 +21,7 @@ public class Attribute {
         return 0 <= val && val <= 1;
     }
     private static boolean isValidWeight(double val) {
-        return 0 < val;
+        return 0 <= val;
     }
 
     public AttributeType getType() {
