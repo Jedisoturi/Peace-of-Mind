@@ -28,7 +28,7 @@ public class DemoFragmentCollectionAdapter extends FragmentStatePagerAdapter {
         if (i==1) {
             DemoFragment demoFragment = new DemoFragment();
             return demoFragment;
-        } else if (Constant.DEBUG_QUESTIONNAIRE && i==5) {
+        } else if (Constant.DEBUG_QUESTIONNAIRE && i==6) {
             DebugQuestionResults debugQuestionResults = new DebugQuestionResults();
             Bundle bundle = new Bundle();
 
@@ -44,7 +44,7 @@ public class DemoFragmentCollectionAdapter extends FragmentStatePagerAdapter {
         } else if (Constant.DEBUG_STATUS) {
             ButtonFragment buttonFragment = new ButtonFragment();
             Bundle bundle = new Bundle();
-
+            /*
             ArrayList<Double> indices = new ArrayList<>();
             indices.add(1.0);
             indices.add(0.5);
@@ -57,7 +57,7 @@ public class DemoFragmentCollectionAdapter extends FragmentStatePagerAdapter {
             double s = indices.get(Maths.getRandomIntegerBetweenRange(0, 4));
             Status status = new Status(e, m, a, s);
             GlobalModel.getInstance().addStatuses(status);
-            Status meanStatus = StatusTools.getNonZeroMeanStatus(GlobalModel.getInstance().getStatuses());
+            Status meanStatus = StatusTools.getNonZeroMean(GlobalModel.getInstance().getStatuses());
             bundle.putString("status", status.toString());
             bundle.putString("mean", meanStatus.toString());
             ArrayList<Status> list = GlobalModel.getInstance().getStatuses();
@@ -65,7 +65,7 @@ public class DemoFragmentCollectionAdapter extends FragmentStatePagerAdapter {
                 Log.d("supersovellus", stat.toString());
             }
             Log.d("supersovellus", "mean(" + GlobalModel.getInstance().getStatuses().size() + "):" + meanStatus.toString());
-
+            */
             buttonFragment.setArguments(bundle);
             return buttonFragment;
         } else if (Constant.DEBUG_TIP) {
@@ -90,7 +90,7 @@ public class DemoFragmentCollectionAdapter extends FragmentStatePagerAdapter {
     @Override
     public int getCount() {
         if (Constant.DEBUG_QUESTIONNAIRE) {
-            return 5;
+            return 6;
         } else {
             return 100;
         }

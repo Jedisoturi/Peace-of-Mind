@@ -56,7 +56,7 @@ public class VerticalViewPager extends ViewPager {
     /**
      * Swaps the X and Y coordinates of your touch event.
      */
-    private MotionEvent swapXY(MotionEvent ev) {
+    /*private MotionEvent swapXY(MotionEvent ev) {
         float width = getWidth();
         float height = getHeight();
 
@@ -79,4 +79,5 @@ public class VerticalViewPager extends ViewPager {
     public boolean onTouchEvent(MotionEvent ev) {
         return super.onTouchEvent(swapXY(ev));
     }
+    */
 }
