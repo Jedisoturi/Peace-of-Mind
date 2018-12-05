@@ -34,7 +34,7 @@ public class InstructionTools {
     }
 
     public static Instruction getRandomInstruction(ArrayList<Instruction> instructions) {
-        Instruction i = instructions.get(Maths.getRandomIntegerBetweenRange(0, instructions.size()));
+        Instruction i = instructions.get(Maths.getRandomIntegerBetweenRange(0, instructions.size() - 1));
         return i;
     }
 
