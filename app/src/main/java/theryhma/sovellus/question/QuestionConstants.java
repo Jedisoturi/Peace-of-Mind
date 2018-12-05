@@ -1,7 +1,9 @@
 package theryhma.sovellus.question;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
+import theryhma.sovellus.attribute.AttributeType;
 import theryhma.sovellus.status.Status;
 
 public class QuestionConstants {
@@ -15,7 +17,12 @@ public class QuestionConstants {
                         add("Väsyttää jonkin verran.");
                         add("Väsynyt kuin nukkuneen rukous.");
                     }
-                }, new Status())
+                }, new HashMap<AttributeType, Double>() {
+                    {
+                        put(AttributeType.ENERGY, 1.0);
+
+                    }
+                })
             );
             add(new Question("Koin mielialani tänään:", new ArrayList<String>() {
                         {
@@ -25,7 +32,12 @@ public class QuestionConstants {
                             add("surulliseksi");
                             add("masentuneeksi");
                         }
-                    }, new Status())
+                    }, new HashMap<AttributeType, Double>() {
+                        {
+                            put(AttributeType.MOOD, 1.0);
+
+                        }
+                    })
             );
             add(new Question("Kuinka motivoitunut olo?", new ArrayList<String>() {
                         {
@@ -35,7 +47,12 @@ public class QuestionConstants {
                             add("Epämotivoitunut");
                             add("Mikään ei kiinnosta");
                         }
-                    }, new Status())
+                    }, new HashMap<AttributeType, Double>() {
+                        {
+                            put(AttributeType.ENERGY, 0.5);
+                            put(AttributeType.MOOD, 0.5);
+                        }
+                    })
             );
         }
     };

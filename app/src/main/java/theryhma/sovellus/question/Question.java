@@ -3,12 +3,14 @@ package theryhma.sovellus.question;
 import android.util.Log;
 
 import java.util.ArrayList;
+import java.util.Map;
 
+import theryhma.sovellus.attribute.AttributeType;
 import theryhma.sovellus.status.Status;
 
 public class Question {
     private String questionText;
-    private ArrayList<String> answers;
+    private ArrayList<String> answersTexts;
     private Answer answer;
     private Status weights;
 
@@ -20,15 +22,15 @@ public class Question {
     private static final double WORST_WEIGHT = -1.0;
 
 
-    public Question(String text, ArrayList<String> answers, Status weights) {
-        if (answers.size() != ANSWERS_AMOUNT) {
+    public Question(String questionText, ArrayList<String> answersTexts, Map<AttributeType, Double> weightMap) {
+        if (answersTexts.size() != ANSWERS_AMOUNT) {
             throw new IllegalArgumentException("A question must have 5 answers");
         }
-        this.questionText = text;
-        this.answers = answers;
+        this.questionText = questionText;
+        this.answersTexts = answersTexts;
         this.weights = weights;
         this.answer = Answer.NEUTRAL;
-        Log.d("supergetstatus", "CREATE: " + getText() + " " + getAnswer() + " answer:" + answer + " status:" + this.weights);
+        //Log.d("supergetstatus", "CREATE: " + getText() + " " + getAnswer() + " answer:" + answer + " status:" + this.weights);
     }
 
     public void setAnswer(Answer answer) {
