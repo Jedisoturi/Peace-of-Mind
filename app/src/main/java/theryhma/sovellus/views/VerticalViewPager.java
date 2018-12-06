@@ -1,10 +1,13 @@
 package theryhma.sovellus.views;
 
 import android.content.Context;
+import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
+
+import theryhma.sovellus.R;
 
 public class VerticalViewPager extends ViewPager {
 
@@ -36,10 +39,16 @@ public class VerticalViewPager extends ViewPager {
             }
             else if (position <= 0){    // [-1,0] Pienempi indeksi
                 // This is the top page (index is lower)
-                /*
-                float yPosition = position * view.getHeight() ;
-                view.setTranslationY(yPosition);
-                */
+                if (view.getId() == R.id.gif) {
+                    view.setTranslationX(-position*view.getWidth());
+                    float yPosition = position * view.getHeight() ;
+                    view.setTranslationY(yPosition);
+                    view.setAlpha(1-Math.abs(position));
+                    /*Fragment page = getSupportFragmentManager().findFragmentByTag("android:switcher:" + R.id.pager + ":" + getCurrentItem());
+                    if (getCurrentItem() == 0 && page != null) {
+                        ((FragmentClass1)page).updateList("new item");
+                    }*/
+                }
             }
             else if (position <= 1){    // (0,1] Suurempi indeksi
                 // This is the bottom page (index is higher)
