@@ -1,5 +1,6 @@
 package theryhma.sovellus.views;
 
+import android.app.Activity;
 import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
@@ -7,6 +8,8 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 
+import theryhma.sovellus.GlobalModel;
+import theryhma.sovellus.MainActivity;
 import theryhma.sovellus.R;
 
 public class VerticalViewPager extends ViewPager {
@@ -40,18 +43,22 @@ public class VerticalViewPager extends ViewPager {
             else if (position <= 0){    // [-1,0] Pienempi indeksi
                 // This is the top page (index is lower)
                 if (view.getId() == R.id.gif) {
+                    GlobalModel.getInstance().setCurrentPage(1);
                     view.setTranslationX(-position*view.getWidth());
                     float yPosition = position * view.getHeight() ;
                     view.setTranslationY(yPosition);
                     view.setAlpha(1-Math.abs(position));
-                    /*Fragment page = getSupportFragmentManager().findFragmentByTag("android:switcher:" + R.id.pager + ":" + getCurrentItem());
-                    if (getCurrentItem() == 0 && page != null) {
-                        ((FragmentClass1)page).updateList("new item");
-                    }*/
+                } else {
+                    GlobalModel.getInstance().setCurrentPage(0);
                 }
+
             }
             else if (position <= 1){    // (0,1] Suurempi indeksi
                 // This is the bottom page (index is higher)
+                //int page = ;
+                if (GlobalModel.getInstance().getCurrentPage() == 1) {
+                    view.setTranslationX(-position*view.getWidth());
+                }
                 // Do nothing
             }
             else {    // (1,+Infinity]
