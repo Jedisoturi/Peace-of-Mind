@@ -27,6 +27,7 @@ public class VerticalViewPager extends ViewPager {
     private void init() {
         // The majority of the magic happens here
         setPageTransformer(true, new VerticalPageTransformer());
+        setOffscreenPageLimit(5);
         // The easiest way to get rid of the overscroll drawing that happens on the left and right
         setOverScrollMode(OVER_SCROLL_NEVER);
     }
@@ -40,23 +41,19 @@ public class VerticalViewPager extends ViewPager {
                 // This page is way off-screen to the left.
                 //view.setAlpha(0);
             }
-            else if (position <= 0){    // [-1,0] Pienempi indeksi
+            else if (position < 0){    // [-1,0] Pienempi indeksi
                 // This is the top page (index is lower)
                 if (view.getId() == R.id.gif) {
-                    GlobalModel.getInstance().setCurrentPage(1);
-                    view.setTranslationX(-position*view.getWidth());
-                    float yPosition = position * view.getHeight() ;
+                    view.setTranslationX(-position * view.getWidth());
+                    float yPosition = position * view.getHeight();
                     view.setTranslationY(yPosition);
-                    view.setAlpha(1-Math.abs(position));
-                } else {
-                    GlobalModel.getInstance().setCurrentPage(0);
+                    view.setAlpha(1 - Math.abs(position));
                 }
-
             }
             else if (position <= 1){    // (0,1] Suurempi indeksi
                 // This is the bottom page (index is higher)
                 //int page = ;
-                if (GlobalModel.getInstance().getCurrentPage() == 1) {
+                if (view.getId() == R.id.alku) {
                     view.setTranslationX(-position*view.getWidth());
                 }
                 // Do nothing
