@@ -30,7 +30,7 @@ public class DemoFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_demo, container, false);
 
         ImageView starsImage = view.findViewById(R.id.stars_image);
-        starsImage.setBackgroundResource(R.drawable.stars);
+        starsImage.setBackgroundResource(R.drawable.waterfall);
         starsAnimation = (AnimationDrawable) starsImage.getBackground();
         starsAnimation.start();
 
