@@ -9,6 +9,7 @@ public class GlobalModel {
     private ArrayList<Integer> indicesOfTipsSeen;
     private ArrayList<Status> statuses;
     private Questionnaire questionnaire;
+    private int currentPage;
     private static final GlobalModel ourInstance = new GlobalModel();
 
     public static GlobalModel getInstance() {
@@ -32,6 +33,14 @@ public class GlobalModel {
         if (!this.indicesOfTipsSeen.contains(i)) {
             this.indicesOfTipsSeen.add(i);
         }
+    }
+
+    public void setCurrentPage(int page) {
+        currentPage = page;
+    }
+
+    public int getCurrentPage() {
+        return currentPage;
     }
 
     public void addStatuses(Status s) {
