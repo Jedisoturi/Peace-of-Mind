@@ -38,7 +38,9 @@ public class TipOfTheDayConstants {
             add(new TipOfTheDay("Nuku riittävästi.", "Univajeella on merkittävä negatiivinen merkitys terveyteesi. Muista siis nukkua tarpeeksi paljon."));
         }
     };
-
+    public static ArrayList<TipOfTheDay> getTips() {
+        return tips;
+    }
     public static TipOfTheDay get(int i) {
         return tips.get(i);
     }
