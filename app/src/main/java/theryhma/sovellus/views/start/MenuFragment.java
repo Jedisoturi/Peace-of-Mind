@@ -1,17 +1,15 @@
 package theryhma.sovellus.views.start;
 
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 
 import theryhma.sovellus.R;
+import theryhma.sovellus.views.questions.TestiActivity;
 
 
 /**
@@ -53,8 +51,8 @@ public class MenuFragment extends Fragment {
                     //startActivity(nextActivity);
                     break;
                 case R.id.tip:
-                    //Intent intent = new Intent(getActivity(), TestiAktiviteetti.class);
-                    //startActivity(intent);
+                    Intent intent = new Intent(getActivity(), TestiActivity.class);
+                    startActivity(intent);
                     break;
             }
         }
