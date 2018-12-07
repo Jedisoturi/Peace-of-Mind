@@ -1,12 +1,15 @@
 package theryhma.sovellus.views;
 
+import android.content.Context;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
+
+import com.github.mikephil.charting.charts.LineChart;
 
 import theryhma.sovellus.GlobalModel;
 import theryhma.sovellus.Instruction.InstructionTools;
@@ -15,9 +18,10 @@ import theryhma.sovellus.question.Questionnaire;
 import theryhma.sovellus.status.Status;
 import theryhma.sovellus.status.StatusTools;
 
-public class DebugQuestionResults extends Fragment {
+public class GraphFragment extends Fragment {
     private View v;
-    public DebugQuestionResults() {
+    private LineChart lineChart;
+    public GraphFragment() {
         // Required empty public constructor
     }
 
@@ -25,7 +29,7 @@ public class DebugQuestionResults extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        v = inflater.inflate(R.layout.fragment_debug_question_results, container, false);
+        v = inflater.inflate(R.layout.fragment_graph, container, false);
 
 
         return v;
@@ -34,14 +38,10 @@ public class DebugQuestionResults extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        TextView textView = v.findViewById(R.id.results);
-        Questionnaire questionnaire = GlobalModel.getInstance().getQuestionnaire();
-        Status result = StatusTools.createMeanStatus(questionnaire.getResults());
-        textView.setText(result.toString());
 
-        TextView instructions = v.findViewById(R.id.instructions);
-        instructions.setText(InstructionTools.instructionArrayToString(InstructionTools.generateRandomInstructions(result)));
-        GlobalModel.getInstance().addStatuses(result);
+        lineChart = v.findViewById(R.id.lineChart);
+
+
 
 
     }

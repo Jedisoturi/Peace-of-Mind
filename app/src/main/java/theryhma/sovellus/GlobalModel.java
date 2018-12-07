@@ -34,6 +34,10 @@ public class GlobalModel {
         }
     }
 
+    public void setStatuses(ArrayList<Status> statuses) {
+        this.statuses = statuses;
+    }
+
     public void addStatuses(Status s) {
         this.statuses.add(s);
     }
