@@ -9,7 +9,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import theryhma.sovellus.R;
+import theryhma.sovellus.views.tipoftheday.TipListActivity;
 import theryhma.sovellus.views.questions.TestiActivity;
+
 
 
 /**
@@ -51,7 +53,7 @@ public class MenuFragment extends Fragment {
                     //startActivity(nextActivity);
                     break;
                 case R.id.tip:
-                    Intent intent = new Intent(getActivity(), TestiActivity.class);
+                    Intent intent = new Intent(getActivity(), TipListActivity.class);
                     startActivity(intent);
                     break;
             }
