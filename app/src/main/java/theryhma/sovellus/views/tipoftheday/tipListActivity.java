@@ -12,7 +12,6 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 
-import theryhma.sovellus.GlobalModel;
 import theryhma.sovellus.R;
 import theryhma.sovellus.tipoftheday.TipOfTheDay;
 import theryhma.sovellus.tipoftheday.TipOfTheDayConstants;
@@ -43,7 +42,7 @@ public class tipListActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int i, long l) {
                 Log.d("supersovellus", "onItemClick(" + i + ")");
-                Intent tipDetails = new Intent(thisAcvitity, tipDetailsActivity.class);
+                Intent tipDetails = new Intent(thisAcvitity, TipDetailsActivity.class);
                 tipDetails.putExtra("showtips", i);
                 startActivity(tipDetails);
             }

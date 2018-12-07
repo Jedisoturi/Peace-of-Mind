@@ -17,7 +17,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".views.tipoftheday.tipListActivity" />
-        <activity android:name=".views.tipoftheday.tipDetailsActivity"></activity>
+        <activity android:name=".views.tipoftheday.TipDetailsActivity" />
+        <activity android:name=".views.start.TestiActivity"></activity>
     </application>
 
 </manifest>

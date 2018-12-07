@@ -1,15 +1,12 @@
 package theryhma.sovellus.views.start;
 
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 
 import theryhma.sovellus.R;
 
@@ -48,8 +45,14 @@ public class MenuFragment extends Fragment {
                 //startActivity(nextActivity);
                 break;
             case R.id.tip:
+                openTipsList();
                 break;
         }
+    }
+
+    public void openTipsList() {
+        Intent intentTips = new Intent(getContext(), TestiActivity.class);
+        startActivity(intentTips);
     }
 
 }

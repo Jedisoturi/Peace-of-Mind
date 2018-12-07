@@ -10,7 +10,7 @@ import theryhma.sovellus.R;
 import theryhma.sovellus.tipoftheday.TipOfTheDay;
 import theryhma.sovellus.tipoftheday.TipOfTheDayConstants;
 
-public class tipDetailsActivity extends AppCompatActivity {
+public class TipDetailsActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
