@@ -16,9 +16,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".views.tipoftheday.tipListActivity" />
-        <activity android:name=".views.tipoftheday.TipDetailsActivity" />
-        <activity android:name=".views.start.TestiActivity"></activity>
+        <activity android:name=".views.questions.QuestionActivity" />
     </application>
 
 </manifest>

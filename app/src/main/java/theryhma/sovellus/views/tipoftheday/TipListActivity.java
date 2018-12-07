@@ -16,7 +16,7 @@ import theryhma.sovellus.R;
 import theryhma.sovellus.tipoftheday.TipOfTheDay;
 import theryhma.sovellus.tipoftheday.TipOfTheDayConstants;
 
-public class tipListActivity extends AppCompatActivity {
+public class TipListActivity extends AppCompatActivity {
 
     ListView tipsList;
     ArrayList<String> listOfTips;

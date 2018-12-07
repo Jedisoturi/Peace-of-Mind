@@ -22,45 +22,21 @@ public class QuestionFragmentCollectionAdapter extends FragmentStatePagerAdapter
 
     @Override
     public Fragment getItem(int i) {
-        if (Constant.DEBUG_QUESTIONNAIRE && i==1) {
+        if (false) {
             DemoFragment demoFragment = new DemoFragment();
             return demoFragment;
-        } else if (Constant.DEBUG_GRAPH) {
-            GraphFragment graphFragment = new GraphFragment();
-            Bundle bundle = new Bundle();
-
-            graphFragment.setArguments(bundle);
-            return graphFragment;
-        } else if (Constant.DEBUG_QUESTIONNAIRE && i==6) {
-            DebugQuestionResults debugQuestionResults = new DebugQuestionResults();
-            Bundle bundle = new Bundle();
-
-            debugQuestionResults.setArguments(bundle);
-            return debugQuestionResults;
-        } else if (Constant.DEBUG_QUESTIONNAIRE) {
+        } else {
             QuestionFragment questionFragment = new QuestionFragment();
             Bundle bundle = new Bundle();
 
-            bundle.putInt("index", i - 2);
+            bundle.putInt("index", i);
             questionFragment.setArguments(bundle);
             return questionFragment;
-        }
-        else {
-            ButtonFragment buttonFragment = new ButtonFragment();
-            Bundle bundle = new Bundle();
-            buttonFragment.setArguments(bundle);
-            return buttonFragment;
         }
     }
 
     @Override
     public int getCount() {
-        if (Constant.DEBUG_QUESTIONNAIRE) {
-            return 6;
-        } else if(Constant.DEBUG_GRAPH){
-            return 1;
-        } else {
-            return 100;
-        }
+        return 5;
     }
 }

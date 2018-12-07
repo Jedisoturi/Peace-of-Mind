@@ -1,14 +1,18 @@
 package theryhma.sovellus.views.start;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import theryhma.sovellus.R;
+import theryhma.sovellus.views.tipoftheday.TipListActivity;
 
 
 /**
@@ -28,31 +32,35 @@ public class MenuFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_menu, container, false);
 
+        view.findViewById(R.id.tip).setOnClickListener(buttonListener);
+        view.findViewById(R.id.til).setOnClickListener(buttonListener);
+        view.findViewById(R.id.kys).setOnClickListener(buttonListener);
+        view.findViewById(R.id.kal).setOnClickListener(buttonListener);
+
         return view;
     }
 
-    public void onButtonClick(View view) {
-        int id = view.getId();
-        switch (id) {
-            case R.id.kal:
+    private final View.OnClickListener buttonListener = new View.OnClickListener() {
+        public void onClick(View view) {
+            switch (view.getId()) {
+                case R.id.kal:
 
-                break;
-            case R.id.til:
-                break;
-            case R.id.kys:
-                //Intent nextActivity = new Intent(getActivity(), DetailsActivity.class);
-                //nextActivity.putExtra("presidentIndex", i);
-                //startActivity(nextActivity);
-                break;
-            case R.id.tip:
-                openTipsList();
-                break;
+                    break;
+                case R.id.til:
+                    break;
+                case R.id.kys:
+                    //Intent nextActivity = new Intent(getActivity(), DetailsActivity.class);
+                    //nextActivity.putExtra("presidentIndex", i);
+                    //startActivity(nextActivity);
+                    break;
+                case R.id.tip:
+                    Intent intent = new Intent(getActivity(), TestiActivity.class);
+                    startActivity(intent);
+                    //Intent intent = new Intent(getActivity(), TestiAktiviteetti.class);
+                    //startActivity(intent);
+                    break;
+            }
         }
-    }
-
-    public void openTipsList() {
-        Intent intentTips = new Intent(getContext(), TestiActivity.class);
-        startActivity(intentTips);
-    }
+    };
 
 }
