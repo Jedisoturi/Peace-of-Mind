@@ -18,7 +18,7 @@ public class QuestionActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_question);
         viewPager = findViewById(R.id.pager);
         adapter = new QuestionFragmentCollectionAdapter(getSupportFragmentManager());
         viewPager.setAdapter(adapter);

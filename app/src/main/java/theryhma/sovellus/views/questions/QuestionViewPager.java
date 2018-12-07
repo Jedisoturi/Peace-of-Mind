@@ -19,13 +19,13 @@ public class QuestionViewPager extends ViewPager {
 
     private void init() {
         // The majority of the magic happens here
-        setPageTransformer(true, new HorizontalPageTransformer());
+        setPageTransformer(true, new QuestionPageTransformer());
         setOffscreenPageLimit(5);
         // The easiest way to get rid of the overscroll drawing that happens on the left and right
         setOverScrollMode(OVER_SCROLL_NEVER);
     }
 
-    private class HorizontalPageTransformer implements PageTransformer {
+    private class QuestionPageTransformer implements PageTransformer {
 
         @Override
         public void transformPage(View view, float position) {

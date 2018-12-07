@@ -15,7 +15,7 @@ public class Questionnaire {
         this.questions.add(QuestionConstants.get(1));
         this.questions.add(QuestionConstants.get(2));
         this.questions.add(QuestionConstants.get(3));
-
+        this.questions.add(QuestionConstants.get(4));
     }
 
     public Question getQuestion(int i) {

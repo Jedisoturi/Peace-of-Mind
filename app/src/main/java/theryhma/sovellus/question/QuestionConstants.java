@@ -72,6 +72,23 @@ public class QuestionConstants {
                         }
                     })
             );
+            add(new Question("Jotain?",
+                            new HashMap<AnswerType, String>() {
+                                {
+                                    put(AnswerType.VERY_POSITIVE, "5");
+                                    put(AnswerType.POSITIVE, "4");
+                                    put(AnswerType.NEUTRAL, "3");
+                                    put(AnswerType.NEGATIVE, "2");
+                                    put(AnswerType.VERY_NEGATIVE, "1 tai 0");
+                                }
+                            }, new HashMap<AttributeType, Double>() {
+                        {
+                            put(AttributeType.ENERGY, 0.8);
+                            put(AttributeType.MOOD, 0.8);
+                            put(AttributeType.NUTRITION, 1.0);
+                        }
+                    })
+            );
         }
     };
 
