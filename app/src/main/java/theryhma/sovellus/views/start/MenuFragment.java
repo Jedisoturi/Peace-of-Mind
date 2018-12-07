@@ -9,8 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import theryhma.sovellus.R;
+import theryhma.sovellus.views.questions.QuestionActivity;
 import theryhma.sovellus.views.tipoftheday.TipListActivity;
-import theryhma.sovellus.views.questions.TestiActivity;
 
 
 
@@ -48,9 +48,9 @@ public class MenuFragment extends Fragment {
                 case R.id.til:
                     break;
                 case R.id.kys:
-                    //Intent nextActivity = new Intent(getActivity(), DetailsActivity.class);
+                    Intent nextActivity = new Intent(getActivity(), QuestionActivity.class);
                     //nextActivity.putExtra("presidentIndex", i);
-                    //startActivity(nextActivity);
+                    startActivity(nextActivity);
                     break;
                 case R.id.tip:
                     Intent intent = new Intent(getActivity(), TipListActivity.class);

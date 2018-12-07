@@ -7,16 +7,10 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import com.github.mikephil.charting.charts.LineChart;
 
-import theryhma.sovellus.GlobalModel;
-import theryhma.sovellus.Instruction.InstructionTools;
 import theryhma.sovellus.R;
-import theryhma.sovellus.question.Questionnaire;
-import theryhma.sovellus.status.Status;
-import theryhma.sovellus.status.StatusTools;
 
 public class GraphFragment extends Fragment {
     private View v;
