@@ -1,16 +1,10 @@
 package theryhma.sovellus.views;
 
-import android.app.Activity;
 import android.content.Context;
-import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
-
-import theryhma.sovellus.GlobalModel;
-import theryhma.sovellus.MainActivity;
-import theryhma.sovellus.R;
 
 public class VerticalViewPager extends ViewPager {
 
