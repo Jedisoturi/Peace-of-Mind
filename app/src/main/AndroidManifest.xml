@@ -20,6 +20,7 @@
         <activity android:name=".views.questions.TestiActivity" />
         <activity android:name=".views.tipoftheday.TipListActivity" />
         <activity android:name=".views.tipoftheday.TipDetailsActivity" />
+        <activity android:name=".views.settings.SettingsActivity"></activity>
     </application>
 
 </manifest>
