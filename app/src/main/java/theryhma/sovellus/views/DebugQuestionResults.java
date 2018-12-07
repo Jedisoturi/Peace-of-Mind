@@ -41,5 +41,8 @@ public class DebugQuestionResults extends Fragment {
 
         TextView instructions = v.findViewById(R.id.instructions);
         instructions.setText(InstructionTools.instructionArrayToString(InstructionTools.generateRandomInstructions(result)));
+        GlobalModel.getInstance().addStatuses(result);
+
+
     }
 }

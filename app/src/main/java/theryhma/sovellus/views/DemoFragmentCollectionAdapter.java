@@ -34,12 +34,12 @@ public class DemoFragmentCollectionAdapter extends FragmentStatePagerAdapter {
 
             graphFragment.setArguments(bundle);
             return graphFragment;
-        } else if (Constant.DEBUG_QUESTIONNAIRE && i==2) {
+        /*} else if (Constant.DEBUG_QUESTIONNAIRE && i==2) {
             DebugQuestionFragment debugQuestion = new DebugQuestionFragment();
             Bundle bundle = new Bundle();
 
             debugQuestion.setArguments(bundle);
-            return debugQuestion;
+            return debugQuestion;*/
         } else if (Constant.DEBUG_QUESTIONNAIRE && i==6) {
             DebugQuestionResults debugQuestionResults = new DebugQuestionResults();
             Bundle bundle = new Bundle();
