@@ -26,6 +26,6 @@ public class TipOfTheDay {
 
     @Override
     public String toString() {
-        return this.title + " " + this.text;
+        return this.title;
     }
 }
