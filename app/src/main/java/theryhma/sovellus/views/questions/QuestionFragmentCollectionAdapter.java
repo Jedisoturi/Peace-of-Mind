@@ -5,14 +5,8 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
-import theryhma.sovellus.tipoftheday.TipOfTheDay;
-import theryhma.sovellus.tipoftheday.TipOfTheDayGenerator;
-import theryhma.sovellus.tools.Constant;
-import theryhma.sovellus.views.ButtonFragment;
-import theryhma.sovellus.views.DebugQuestionResults;
 import theryhma.sovellus.views.DemoFragment;
-import theryhma.sovellus.views.GraphFragment;
-import theryhma.sovellus.views.QuestionFragment;
+import theryhma.sovellus.views.QuestionFragmentOld;
 
 public class QuestionFragmentCollectionAdapter extends FragmentStatePagerAdapter {
 
@@ -22,14 +16,20 @@ public class QuestionFragmentCollectionAdapter extends FragmentStatePagerAdapter
 
     @Override
     public Fragment getItem(int i) {
-        if (false) {
-            DemoFragment demoFragment = new DemoFragment();
-            return demoFragment;
+        if (i == getCount() - 1) {
+            QuestionFragment questionFragment = new QuestionFragment();
+            Bundle bundle = new Bundle();
+
+            bundle.putInt("index", i);
+            bundle.putBoolean("isLast", true);
+            questionFragment.setArguments(bundle);
+            return questionFragment;
         } else {
             QuestionFragment questionFragment = new QuestionFragment();
             Bundle bundle = new Bundle();
 
             bundle.putInt("index", i);
+            bundle.putBoolean("isLast", false);
             questionFragment.setArguments(bundle);
             return questionFragment;
         }

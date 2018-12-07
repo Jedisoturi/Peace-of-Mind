@@ -16,11 +16,11 @@ import theryhma.sovellus.question.AnswerType;
 import theryhma.sovellus.question.Question;
 import theryhma.sovellus.question.Questionnaire;
 
-public class QuestionFragment extends Fragment {
+public class QuestionFragmentOld extends Fragment {
     private View v;
     private int index;
     private Question q;
-    public QuestionFragment() {
+    public QuestionFragmentOld() {
         // Required empty public constructor
     }
 

@@ -9,8 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import theryhma.sovellus.R;
-import theryhma.sovellus.views.calendar.CalendarActivity;
 import theryhma.sovellus.views.questions.QuestionActivity;
+import theryhma.sovellus.views.settings.SettingsActivity;
 import theryhma.sovellus.views.tipoftheday.TipListActivity;
 
 
@@ -36,6 +36,7 @@ public class MenuFragment extends Fragment {
         view.findViewById(R.id.til).setOnClickListener(buttonListener);
         view.findViewById(R.id.kys).setOnClickListener(buttonListener);
         view.findViewById(R.id.kal).setOnClickListener(buttonListener);
+        view.findViewById(R.id.settings).setOnClickListener(buttonListener);
 
         return view;
     }
@@ -43,9 +44,12 @@ public class MenuFragment extends Fragment {
     private final View.OnClickListener buttonListener = new View.OnClickListener() {
         public void onClick(View view) {
             switch (view.getId()) {
+                case R.id.settings:
+                    Intent settings = new Intent(getActivity(), SettingsActivity.class);
+                    //nextActivity.putExtra("presidentIndex", i);
+                    startActivity(settings);
+                    break;
                 case R.id.kal:
-                    Intent calendarIntent = new Intent(getActivity(), CalendarActivity.class);
-                    startActivity(calendarIntent);
 
                     break;
                 case R.id.til:

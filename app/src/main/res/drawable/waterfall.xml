@@ -62,7 +62,6 @@
     <item android:drawable="@drawable/daygif60" android:duration="50" />
     <item android:drawable="@drawable/daygif61" android:duration="50" />
     <item android:drawable="@drawable/daygif62" android:duration="50" />
-    <item android:drawable="@drawable/daygif63" android:duration="50" />
     <item android:drawable="@drawable/daygif64" android:duration="50" />
     <item android:drawable="@drawable/daygif65" android:duration="50" />
     <item android:drawable="@drawable/daygif66" android:duration="50" />

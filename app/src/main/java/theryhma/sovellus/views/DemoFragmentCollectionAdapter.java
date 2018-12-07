@@ -4,17 +4,10 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
-import android.util.Log;
 
-import java.util.ArrayList;
-
-import theryhma.sovellus.GlobalModel;
-import theryhma.sovellus.status.Status;
-import theryhma.sovellus.status.StatusTools;
 import theryhma.sovellus.tipoftheday.TipOfTheDay;
 import theryhma.sovellus.tipoftheday.TipOfTheDayGenerator;
 import theryhma.sovellus.tools.Constant;
-import theryhma.sovellus.tools.Maths;
 
 public class DemoFragmentCollectionAdapter extends FragmentStatePagerAdapter {
 
@@ -47,12 +40,12 @@ public class DemoFragmentCollectionAdapter extends FragmentStatePagerAdapter {
             debugQuestionResults.setArguments(bundle);
             return debugQuestionResults;
         } else if (Constant.DEBUG_QUESTIONNAIRE){
-            QuestionFragment questionFragment = new QuestionFragment();
+            QuestionFragmentOld questionFragmentOld = new QuestionFragmentOld();
             Bundle bundle = new Bundle();
 
             bundle.putInt("index", i-2);
-            questionFragment.setArguments(bundle);
-            return questionFragment;
+            questionFragmentOld.setArguments(bundle);
+            return questionFragmentOld;
         } else if (Constant.DEBUG_STATUS) {
             ButtonFragment buttonFragment = new ButtonFragment();
             Bundle bundle = new Bundle();
