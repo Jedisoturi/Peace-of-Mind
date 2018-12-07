@@ -1,32 +1,31 @@
-package theryhma.sovellus.views;
+package theryhma.sovellus.views.questions;
 
 import android.content.Context;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
-import android.view.MotionEvent;
 import android.view.View;
 
-public class VerticalViewPager extends ViewPager {
+public class QuestionViewPager extends ViewPager {
 
-    public VerticalViewPager(Context context) {
+    public QuestionViewPager(Context context) {
         super(context);
         init();
     }
 
-    public VerticalViewPager(Context context, AttributeSet attrs) {
+    public QuestionViewPager(Context context, AttributeSet attrs) {
         super(context, attrs);
         init();
     }
 
     private void init() {
         // The majority of the magic happens here
-        setPageTransformer(true, new VerticalPageTransformer());
+        setPageTransformer(true, new QuestionPageTransformer());
         setOffscreenPageLimit(5);
         // The easiest way to get rid of the overscroll drawing that happens on the left and right
         setOverScrollMode(OVER_SCROLL_NEVER);
     }
 
-    private class VerticalPageTransformer implements PageTransformer {
+    private class QuestionPageTransformer implements PageTransformer {
 
         @Override
         public void transformPage(View view, float position) {
@@ -84,6 +83,7 @@ public class VerticalViewPager extends ViewPager {
     /**
      * Swaps the X and Y coordinates of your touch event.
      */
+    /*
     private MotionEvent swapXY(MotionEvent ev) {
         float width = getWidth();
         float height = getHeight();
@@ -107,5 +107,5 @@ public class VerticalViewPager extends ViewPager {
     public boolean onTouchEvent(MotionEvent ev) {
         return super.onTouchEvent(swapXY(ev));
     }
-
+    */
 }
