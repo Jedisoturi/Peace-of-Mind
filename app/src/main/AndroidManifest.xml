@@ -17,6 +17,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".views.questions.QuestionActivity" />
+        <activity android:name=".views.questions.TestiActivity"></activity>
     </application>
 
 </manifest>

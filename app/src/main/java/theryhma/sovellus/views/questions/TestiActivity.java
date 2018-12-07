@@ -1,4 +1,4 @@
-package theryhma.sovellus.views.start;
+package theryhma.sovellus.views.questions;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
