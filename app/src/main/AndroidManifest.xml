@@ -17,9 +17,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".views.questions.QuestionActivity" />
-        <activity android:name=".views.questions.TestiActivity" />
         <activity android:name=".views.tipoftheday.TipListActivity" />
         <activity android:name=".views.tipoftheday.TipDetailsActivity" />
+        <activity android:name=".views.calendar.CalendarActivity" />
+        <activity android:name=".views.calendar.CalendarDetails"></activity>
     </application>
 
 </manifest>
