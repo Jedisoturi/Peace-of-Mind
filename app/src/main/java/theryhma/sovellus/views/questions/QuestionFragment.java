@@ -1,9 +1,11 @@
 package theryhma.sovellus.views.questions;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +18,7 @@ import theryhma.sovellus.R;
 import theryhma.sovellus.question.AnswerType;
 import theryhma.sovellus.question.Question;
 import theryhma.sovellus.question.Questionnaire;
+import theryhma.sovellus.views.tipoftheday.TipListActivity;
 
 public class QuestionFragment extends Fragment {
     private View v;
@@ -33,8 +36,15 @@ public class QuestionFragment extends Fragment {
         v = inflater.inflate(R.layout.fragment_question, container, false);
 
         index = getArguments().getInt("index");
+        Boolean isLast = getArguments().getBoolean("isLast");
         Questionnaire questionnaire = GlobalModel.getInstance().getQuestionnaire();
         q = questionnaire.getQuestion(index);
+
+        if (!isLast) {
+            v.findViewById(R.id.exit).setVisibility(View.GONE);
+        }
+
+        v.findViewById(R.id.exit).setOnClickListener(buttonListener);
 
         updateRadioGroup();
         updateUI();
@@ -68,6 +78,17 @@ public class QuestionFragment extends Fragment {
         });
         return v;
     }
+
+    private final View.OnClickListener buttonListener = new View.OnClickListener() {
+        public void onClick(View view) {
+            switch (view.getId()) {
+                case R.id.exit:
+
+                    break;
+            }
+        }
+    };
+
 
     public void updateUI() {
         TextView questionText = v.findViewById(R.id.question);
