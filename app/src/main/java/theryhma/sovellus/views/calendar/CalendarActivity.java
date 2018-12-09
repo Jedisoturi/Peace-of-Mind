@@ -13,6 +13,7 @@ import java.time.Year;
 
 import androidx.annotation.NonNull;
 import theryhma.sovellus.R;
+import theryhma.sovellus.question.Questionnaire;
 
 public class CalendarActivity extends AppCompatActivity {
     public static final String EXTRA_KEY_YEAR = "year";
@@ -35,7 +36,7 @@ public class CalendarActivity extends AppCompatActivity {
         });
 
     }
-
+    // todo: combine this method with question fragment's go to details
     private void goToDetails(int y, int m , int d) {
         Intent calendarDetailIntent = new Intent(this, CalendarDetails.class);
 

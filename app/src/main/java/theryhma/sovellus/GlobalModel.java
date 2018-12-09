@@ -3,11 +3,11 @@ package theryhma.sovellus;
 import java.util.ArrayList;
 
 import theryhma.sovellus.question.Questionnaire;
-import theryhma.sovellus.status.Status;
+import theryhma.sovellus.state.State;
 
 public class GlobalModel {
     private ArrayList<Integer> indicesOfTipsSeen;
-    private ArrayList<Status> statuses;
+    private ArrayList<State> states;
     private Questionnaire questionnaire;
     private static final GlobalModel ourInstance = new GlobalModel();
 
@@ -17,7 +17,7 @@ public class GlobalModel {
 
     private GlobalModel() {
         indicesOfTipsSeen = new ArrayList<>();
-        statuses = new ArrayList<>();
+        states = new ArrayList<>();
         questionnaire = new Questionnaire();
         // init tipsSeen (what tips have been seen?)
     }
@@ -25,7 +25,7 @@ public class GlobalModel {
     public ArrayList<Integer> getIndicesOfTipsSeen() {
         return this.indicesOfTipsSeen;
     }
-    public ArrayList<Status> getStatuses() { return this.statuses; }
+    public ArrayList<State> getStates() { return this.states; }
     public Questionnaire getQuestionnaire() { return this.questionnaire; }
 
     public void addToIndicesOfTipsSeen(int i) {
@@ -34,12 +34,12 @@ public class GlobalModel {
         }
     }
 
-    public void setStatuses(ArrayList<Status> statuses) {
-        this.statuses = statuses;
+    public void setStates(ArrayList<State> states) {
+        this.states = states;
     }
 
-    public void addStatuses(Status s) {
-        this.statuses.add(s);
+    public void addStatuses(State s) {
+        this.states.add(s);
     }
 
     public void clearIndicesOfTipsSeen() {

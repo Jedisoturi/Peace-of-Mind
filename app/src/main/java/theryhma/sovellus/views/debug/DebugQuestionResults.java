@@ -5,15 +5,14 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
 
 import theryhma.sovellus.GlobalModel;
 import theryhma.sovellus.Instruction.InstructionTools;
 import theryhma.sovellus.R;
 import theryhma.sovellus.question.Questionnaire;
-import theryhma.sovellus.status.Status;
-import theryhma.sovellus.status.StatusTools;
+import theryhma.sovellus.state.State;
+import theryhma.sovellus.state.StateTools;
 
 public class DebugQuestionResults extends Fragment {
     private View v;
@@ -36,7 +35,7 @@ public class DebugQuestionResults extends Fragment {
         super.onResume();
         TextView textView = v.findViewById(R.id.results);
         Questionnaire questionnaire = GlobalModel.getInstance().getQuestionnaire();
-        Status result = StatusTools.createMeanStatus(questionnaire.getResults());
+        State result = StateTools.createMeanState(questionnaire.getResults());
         textView.setText(result.toString());
 
         TextView instructions = v.findViewById(R.id.instructions);

@@ -16,7 +16,7 @@ import java.util.ArrayList;
 
 import theryhma.sovellus.GlobalModel;
 import theryhma.sovellus.R;
-import theryhma.sovellus.status.Status;
+import theryhma.sovellus.state.State;
 
 public class MainActivity extends AppCompatActivity {
     private ViewPager viewPager;
@@ -34,14 +34,14 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences pref = getSharedPreferences("Data", Context.MODE_PRIVATE);
         Gson gson = new Gson();
         String json = pref.getString("statuses", null);
-        Type type = new TypeToken<ArrayList<Status>>() {}.getType();
-        ArrayList<Status> newData = gson.fromJson(json, type);
+        Type type = new TypeToken<ArrayList<State>>() {}.getType();
+        ArrayList<State> newData = gson.fromJson(json, type);
         if (json == null) {
             newData = new ArrayList<>();
         }
-        GlobalModel.getInstance().setStatuses(newData);
+        GlobalModel.getInstance().setStates(newData);
 
-        for (Status s : GlobalModel.getInstance().getStatuses()) {
+        for (State s : GlobalModel.getInstance().getStates()) {
             Log.d("statukset", s.toString());
         }
 
@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences pref = getSharedPreferences("Data", Context.MODE_PRIVATE);
         SharedPreferences.Editor  editor = pref.edit();
         Gson gson = new Gson();
-        String json = gson.toJson(GlobalModel.getInstance().getStatuses());
+        String json = gson.toJson(GlobalModel.getInstance().getStates());
         editor.putString("statuses", json);
         editor.apply();
     }

@@ -2,7 +2,7 @@ package theryhma.sovellus.question;
 
 import java.util.ArrayList;
 
-import theryhma.sovellus.status.Status;
+import theryhma.sovellus.state.State;
 
 // todo: questionnaire generator
 
@@ -22,12 +22,12 @@ public class Questionnaire {
         return this.questions.get(i);
     }
 
-    public ArrayList<Status> getResults() {
-        ArrayList<Status> statuses = new ArrayList<>();
+    public ArrayList<State> getResults() {
+        ArrayList<State> states = new ArrayList<>();
         for (Question q : questions) {
-            statuses.add(q.getResultStatus());
+            states.add(q.getResultStatus());
             //Log.d("supergetresult", q.getText() + " " + q.getAnswer() + " " + q.getStatus().toString());
         }
-        return statuses;
+        return states;
     }
 }
