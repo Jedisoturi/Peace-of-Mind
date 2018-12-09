@@ -4,8 +4,6 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -15,14 +13,10 @@ import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
-import java.util.List;
 
 import theryhma.sovellus.GlobalModel;
 import theryhma.sovellus.R;
 import theryhma.sovellus.status.Status;
-import theryhma.sovellus.views.DemoFragmentCollectionAdapter;
-import theryhma.sovellus.views.HorizontalViewPager;
-import theryhma.sovellus.views.VerticalViewPager;
 
 public class MainActivity extends AppCompatActivity {
     private ViewPager viewPager;

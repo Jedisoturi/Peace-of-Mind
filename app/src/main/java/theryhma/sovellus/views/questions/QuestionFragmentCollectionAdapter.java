@@ -5,9 +5,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
-import theryhma.sovellus.views.DemoFragment;
-import theryhma.sovellus.views.QuestionFragmentOld;
-
 public class QuestionFragmentCollectionAdapter extends FragmentStatePagerAdapter {
 
     public QuestionFragmentCollectionAdapter(FragmentManager fm) {

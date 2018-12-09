@@ -8,7 +8,9 @@ import android.widget.TextView;
 import theryhma.sovellus.R;
 
 public class CalendarDetails extends AppCompatActivity {
-
+    private int year;
+    private int month;
+    private int dayOfMonth;
 
 
     @Override
@@ -17,9 +19,16 @@ public class CalendarDetails extends AppCompatActivity {
         setContentView(R.layout.activity_calendar_details);
 
         Intent intent = getIntent();
-        String message = intent.getStringExtra(CalendarActivity.EXTRA_MESSAGE);
-        TextView textViewDate = findViewById(R.id.textViewYear);
-        textViewDate.setText(message);
+        year = intent.getIntExtra(CalendarActivity.EXTRA_KEY_YEAR, 2018);
+        month = intent.getIntExtra(CalendarActivity.EXTRA_KEY_MONTH, 1);
+        dayOfMonth = intent.getIntExtra(CalendarActivity.EXTRA_KEY_DAYOFMONTH, 1);
+
+        TextView textViewYear = findViewById(R.id.textViewYear);
+        textViewYear.setText(Integer.toString(year));
+        TextView textViewMonth = findViewById(R.id.textViewMonth);
+        textViewMonth.setText(Integer.toString(month));
+        TextView textViewDayOfMonth = findViewById(R.id.textViewDay);
+        textViewDayOfMonth.setText(Integer.toString(dayOfMonth));
 
 
 
