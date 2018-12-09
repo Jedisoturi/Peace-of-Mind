@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,16 +12,21 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
-import theryhma.sovellus.GlobalModel;
+import java.util.Calendar;
+import java.util.Date;
+
 import theryhma.sovellus.R;
 import theryhma.sovellus.question.AnswerType;
 import theryhma.sovellus.question.Question;
 import theryhma.sovellus.question.Questionnaire;
-import theryhma.sovellus.views.tipoftheday.TipListActivity;
+import theryhma.sovellus.views.calendar.CalendarActivity;
+import theryhma.sovellus.views.calendar.CalendarDetails;
 
 public class QuestionFragment extends Fragment {
     private View v;
     private int index;
+    private Boolean isLast;
+    private Questionnaire questionnaire;
     private Question q;
     public QuestionFragment() {
         // Required empty public constructor
@@ -36,27 +40,24 @@ public class QuestionFragment extends Fragment {
         v = inflater.inflate(R.layout.fragment_question, container, false);
 
         index = getArguments().getInt("index");
-        Boolean isLast = getArguments().getBoolean("isLast");
-        Questionnaire questionnaire = GlobalModel.getInstance().getQuestionnaire();
+        isLast = getArguments().getBoolean("isLast");
+        //questionnaire = GlobalModel.getInstance().getQuestionnaire();
+        questionnaire = ((QuestionActivity)getActivity()).getQuestionnaire();
         q = questionnaire.getQuestion(index);
 
         if (!isLast) {
             v.findViewById(R.id.exit).setVisibility(View.GONE);
         }
-
-        v.findViewById(R.id.exit).setOnClickListener(buttonListener);
-
-        updateRadioGroup();
+        
         updateUI();
 
+        v.findViewById(R.id.exit).setOnClickListener(buttonListener);
 
         RadioGroup radioGroup = v.findViewById(R.id.group);
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener()
         {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
-                Questionnaire questionnaire = GlobalModel.getInstance().getQuestionnaire();
-                Question q = questionnaire.getQuestion(index);
                 switch(checkedId) {
                     case R.id.best:
                         q.setAnswer(AnswerType.VERY_POSITIVE);
@@ -83,14 +84,28 @@ public class QuestionFragment extends Fragment {
         public void onClick(View view) {
             switch (view.getId()) {
                 case R.id.exit:
-
+                    Date c = Calendar.getInstance().getTime();
+                    goToDetails(c.getYear() + 1900, c.getMonth() + 1, c.getDay());
+                    //Log.d("kalenteri", Integer.toString(c.getDay()) + Integer.toString(c.getMonth()) + Integer.toString(c.getYear()));
                     break;
             }
         }
     };
 
+    private void goToDetails(int y, int m, int d) {
+        Intent calendarDetailIntent = new Intent(getActivity(), CalendarDetails.class);
 
-    public void updateUI() {
+        calendarDetailIntent.putExtra(CalendarActivity.EXTRA_KEY_YEAR, y);
+        calendarDetailIntent.putExtra(CalendarActivity.EXTRA_KEY_MONTH, m);
+        calendarDetailIntent.putExtra(CalendarActivity.EXTRA_KEY_DAYOFMONTH, d);
+        //Log.d("TÄMÄ TESTAUS JEE JEE", Integer.toString(y) + " " + Integer.toString(m) + " " + Integer.toString(d));
+        startActivity(calendarDetailIntent);
+        getActivity().finish();
+
+    }
+
+
+    private void updateUI() {
         TextView questionText = v.findViewById(R.id.question);
         questionText.setText(q.getQuestionText());
 
@@ -105,6 +120,11 @@ public class QuestionFragment extends Fragment {
         RadioButton veryNegative = v.findViewById(R.id.worst);
         veryNegative.setText(q.getAnswerMap().get(AnswerType.VERY_NEGATIVE));
 
+        updateUIBackground();
+        updateUIRadioGroup();
+    }
+    
+    private void updateUIBackground() {
         ConstraintLayout constraintLayout = v.findViewById(R.id.tausta);
 
         switch (index) {
@@ -128,7 +148,7 @@ public class QuestionFragment extends Fragment {
         }
     }
 
-    public void updateRadioGroup() {
+    private void updateUIRadioGroup() {
         AnswerType answerType = q.getAnswer();
         switch (answerType) {
             case VERY_POSITIVE:
