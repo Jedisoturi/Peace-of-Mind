@@ -59,7 +59,7 @@ public class InstructionConstants {
                     " Vaikka et olisi koskaan harkinnutkaan tällaista tapaa, koita päivän päätteeksi istuutua kotona alas, sulkea silmäsi, ja saada mielesi täysin tyyneksi edes 10 minuutin ajaksi." +
                     " Mielen rauhoittamisella on stressin käsittelyn osalta merkittäviä vaikutuksia, ja esimerkiksi ennen nukkumaanmenoa suoritettuna se voi parantaa unenlaatua merkittävästikin.",
                     AttributeType.UNSTRESS, 0.75, 1));
-            put("asd", new Instruction("Stressi syy...","Ymmärrä, että stressi johtuu ajatuksesta, että ihminen ei pysty kontrolloimaan tulossa olevia tapahtumia/tapahtumaa." +
+            put("asd", new Instruction("Stressin syy...","Ymmärrä, että stressi johtuu ajatuksesta, että ihminen ei pysty kontrolloimaan tulossa olevia tapahtumia/tapahtumaa." +
                     " Mieti stressin aiheuttajan syy, ja koita sijoittaa kyseinen tapahtuma koko elinkaaresi mittaiselle aikajanalle." +
                     " Asia, joka aiheuttaa stressiä nyt, saattaa vuoden päästä tuntua todella pieneltä.",
                     AttributeType.UNSTRESS, 0.25, 0.5));

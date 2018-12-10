@@ -60,7 +60,6 @@ public class MenuFragment extends Fragment {
                 case R.id.kal:
                     Intent calendarActivity = new Intent(getActivity(), CalendarActivity.class);
                     startActivity(calendarActivity);
-
                     break;
                 case R.id.til:
                     Intent statActivity = new Intent(getActivity(), StatActivity.class);
