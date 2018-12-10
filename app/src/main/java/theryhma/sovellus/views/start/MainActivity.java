@@ -22,12 +22,15 @@ import theryhma.sovellus.R;
 import theryhma.sovellus.state.State;
 import theryhma.sovellus.state.StateTools;
 import theryhma.sovellus.status.Status;
+import theryhma.sovellus.tipoftheday.TipOfTheDay;
+import theryhma.sovellus.tipoftheday.TipOfTheDayGenerator;
 import theryhma.sovellus.tools.Constant;
 
 public class MainActivity extends AppCompatActivity {
     private ViewPager viewPager;
     private StartFragmentCollectionAdapter adapter;
-    private AnimationDrawable starsAnimation;
+
+    public TipOfTheDay tipOfTheDay;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +39,8 @@ public class MainActivity extends AppCompatActivity {
         viewPager = findViewById(R.id.pager);
         adapter = new StartFragmentCollectionAdapter(getSupportFragmentManager());
         viewPager.setAdapter(adapter);
+        GlobalModel.getInstance().getTipOfTheDayGenerator().generate();
+        tipOfTheDay = GlobalModel.getInstance().getTipOfTheDayGenerator().getCurrentTip();
 
         GlobalModel.getInstance().load(getSharedPreferences(Constant.PREF_DATA, Context.MODE_PRIVATE));
     }

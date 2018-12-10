@@ -1,67 +1,64 @@
 package theryhma.sovellus.tipoftheday;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 import theryhma.sovellus.GlobalModel;
 import theryhma.sovellus.tools.Maths;
+import theryhma.sovellus.views.calendardetails.CalendarDetailsViewPager;
 
 /*
 Communicates with GlobalModel to generate a new TipOfTheDay that is random and not the same as the last one
  */
 
 public class TipOfTheDayGenerator {
+    private ArrayList<String> keysOfTipsSeen;
+    private TipOfTheDay currentTip;
+    private Calendar dateGenerated;
 
-    public static TipOfTheDay generate() {
+    public TipOfTheDayGenerator() {
+        keysOfTipsSeen = new ArrayList<>();
+    }
+
+    public void addKey(String key) {
+        if (!keysOfTipsSeen.contains(key)) {
+            keysOfTipsSeen.add(key);
+        }
+    }
+
+    public TipOfTheDay getCurrentTip() {
+        return currentTip;
+    }
+
+    public void generate() {
         if (isAllSeen()) {
             reset();
         }
-        int i = getNewIndex();
-        saveIndex(i);
-        TipOfTheDay tip = TipOfTheDayConstants.get(i);
-        return tip;
+        dateGenerated = Calendar.getInstance();
+        String key = getRandomTipKey();
+        addKey(key);
+        currentTip = TipOfTheDayConstants.get(key);
     }
 
-    private static int getNewIndex() {
-        ArrayList<Integer> offLimits = GlobalModel.getInstance().getIndicesOfTipsSeen();
-        ArrayList<Integer> possibleIndices = createPossibleIndices(offLimits);
-        int i = getRandomIndex(possibleIndices);
-        return i;
-    }
-
-    private static ArrayList<Integer> createPossibleIndices(ArrayList<Integer> offLimits) {
-        ArrayList<Integer> indices = new ArrayList<>();
-        for (int i = 0; i < TipOfTheDayConstants.size(); i++) {
-            if (!offLimits.contains(i)) {
-                indices.add(i);
+    private String getRandomTipKey() {
+        ArrayList<String> allKeys = TipOfTheDayConstants.createKeyArray();
+        ArrayList<String> possibleKeys = new ArrayList<>();
+        for (String key : allKeys) {
+            if (!keysOfTipsSeen.contains(key)) {
+                possibleKeys.add(key);
             }
         }
-        return indices;
+        String key = possibleKeys.get(Maths.getRandomIntegerBetweenRange(0, possibleKeys.size() - 1));
+        return key;
     }
 
-    private static int getRandomIndex(ArrayList<Integer> possibleIndices) {
-        return possibleIndices.get(Maths.getRandomIntegerBetweenRange(0, possibleIndices.size() - 1));
+    private void reset() {
+        String lastTipKey = keysOfTipsSeen.get(keysOfTipsSeen.size() - 1);
+        keysOfTipsSeen.clear();
+        addKey(lastTipKey);
     }
 
-    private static void saveIndex(int i) {
-        GlobalModel.getInstance().addToIndicesOfTipsSeen(i);
-    }
-
-    private static boolean isAllSeen() {
-        int seenSize = GlobalModel.getInstance().getIndicesOfTipsSeen().size();
-        if (TipOfTheDayConstants.size() <= seenSize) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    private static void reset() {
-        int lastIndex = GlobalModel.getInstance().getIndicesOfTipsSeen().get(GlobalModel.getInstance().getIndicesOfTipsSeen().size() - 1);
-        clear();
-        saveIndex(lastIndex);
-    }
-
-    private static void clear() {
-        GlobalModel.getInstance().clearIndicesOfTipsSeen();
+    private boolean isAllSeen() {
+        return TipOfTheDayConstants.size() <= keysOfTipsSeen.size();
     }
 }

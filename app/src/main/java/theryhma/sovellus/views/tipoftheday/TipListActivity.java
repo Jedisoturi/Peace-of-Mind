@@ -19,6 +19,11 @@ import theryhma.sovellus.tipoftheday.TipOfTheDay;
 import theryhma.sovellus.tipoftheday.TipOfTheDayConstants;
 import theryhma.sovellus.tools.Constant;
 
+/**
+ *
+ *
+ */
+
 public class TipListActivity extends AppCompatActivity {
 
     ListView tipsList;
@@ -32,13 +37,12 @@ public class TipListActivity extends AppCompatActivity {
 
         thisAcvitity = this;
 
-        ArrayList<TipOfTheDay> listOfTips = TipOfTheDayConstants.getTips();
+        ArrayList<TipOfTheDay> listOfTips = TipOfTheDayConstants.createArray();
 
         ListView tipsList = findViewById(R.id.tipsListView);
-        tipsList.setAdapter(new ArrayAdapter<TipOfTheDay>(this,
+        tipsList.setAdapter(new ArrayAdapter<>(this,
                         android.R.layout.simple_list_item_1,
-                        TipOfTheDayConstants.getTips())
-
+                        TipOfTheDayConstants.createArray())
         );
 
         tipsList.setOnItemClickListener(new AdapterView.OnItemClickListener() {

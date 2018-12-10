@@ -7,8 +7,10 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import theryhma.sovellus.R;
+import theryhma.sovellus.tipoftheday.TipOfTheDay;
 import theryhma.sovellus.views.calendar.CalendarActivity;
 import theryhma.sovellus.views.questions.QuestionActivity;
 import theryhma.sovellus.views.settings.SettingsActivity;
@@ -22,7 +24,8 @@ import theryhma.sovellus.views.tipoftheday.TipListActivity;
  */
 public class MenuFragment extends Fragment {
 
-    private AnimationDrawable starsAnimation;
+    private View v;
+    private TipOfTheDay tipOfTheDay;
     public MenuFragment() {
         // Required empty public constructor
     }
@@ -32,15 +35,18 @@ public class MenuFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_menu, container, false);
+        v = inflater.inflate(R.layout.fragment_menu, container, false);
 
-        view.findViewById(R.id.tip).setOnClickListener(buttonListener);
-        view.findViewById(R.id.til).setOnClickListener(buttonListener);
-        view.findViewById(R.id.kys).setOnClickListener(buttonListener);
-        view.findViewById(R.id.kal).setOnClickListener(buttonListener);
-        view.findViewById(R.id.settings).setOnClickListener(buttonListener);
+        tipOfTheDay = ((MainActivity) getActivity()).tipOfTheDay;
+        ((TextView) v.findViewById(R.id.tipTitle)).setText(tipOfTheDay.getTitle());
+        ((TextView) v.findViewById(R.id.tipText)).setText(tipOfTheDay.getText());
+        v.findViewById(R.id.tip).setOnClickListener(buttonListener);
+        v.findViewById(R.id.til).setOnClickListener(buttonListener);
+        v.findViewById(R.id.kys).setOnClickListener(buttonListener);
+        v.findViewById(R.id.kal).setOnClickListener(buttonListener);
+        v.findViewById(R.id.settings).setOnClickListener(buttonListener);
 
-        return view;
+        return v;
     }
 
     private final View.OnClickListener buttonListener = new View.OnClickListener() {
