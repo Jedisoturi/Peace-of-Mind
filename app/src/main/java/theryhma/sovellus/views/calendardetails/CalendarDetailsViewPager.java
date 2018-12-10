@@ -1,31 +1,31 @@
-package theryhma.sovellus.views;
+package theryhma.sovellus.views.calendardetails;
 
 import android.content.Context;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.view.View;
 
-public class HorizontalViewPager extends ViewPager {
+public class CalendarDetailsViewPager extends ViewPager {
 
-    public HorizontalViewPager(Context context) {
+    public CalendarDetailsViewPager(Context context) {
         super(context);
         init();
     }
 
-    public HorizontalViewPager(Context context, AttributeSet attrs) {
+    public CalendarDetailsViewPager(Context context, AttributeSet attrs) {
         super(context, attrs);
         init();
     }
 
     private void init() {
         // The majority of the magic happens here
-        setPageTransformer(true, new HorizontalPageTransformer());
-        setOffscreenPageLimit(5);
+        setPageTransformer(true, new CalendarDetailsPageTransformer());
+        setOffscreenPageLimit(3);
         // The easiest way to get rid of the overscroll drawing that happens on the left and right
         setOverScrollMode(OVER_SCROLL_NEVER);
     }
 
-    private class HorizontalPageTransformer implements PageTransformer {
+    private class CalendarDetailsPageTransformer implements PageTransformer {
 
         @Override
         public void transformPage(View view, float position) {

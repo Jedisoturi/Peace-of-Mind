@@ -1,4 +1,4 @@
-package theryhma.sovellus.views;
+package theryhma.sovellus.views.debug;
 
 
 import android.os.Bundle;

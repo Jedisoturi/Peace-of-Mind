@@ -5,7 +5,7 @@ import java.util.Map;
 
 import theryhma.sovellus.attribute.Attribute;
 import theryhma.sovellus.attribute.AttributeType;
-import theryhma.sovellus.status.Status;
+import theryhma.sovellus.state.State;
 
 public class Question {
     private String questionText;
@@ -28,14 +28,21 @@ public class Question {
         //Log.d("supergetstatus", "CREATE: " + getText() + " " + getAnswer() + " answerType:" + answerType + " status:" + this.weights);
     }
 
-    public Status getResultStatus() {
+    public Question(Question reference) {
+        this.questionText = reference.getQuestionText();
+        this.answersMap = reference.getAnswerMap();
+        this.weightMap = reference.getWeightMap();
+        this.answer = reference.getAnswer();
+    }
+
+    public State createResultState() {
         ArrayList<Attribute> attributes = new ArrayList<>();
         for (Map.Entry<AttributeType, Double> entry : weightMap.entrySet())
         {
             Attribute a = new Attribute(entry.getKey(), AnswerType.getValue(answer), entry.getValue());
             attributes.add(a);
         }
-        Status result = new Status(attributes);
+        State result = new State(attributes);
         return result;
     }
 

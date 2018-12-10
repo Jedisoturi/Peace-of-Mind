@@ -4,8 +4,6 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -15,14 +13,16 @@ import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Calendar;
+import java.util.Date;
 
 import theryhma.sovellus.GlobalModel;
+import theryhma.sovellus.Instruction.InstructionContainer;
 import theryhma.sovellus.R;
+import theryhma.sovellus.state.State;
+import theryhma.sovellus.state.StateTools;
 import theryhma.sovellus.status.Status;
-import theryhma.sovellus.views.DemoFragmentCollectionAdapter;
-import theryhma.sovellus.views.HorizontalViewPager;
-import theryhma.sovellus.views.VerticalViewPager;
+import theryhma.sovellus.tools.Constant;
 
 public class MainActivity extends AppCompatActivity {
     private ViewPager viewPager;
@@ -37,32 +37,12 @@ public class MainActivity extends AppCompatActivity {
         adapter = new StartFragmentCollectionAdapter(getSupportFragmentManager());
         viewPager.setAdapter(adapter);
 
-        SharedPreferences pref = getSharedPreferences("Data", Context.MODE_PRIVATE);
-        Gson gson = new Gson();
-        String json = pref.getString("statuses", null);
-        Type type = new TypeToken<ArrayList<Status>>() {}.getType();
-        ArrayList<Status> newData = gson.fromJson(json, type);
-        if (json == null) {
-            newData = new ArrayList<>();
-        }
-        GlobalModel.getInstance().setStatuses(newData);
-
-        for (Status s : GlobalModel.getInstance().getStatuses()) {
-            Log.d("statukset", s.toString());
-        }
-
-
+        GlobalModel.getInstance().load(getSharedPreferences(Constant.PREF_DATA, Context.MODE_PRIVATE));
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-
-        SharedPreferences pref = getSharedPreferences("Data", Context.MODE_PRIVATE);
-        SharedPreferences.Editor  editor = pref.edit();
-        Gson gson = new Gson();
-        String json = gson.toJson(GlobalModel.getInstance().getStatuses());
-        editor.putString("statuses", json);
-        editor.apply();
+        GlobalModel.getInstance().save(getSharedPreferences(Constant.PREF_DATA, Context.MODE_PRIVATE));
     }
 }

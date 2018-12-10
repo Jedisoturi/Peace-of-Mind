@@ -42,7 +42,8 @@ public class TipOfTheDayConstants {
         return tips;
     }
     public static TipOfTheDay get(int i) {
-        return tips.get(i);
+        TipOfTheDay t = new TipOfTheDay(tips.get(i));
+        return t;
     }
 
     public static int size() {

@@ -1,27 +1,25 @@
 package theryhma.sovellus.Instruction;
 
-import android.support.v4.app.INotificationSideChannel;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import theryhma.sovellus.attribute.Attribute;
 import theryhma.sovellus.attribute.AttributeType;
-import theryhma.sovellus.question.AnswerType;
-import theryhma.sovellus.status.Status;
-import theryhma.sovellus.tipoftheday.TipOfTheDay;
 
 public class InstructionConstants {
     private static final Map<String, Instruction> instructions = new HashMap<String, Instruction>() {
         {
             put("asdfsaf", new Instruction("NUKU", AttributeType.ENERGY, 0, 0.5));
-            put("sdsd", new Instruction("Mene urheilemaan", AttributeType.ENERGY, 0.5, 1));
+            put("adsfasdf", new Instruction("Mene urheilemaan", AttributeType.ENERGY, 0.5, 1));
+            put("sdasdfssd", new Instruction("Syö", AttributeType.NUTRITION, 0, 0.5));
+            put("sfsdfs", new Instruction("Jatka syömistä samaan tapaan", AttributeType.NUTRITION, 0.5, 1));
+            put("sdssssd", new Instruction("Olet hyvällä tuulella", AttributeType.MOOD, 0.5, 1));
+            put("sdssssassd", new Instruction("Olet huonolla tuulella", AttributeType.MOOD, 0, 0.5));
         }
     };
 
     public Instruction get(String key) {
-        return instructions.get(key);
+        return new Instruction(instructions.get(key));
     }
 
     public static ArrayList<Instruction> createArrayList() {

@@ -4,17 +4,18 @@ import java.util.ArrayList;
 
 import theryhma.sovellus.attribute.Attribute;
 import theryhma.sovellus.attribute.AttributeType;
-import theryhma.sovellus.status.Status;
+import theryhma.sovellus.state.State;
 import theryhma.sovellus.tools.Maths;
 
+// todo: please remove
 public class InstructionTools {
-    public static ArrayList<Instruction> createPossibleInstructions(Status status) {
+    public static ArrayList<Instruction> createPossibleInstructions(State state) {
         ArrayList<Instruction> instructions = InstructionConstants.createArrayList();
         ArrayList<Instruction> result = new ArrayList<>();
         for (Instruction i : instructions) {
             AttributeType type = i.getAttributeType();
-            if (status.containsAttribute(type)) {
-                double value = status.getAttribute(type).getValue();
+            if (state.containsAttribute(type)) {
+                double value = state.getAttribute(type).getValue();
                 if (i.isInRange(value)) {
                     result.add(i);
                 }
@@ -38,10 +39,10 @@ public class InstructionTools {
         return i;
     }
 
-    public static ArrayList<Instruction> generateRandomInstructions(Status status) {
-        ArrayList<Instruction> reference = createPossibleInstructions(status);
+    public static ArrayList<Instruction> generateRandomInstructions(State state) {
+        ArrayList<Instruction> reference = createPossibleInstructions(state);
         ArrayList<Instruction> result = new ArrayList<>();
-        for (Attribute a : status.getAttributes()) {
+        for (Attribute a : state.getAttributes()) {
             if (containsAttributeType(reference, a.getType())) {
                 ArrayList<Instruction> dummy = createInstructionsOfType(reference, a.getType());
                 Instruction i = getRandomInstruction(dummy);
@@ -61,7 +62,7 @@ public class InstructionTools {
     }
 
     public static String instructionArrayToString(ArrayList<Instruction> instructions) {
-        String result = "Instructions:\n";
+        String result = "InstructionContainer:\n";
         for (Instruction i : instructions) {
             result = result + i.getText() + "\n";
         }

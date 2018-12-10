@@ -1,4 +1,4 @@
-package theryhma.sovellus.views;
+package theryhma.sovellus.views.debug;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -60,16 +60,16 @@ public class DemoFragmentCollectionAdapter extends FragmentStatePagerAdapter {
             double m = indices.get(Maths.getRandomIntegerBetweenRange(0, 4));
             double a = indices.get(Maths.getRandomIntegerBetweenRange(0, 4));
             double s = indices.get(Maths.getRandomIntegerBetweenRange(0, 4));
-            Status status = new Status(e, m, a, s);
+            State status = new State(e, m, a, s);
             GlobalModel.getInstance().addStatuses(status);
-            Status meanStatus = StatusTools.getNonZeroMean(GlobalModel.getInstance().getStatuses());
+            State meanStatus = StateTools.getNonZeroMean(GlobalModel.getInstance().getStates());
             bundle.putString("status", status.toString());
             bundle.putString("mean", meanStatus.toString());
-            ArrayList<Status> list = GlobalModel.getInstance().getStatuses();
-            for (Status stat : list) {
+            ArrayList<State> list = GlobalModel.getInstance().getStates();
+            for (State stat : list) {
                 Log.d("supersovellus", stat.toString());
             }
-            Log.d("supersovellus", "mean(" + GlobalModel.getInstance().getStatuses().size() + "):" + meanStatus.toString());
+            Log.d("supersovellus", "mean(" + GlobalModel.getInstance().getStates().size() + "):" + meanStatus.toString());
             */
             buttonFragment.setArguments(bundle);
             return buttonFragment;

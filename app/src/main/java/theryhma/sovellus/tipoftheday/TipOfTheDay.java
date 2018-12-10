@@ -16,6 +16,11 @@ public class TipOfTheDay {
         this.text = "";
     }
 
+    public TipOfTheDay(TipOfTheDay reference) {
+        this.title = reference.getTitle();
+        this.text = reference.getText();
+    }
+
     public String getTitle() {
         return this.title;
     }

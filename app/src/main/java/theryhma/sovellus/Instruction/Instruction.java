@@ -18,6 +18,13 @@ public class Instruction {
         this.maxValue = maxValue;
     }
 
+    public Instruction(Instruction reference) {
+        this.text = reference.text;
+        this.attributeType = reference.attributeType;
+        this.minValue = reference.minValue;
+        this.maxValue = reference.maxValue;
+    }
+
     public String getText() {
         return text;
     }
