@@ -58,7 +58,7 @@ public class StateFragment extends Fragment {
         status = ((CalendarDetailsActivity) getActivity()).status;
 
         date = status.getCalendar().getTime();
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat format = new SimpleDateFormat("dd.MM.yyyy");
         ((TextView) v.findViewById(R.id.date)).setText(format.format(date));
 
         barChart = v.findViewById(R.id.barchart);

@@ -45,7 +45,7 @@ public class InstructionFragment extends Fragment {
         State state = status.getState();
         InstructionContainer instructions = status.getInstructions();
         int entries = status.getEntries();
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat format = new SimpleDateFormat("dd.MM.yyyy");
 
 
         listOfInstructions = instructions.createArray();
