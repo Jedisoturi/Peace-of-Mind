@@ -10,6 +10,7 @@ import theryhma.sovellus.attribute.Attribute;
 import theryhma.sovellus.attribute.AttributeType;
 import theryhma.sovellus.question.AnswerType;
 import theryhma.sovellus.status.Status;
+import theryhma.sovellus.tipoftheday.TipOfTheDay;
 
 public class InstructionConstants {
     private static final Map<String, Instruction> instructions = new HashMap<String, Instruction>() {
