@@ -1,7 +1,6 @@
 package theryhma.sovellus.views.questions;
 
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
 import android.support.v4.app.Fragment;
@@ -12,15 +11,10 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
-import java.util.Calendar;
-import java.util.Date;
-
 import theryhma.sovellus.R;
 import theryhma.sovellus.question.AnswerType;
 import theryhma.sovellus.question.Question;
 import theryhma.sovellus.question.Questionnaire;
-import theryhma.sovellus.views.calendar.CalendarActivity;
-import theryhma.sovellus.views.calendar.CalendarDetails;
 
 public class QuestionFragment extends Fragment {
     private View v;
@@ -84,49 +78,35 @@ public class QuestionFragment extends Fragment {
         public void onClick(View view) {
             switch (view.getId()) {
                 case R.id.exit:
-                    Date c = Calendar.getInstance().getTime();
-                    goToDetails(c.getYear() + 1900, c.getMonth() + 1, c.getDay());
-                    //Log.d("kalenteri", Integer.toString(c.getDay()) + Integer.toString(c.getMonth()) + Integer.toString(c.getYear()));
+                    ((QuestionActivity) getActivity()).done();
                     break;
             }
         }
     };
 
-    private void goToDetails(int y, int m, int d) {
-        Intent calendarDetailIntent = new Intent(getActivity(), CalendarDetails.class);
-
-        calendarDetailIntent.putExtra(CalendarActivity.EXTRA_KEY_YEAR, y);
-        calendarDetailIntent.putExtra(CalendarActivity.EXTRA_KEY_MONTH, m);
-        calendarDetailIntent.putExtra(CalendarActivity.EXTRA_KEY_DAYOFMONTH, d);
-        //Log.d("TÄMÄ TESTAUS JEE JEE", Integer.toString(y) + " " + Integer.toString(m) + " " + Integer.toString(d));
-        startActivity(calendarDetailIntent);
-        getActivity().finish();
-
-    }
 
 
     private void updateUI() {
-        TextView questionText = v.findViewById(R.id.question);
-        questionText.setText(q.getQuestionText());
-
-        RadioButton veryPositive = v.findViewById(R.id.best);
-        veryPositive.setText(q.getAnswerMap().get(AnswerType.VERY_POSITIVE));
-        RadioButton positive = v.findViewById(R.id.good);
-        positive.setText(q.getAnswerMap().get(AnswerType.POSITIVE));
-        RadioButton neutral = v.findViewById(R.id.neutral);
-        neutral.setText(q.getAnswerMap().get(AnswerType.NEUTRAL));
-        RadioButton negative = v.findViewById(R.id.bad);
-        negative.setText(q.getAnswerMap().get(AnswerType.NEGATIVE));
-        RadioButton veryNegative = v.findViewById(R.id.worst);
-        veryNegative.setText(q.getAnswerMap().get(AnswerType.VERY_NEGATIVE));
-
+        updateUIText();
         updateUIBackground();
         updateUIRadioGroup();
     }
+
+    private void updateUIText() {
+        ((TextView) v.findViewById(R.id.question)).setText(q.getQuestionText());    // question
+
+        // answers
+        ((RadioButton) v.findViewById(R.id.best)).setText(q.getAnswerMap().get(AnswerType.VERY_POSITIVE));
+        ((RadioButton) v.findViewById(R.id.good)).setText(q.getAnswerMap().get(AnswerType.POSITIVE));
+        ((RadioButton) v.findViewById(R.id.neutral)).setText(q.getAnswerMap().get(AnswerType.NEUTRAL));
+        ((RadioButton) v.findViewById(R.id.bad)).setText(q.getAnswerMap().get(AnswerType.NEGATIVE));
+        ((RadioButton) v.findViewById(R.id.worst)).setText(q.getAnswerMap().get(AnswerType.VERY_NEGATIVE));
+    }
     
     private void updateUIBackground() {
-        ConstraintLayout constraintLayout = v.findViewById(R.id.tausta);
+        ConstraintLayout constraintLayout = v.findViewById(R.id.tausta);    // find the layout view
 
+        // set background based on fragment index
         switch (index) {
             case 0:
                 constraintLayout.setBackgroundResource(R.drawable.panorama1);
@@ -143,13 +123,11 @@ public class QuestionFragment extends Fragment {
             case 4:
                 constraintLayout.setBackgroundResource(R.drawable.panorama5);
                 break;
-            default:
-                break;
         }
     }
 
     private void updateUIRadioGroup() {
-        AnswerType answerType = q.getAnswer();
+        AnswerType answerType = q.getAnswer();  // get fragment's question and its answer
         switch (answerType) {
             case VERY_POSITIVE:
                 ((RadioButton) v.findViewById(R.id.best)).setChecked(true);
@@ -165,8 +143,6 @@ public class QuestionFragment extends Fragment {
                 break;
             case VERY_NEGATIVE:
                 ((RadioButton) v.findViewById(R.id.worst)).setChecked(true);
-                break;
-            default:
                 break;
         }
     }

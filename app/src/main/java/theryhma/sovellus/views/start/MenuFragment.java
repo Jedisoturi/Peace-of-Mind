@@ -10,7 +10,6 @@ import android.view.ViewGroup;
 
 import theryhma.sovellus.R;
 import theryhma.sovellus.views.calendar.CalendarActivity;
-import theryhma.sovellus.views.calendar.CalendarDetails;
 import theryhma.sovellus.views.questions.QuestionActivity;
 import theryhma.sovellus.views.settings.SettingsActivity;
 import theryhma.sovellus.views.tipoftheday.TipListActivity;

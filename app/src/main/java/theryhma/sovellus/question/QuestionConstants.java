@@ -2,13 +2,14 @@ package theryhma.sovellus.question;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 import theryhma.sovellus.attribute.AttributeType;
 
 public class QuestionConstants {
-    private static final ArrayList<Question> questions = new ArrayList<Question>() {
+    private static final Map<String, Question> questions = new HashMap<String, Question>() {
         {
-            add(new Question("Kuinka pirteäksi koet itsesi?",
+            put("pirteys", new Question("Kuinka pirteäksi koet itsesi?",
                 new HashMap<AnswerType, String>() {
                     {
                         put(AnswerType.VERY_POSITIVE, "Tosi");
@@ -23,7 +24,7 @@ public class QuestionConstants {
                     }
                 })
             );
-            add(new Question("Koin mielialani tänään:",
+            put("mieliala", new Question("Koin mielialani tänään:",
                 new HashMap<AnswerType, String>() {
                     {
                         put(AnswerType.VERY_POSITIVE, "");
@@ -38,7 +39,7 @@ public class QuestionConstants {
                     }
                 })
             );
-            add(new Question("Kuinka motivoitunut olo?",
+            put("motivaatio", new Question("Kuinka motivoitunut olo?",
                 new HashMap<AnswerType, String>() {
                     {
                         put(AnswerType.VERY_POSITIVE, "Tosi");
@@ -54,7 +55,7 @@ public class QuestionConstants {
                     }
                 })
             );
-            add(new Question("Kuinka monta ateriaa olet syönyt?",
+            put("syöminen", new Question("Kuinka monta ateriaa olet syönyt?",
                 new HashMap<AnswerType, String>() {
                     {
                         put(AnswerType.VERY_POSITIVE, "5");
@@ -71,7 +72,7 @@ public class QuestionConstants {
                     }
                 })
             );
-            add(new Question("Jotain?",
+            put("jotain", new Question("Jotain?",
                 new HashMap<AnswerType, String>() {
                     {
                         put(AnswerType.VERY_POSITIVE, "5");
@@ -91,8 +92,9 @@ public class QuestionConstants {
         }
     };
 
-    public static Question get(int i) {
-        return questions.get(i);
+    public static Question get(String key) {
+        Question q = new Question(questions.get(key));
+        return q;
     }
 
     public static int size() {

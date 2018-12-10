@@ -35,6 +35,12 @@ public class State {
         }
     }
 
+    public int size() {
+        return attributes.size();
+    }
+
+
+
     public void setAllAttributeValues(double value) {
         for (Attribute a : attributes) {
             a.setValue(value);

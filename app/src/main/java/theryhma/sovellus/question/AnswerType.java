@@ -25,21 +25,4 @@ public enum AnswerType {
                 return NEUTRAL_VALUE;
         }
     }
-    @Override
-    public String toString() {
-        switch (this) {
-            case VERY_POSITIVE:
-                return "VERY POSITIVE";
-            case POSITIVE:
-                return "POSITIVE";
-            case NEUTRAL:
-                return "NEUTRAL";
-            case NEGATIVE:
-                return "NEGATIVE";
-            case VERY_NEGATIVE:
-                return "VERY NEGATIVE";
-            default:
-                return "NULL";
-        }
-    }
 }

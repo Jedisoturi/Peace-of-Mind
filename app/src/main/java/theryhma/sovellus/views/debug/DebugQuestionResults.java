@@ -29,13 +29,13 @@ public class DebugQuestionResults extends Fragment {
 
         return v;
     }
-
+    /*
     @Override
     public void onResume() {
         super.onResume();
         TextView textView = v.findViewById(R.id.results);
         Questionnaire questionnaire = GlobalModel.getInstance().getQuestionnaire();
-        State result = StateTools.createMeanState(questionnaire.getResults());
+        State result = StateTools.createMeanState(questionnaire.createResultStates());
         textView.setText(result.toString());
 
         TextView instructions = v.findViewById(R.id.instructions);
@@ -43,5 +43,5 @@ public class DebugQuestionResults extends Fragment {
         GlobalModel.getInstance().addStatuses(result);
 
 
-    }
+    }*/
 }
