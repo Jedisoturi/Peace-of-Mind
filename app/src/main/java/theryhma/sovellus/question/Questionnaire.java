@@ -15,7 +15,7 @@ public class Questionnaire {
     public Questionnaire() {
         ArrayList<Question> reference = QuestionConstants.createArray();
         questions = new ArrayList<>();
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < QUESTIONS_AMOUNT; i++) {
             questions.add(getRandomQuestion(reference));
         }
 
