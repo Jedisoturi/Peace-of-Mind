@@ -2,6 +2,7 @@ package theryhma.sovellus.tipoftheday;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 import theryhma.sovellus.GlobalModel;
 import theryhma.sovellus.tools.Maths;
@@ -17,6 +18,7 @@ public class TipOfTheDayGenerator {
     private Calendar dateGenerated;
 
     public TipOfTheDayGenerator() {
+        dateGenerated = new GregorianCalendar(1900, 0, 1);
         keysOfTipsSeen = new ArrayList<>();
     }
 
@@ -28,6 +30,10 @@ public class TipOfTheDayGenerator {
 
     public TipOfTheDay getCurrentTip() {
         return currentTip;
+    }
+
+    public Calendar getDateGenerated() {
+        return dateGenerated;
     }
 
     public void generate() {
