@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import theryhma.sovellus.attribute.AttributeType;
-
+/**Set's Instructions */
 public class InstructionConstants {
     private static final Map<String, Instruction> instructions = new HashMap<String, Instruction>() {
         {
@@ -18,10 +18,12 @@ public class InstructionConstants {
         }
     };
 
+    /**Return's instruction */
     public Instruction get(String key) {
         return new Instruction(instructions.get(key));
     }
 
+    /**Create's a new Arraylist and retuns it*/
     public static ArrayList<Instruction> createArrayList() {
         ArrayList<Instruction> array = new ArrayList<>();
         for (Map.Entry<String, Instruction> entry : instructions.entrySet())

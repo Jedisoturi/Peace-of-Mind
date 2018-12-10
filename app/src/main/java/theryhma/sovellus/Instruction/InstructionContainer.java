@@ -19,10 +19,12 @@ public class InstructionContainer {
         this.instructions = createInstructions(state);
     }
 
+/** New hashMap */
     public InstructionContainer() {
         this.instructions = new HashMap<>();
     }
 
+/**Updates */
     public void update(State newState) {
         Map<AttributeType, ArrayList<Instruction>> possibleInstructions = createPossibleInstructions(newState);
         for (Map.Entry<AttributeType, ArrayList<Instruction>> entry : possibleInstructions.entrySet())
@@ -41,6 +43,7 @@ public class InstructionContainer {
         }
     }
 
+    /**Creates a new ArrayList */
     public ArrayList<Instruction> createArrayList() {
         ArrayList<Instruction> array = new ArrayList<>();
         for (Map.Entry<AttributeType, Instruction> entry : instructions.entrySet())
@@ -59,7 +62,7 @@ public class InstructionContainer {
         }
         return result;
     }
-
+/**Get's random instruction from the list */
     private static Instruction getRandomInstruction(ArrayList<Instruction> list) {
         Instruction i = list.get(Maths.getRandomIntegerBetweenRange(0, list.size() - 1));
         return i;
