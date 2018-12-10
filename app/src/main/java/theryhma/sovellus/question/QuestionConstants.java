@@ -8,10 +8,10 @@ import theryhma.sovellus.attribute.AttributeType;
 public class QuestionConstants {
     private static final ArrayList<Question> questions = new ArrayList<Question>() {
         {
-            add(new Question("Kuinka pirteäksi koet itsesi?",
+            add(new Question("Kuinka pirteäksi koit itsesi?",
                 new HashMap<AnswerType, String>() {
                     {
-                        put(AnswerType.VERY_POSITIVE, "Tosi");
+                        put(AnswerType.VERY_POSITIVE, "Todella ");
                         put(AnswerType.POSITIVE, "Melko");
                         put(AnswerType.NEUTRAL, "Neutraali");
                         put(AnswerType.NEGATIVE, "Vähän");
@@ -23,14 +23,14 @@ public class QuestionConstants {
                     }
                 })
             );
-            add(new Question("Koin mielialani tänään:",
+            add(new Question("Koin mielialani tänään...",
                 new HashMap<AnswerType, String>() {
                     {
-                        put(AnswerType.VERY_POSITIVE, "");
-                        put(AnswerType.POSITIVE, "Melko");
-                        put(AnswerType.NEUTRAL, "Neutraali");
-                        put(AnswerType.NEGATIVE, "Vähän");
-                        put(AnswerType.VERY_NEGATIVE, "En yhtään");
+                        put(AnswerType.VERY_POSITIVE, "Erinomaiseksi");
+                        put(AnswerType.POSITIVE, "Hyväksi");
+                        put(AnswerType.NEUTRAL, "Neutraaliksi");
+                        put(AnswerType.NEGATIVE, "Heikoksi");
+                        put(AnswerType.VERY_NEGATIVE, "Huonoksi");
                     }
                 }, new HashMap<AttributeType, Double>() {
                     {
@@ -38,7 +38,7 @@ public class QuestionConstants {
                     }
                 })
             );
-            add(new Question("Kuinka motivoitunut olo?",
+            add(new Question("Kuinka motiivoituneeksi olo?",
                 new HashMap<AnswerType, String>() {
                     {
                         put(AnswerType.VERY_POSITIVE, "Tosi");
@@ -71,14 +71,14 @@ public class QuestionConstants {
                     }
                 })
             );
-            add(new Question("Jotain?",
+            add(new Question("Oliko unenlaatusi mielestäsi...",
                 new HashMap<AnswerType, String>() {
                     {
-                        put(AnswerType.VERY_POSITIVE, "5");
-                        put(AnswerType.POSITIVE, "4");
-                        put(AnswerType.NEUTRAL, "3");
-                        put(AnswerType.NEGATIVE, "2");
-                        put(AnswerType.VERY_NEGATIVE, "1 tai 0");
+                        put(AnswerType.VERY_POSITIVE, "Erinomainen");
+                        put(AnswerType.POSITIVE, "Hyvä");
+                        put(AnswerType.NEUTRAL, "Tyydyttävä");
+                        put(AnswerType.NEGATIVE, "Heikko");
+                        put(AnswerType.VERY_NEGATIVE, "Huono");
                     }
                 }, new HashMap<AttributeType, Double>() {
                     {

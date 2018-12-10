@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/sinifade"
     tools:context=".views.calendar.CalendarDetails">
 
     <TextView
@@ -12,6 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="66dp"
         android:text="TextView"
+        android:textColor="@color/colorPrimary"
         android:textSize="22sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -23,6 +25,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:text="TextView"
+        android:textColor="@color/colorPrimary"
         android:textSize="22sp"
         app:layout_constraintStart_toStartOf="@+id/textViewYear"
         app:layout_constraintTop_toBottomOf="@+id/textViewYear" />
@@ -33,6 +36,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="13dp"
         android:text="TextView"
+        android:textColor="@color/colorPrimary"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="@+id/textViewMonth"
         app:layout_constraintTop_toBottomOf="@+id/textViewMonth" />
