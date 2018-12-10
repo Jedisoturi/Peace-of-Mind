@@ -76,7 +76,7 @@ public class InstructionContainer {
         return result;
     }
 
-    public ArrayList<Instruction> createArrayList() {
+    public ArrayList<Instruction> createArray() {
         ArrayList<Instruction> array = new ArrayList<>();
         for (Map.Entry<AttributeType, Instruction> entry : instructions.entrySet())
         {
@@ -87,10 +87,10 @@ public class InstructionContainer {
 
     @Override
     public String toString() {
-        String s = "Instructions: ";
+        String s = "Ohjeet: ";
         for (Map.Entry<AttributeType, Instruction> entry : this.instructions.entrySet())
         {
-            s = s + entry.getKey().toString() + ": " + entry.getValue().getText() + "\n";
+            s = s + entry.getKey().toFinnish() + ": " + entry.getValue().getText() + "\n";
         }
         return s;
     }
