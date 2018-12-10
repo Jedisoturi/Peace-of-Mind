@@ -17,6 +17,7 @@ public class Instruction {
         this.attributeType = attributeType;
         this.minValue = minValue;
         this.maxValue = maxValue;
+        this.title = title;
     }
 
     public Instruction(Instruction reference) {
@@ -24,6 +25,7 @@ public class Instruction {
         this.attributeType = reference.attributeType;
         this.minValue = reference.minValue;
         this.maxValue = reference.maxValue;
+        this.title = reference.title;
     }
 
     public String getTitle() {
@@ -39,5 +41,10 @@ public class Instruction {
 
     public boolean isInRange(double value) {
         return minValue <= value && value <= maxValue;
+    }
+
+   @Override
+    public String toString (){
+        return getTitle();
     }
 }

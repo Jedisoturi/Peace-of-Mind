@@ -76,7 +76,7 @@ public class InstructionContainer {
         return result;
     }
 
-    public ArrayList<Instruction> createArrayList() {
+    public ArrayList<Instruction> createArray() {
         ArrayList<Instruction> array = new ArrayList<>();
         for (Map.Entry<AttributeType, Instruction> entry : instructions.entrySet())
         {
