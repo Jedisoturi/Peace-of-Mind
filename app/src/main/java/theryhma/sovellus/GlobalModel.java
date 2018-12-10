@@ -10,6 +10,7 @@ import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 
+import theryhma.sovellus.password.Password;
 import theryhma.sovellus.question.Questionnaire;
 import theryhma.sovellus.state.State;
 import theryhma.sovellus.status.Status;
@@ -18,6 +19,8 @@ import theryhma.sovellus.tipoftheday.TipOfTheDayGenerator;
 public class GlobalModel {
     private TipOfTheDayGenerator tipOfTheDayGenerator;
     private ArrayList<Status> statuses;
+    private Password password;
+
     private static final GlobalModel ourInstance = new GlobalModel();
 
     public static GlobalModel getInstance() {
@@ -27,6 +30,7 @@ public class GlobalModel {
     private GlobalModel() {
         tipOfTheDayGenerator = new TipOfTheDayGenerator();
         statuses = new ArrayList<>();
+        password = new Password();
         // init tipsSeen (what tips have been seen?)
     }
 
@@ -37,6 +41,14 @@ public class GlobalModel {
             }
         }
         return null;
+    }
+
+    public Password getPassword() {
+        return password;
+    }
+
+    public void setPassword(Password password) {
+        this.password = password;
     }
 
     public ArrayList<Status> getStatuses() { return this.statuses; }
@@ -61,6 +73,18 @@ public class GlobalModel {
     public void load(SharedPreferences pref) {
         loadStatuses(pref);
         loadTipOfTheDayGenerator(pref);
+        loadPassword(pref);
+    }
+
+    private void loadPassword(SharedPreferences pref) {
+        Gson gson = new Gson();
+        String json = pref.getString("pasword", null);
+        Type type = new TypeToken<Password>() {}.getType();
+        Password newData = gson.fromJson(json, type);
+        if (json == null) {
+            newData = new Password();
+        }
+        GlobalModel.getInstance().setPassword(newData);
     }
 
     private void loadStatuses(SharedPreferences pref) {
@@ -88,7 +112,16 @@ public class GlobalModel {
     public void save(SharedPreferences pref) {
         saveStatuses(pref);
         saveTipOfTheDayGenerator(pref);
+        savePassword(pref);
+    }
 
+    private void savePassword(SharedPreferences pref) {
+        SharedPreferences.Editor  editor = pref.edit();
+        Gson gson = new Gson();
+        Password password = GlobalModel.getInstance().getPassword();
+        String json = gson.toJson(password);
+        editor.putString("password", json);
+        editor.commit();
     }
 
     private void saveStatuses(SharedPreferences pref) {

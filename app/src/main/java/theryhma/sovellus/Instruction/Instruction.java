@@ -40,4 +40,6 @@ public class Instruction {
     public boolean isInRange(double value) {
         return minValue <= value && value <= maxValue;
     }
+
+
 }
