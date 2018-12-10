@@ -28,7 +28,7 @@ public class TipDetailsActivity extends AppCompatActivity {
         TextView tipTitle = findViewById(R.id.tipTitle);
         TextView tip = findViewById(R.id.textViewTip);
 
-        TipOfTheDay tipOfTheDay = TipOfTheDayConstants.getTips() .get(i);
+        TipOfTheDay tipOfTheDay = TipOfTheDayConstants.createArray().get(i);
 
         tipTitle.setText(tipOfTheDay.getTitle());
         tip.setText(tipOfTheDay.getText());

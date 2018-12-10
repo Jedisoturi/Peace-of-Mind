@@ -13,11 +13,11 @@ import java.util.ArrayList;
 import theryhma.sovellus.question.Questionnaire;
 import theryhma.sovellus.state.State;
 import theryhma.sovellus.status.Status;
+import theryhma.sovellus.tipoftheday.TipOfTheDayGenerator;
 
 public class GlobalModel {
-    private ArrayList<Integer> indicesOfTipsSeen;
+    private TipOfTheDayGenerator tipOfTheDayGenerator;
     private ArrayList<Status> statuses;
-    private Questionnaire questionnaire;
     private static final GlobalModel ourInstance = new GlobalModel();
 
     public static GlobalModel getInstance() {
@@ -25,9 +25,8 @@ public class GlobalModel {
     }
 
     private GlobalModel() {
-        indicesOfTipsSeen = new ArrayList<>();
+        tipOfTheDayGenerator = new TipOfTheDayGenerator();
         statuses = new ArrayList<>();
-        questionnaire = new Questionnaire();
         // init tipsSeen (what tips have been seen?)
     }
 
@@ -40,33 +39,33 @@ public class GlobalModel {
         return null;
     }
 
-    public ArrayList<Integer> getIndicesOfTipsSeen() {
-        return this.indicesOfTipsSeen;
-    }
     public ArrayList<Status> getStatuses() { return this.statuses; }
-    public Questionnaire getQuestionnaire() { return this.questionnaire; }
 
-    public void addToIndicesOfTipsSeen(int i) {
-        if (!this.indicesOfTipsSeen.contains(i)) {
-            this.indicesOfTipsSeen.add(i);
-        }
+    public TipOfTheDayGenerator getTipOfTheDayGenerator() {
+        return tipOfTheDayGenerator;
     }
+
 
     public void setStatuses(ArrayList<Status> statuses) {
         this.statuses = statuses;
+    }
+
+    public void setTipOfTheDayGenerator(TipOfTheDayGenerator generator) {
+        this.tipOfTheDayGenerator = generator;
     }
 
     public void addStatus(Status s) {
         this.statuses.add(s);
     }
 
-    public void clearIndicesOfTipsSeen() {
-        this.indicesOfTipsSeen.clear();
+    public void load(SharedPreferences pref) {
+        loadStatuses(pref);
+        loadTipOfTheDayGenerator(pref);
     }
 
-    public void load(SharedPreferences pref) {
+    private void loadStatuses(SharedPreferences pref) {
         Gson gson = new Gson();
-        String json = pref.getString("statukset", null);
+        String json = pref.getString("statuses", null);
         Type type = new TypeToken<ArrayList<Status>>() {}.getType();
         ArrayList<Status> newData = gson.fromJson(json, type);
         if (json == null) {
@@ -75,13 +74,38 @@ public class GlobalModel {
         GlobalModel.getInstance().setStatuses(newData);
     }
 
-    public void save(SharedPreferences pref) {
+    private void loadTipOfTheDayGenerator(SharedPreferences pref) {
+        Gson gson = new Gson();
+        String json = pref.getString("generator", null);
+        Type type = new TypeToken<TipOfTheDayGenerator>() {}.getType();
+        TipOfTheDayGenerator newData = gson.fromJson(json, type);
+        if (json == null) {
+            newData = new TipOfTheDayGenerator();
+        }
+        GlobalModel.getInstance().setTipOfTheDayGenerator(newData);
+    }
 
+    public void save(SharedPreferences pref) {
+        saveStatuses(pref);
+        saveTipOfTheDayGenerator(pref);
+
+    }
+
+    private void saveStatuses(SharedPreferences pref) {
         SharedPreferences.Editor  editor = pref.edit();
         Gson gson = new Gson();
         ArrayList<Status> statuses = GlobalModel.getInstance().getStatuses();
         String json = gson.toJson(statuses);
-        editor.putString("statukset", json);
+        editor.putString("statuses", json);
+        editor.commit();
+    }
+
+    private void saveTipOfTheDayGenerator(SharedPreferences pref) {
+        SharedPreferences.Editor  editor = pref.edit();
+        Gson gson = new Gson();
+        TipOfTheDayGenerator generator = GlobalModel.getInstance().getTipOfTheDayGenerator();
+        String json = gson.toJson(generator);
+        editor.putString("generator", json);
         editor.commit();
     }
 }

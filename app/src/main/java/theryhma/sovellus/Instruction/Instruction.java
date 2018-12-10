@@ -3,12 +3,13 @@ package theryhma.sovellus.Instruction;
 import theryhma.sovellus.attribute.AttributeType;
 
 public class Instruction {
+    private String title;
     private String text;
     private AttributeType attributeType;
     private double minValue;
     private double maxValue;
 
-    public Instruction(String text, AttributeType attributeType, double minValue, double maxValue) {
+    public Instruction(String title, String text, AttributeType attributeType, double minValue, double maxValue) {
         if (maxValue < minValue) {
             throw new IllegalArgumentException("Instruction maxValue cannot be less than minValue");
         }
@@ -25,6 +26,9 @@ public class Instruction {
         this.maxValue = reference.maxValue;
     }
 
+    public String getTitle() {
+        return title;
+    }
     public String getText() {
         return text;
     }

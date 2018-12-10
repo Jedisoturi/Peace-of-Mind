@@ -41,15 +41,6 @@ public class InstructionContainer {
         }
     }
 
-    public ArrayList<Instruction> createArrayList() {
-        ArrayList<Instruction> array = new ArrayList<>();
-        for (Map.Entry<AttributeType, Instruction> entry : instructions.entrySet())
-        {
-            array.add(entry.getValue());
-        }
-        return array;
-    }
-
     private static Map<AttributeType, Instruction> createInstructions(State state) {
         Map<AttributeType, ArrayList<Instruction>> possibleInstructions = createPossibleInstructions(state);
         Map<AttributeType, Instruction> result = new HashMap<>();
@@ -83,6 +74,15 @@ public class InstructionContainer {
             }
         }
         return result;
+    }
+
+    public ArrayList<Instruction> createArrayList() {
+        ArrayList<Instruction> array = new ArrayList<>();
+        for (Map.Entry<AttributeType, Instruction> entry : instructions.entrySet())
+        {
+            array.add(entry.getValue());
+        }
+        return array;
     }
 
     @Override
