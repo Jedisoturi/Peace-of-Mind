@@ -97,6 +97,15 @@ public class QuestionConstants {
         return q;
     }
 
+    public static ArrayList<Question> createArray() {
+        ArrayList<Question> array = new ArrayList<>();
+        for (Map.Entry<String, Question> entry : questions.entrySet())
+        {
+            array.add(entry.getValue());
+        }
+        return array;
+    }
+
     public static int size() {
         return questions.size();
     }

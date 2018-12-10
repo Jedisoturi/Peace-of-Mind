@@ -14,7 +14,7 @@ public class Status {
     private Calendar calendar;
     private InstructionContainer instructions;
     private String freeText;
-    private int entries;
+    private int entries = 0;
 
     public Status(Date date, State state, InstructionContainer instructions) {
         this.state = state;
@@ -25,6 +25,14 @@ public class Status {
         if (state.size() != 0) {
             entries++;
         }
+    }
+
+    public Status(Status reference) {
+        this.state = reference.state;
+        this.calendar = reference.calendar;
+        this.instructions = reference.instructions;
+        this.freeText = reference.freeText;
+        this.entries = reference.entries;
     }
 
     public boolean isDate(int year, int month, int dayOfMonth) {
