@@ -13,10 +13,16 @@ import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 import theryhma.sovellus.GlobalModel;
+import theryhma.sovellus.Instruction.InstructionContainer;
 import theryhma.sovellus.R;
 import theryhma.sovellus.state.State;
+import theryhma.sovellus.state.StateTools;
+import theryhma.sovellus.status.Status;
+import theryhma.sovellus.tools.Constant;
 
 public class MainActivity extends AppCompatActivity {
     private ViewPager viewPager;
@@ -31,32 +37,12 @@ public class MainActivity extends AppCompatActivity {
         adapter = new StartFragmentCollectionAdapter(getSupportFragmentManager());
         viewPager.setAdapter(adapter);
 
-        SharedPreferences pref = getSharedPreferences("Data", Context.MODE_PRIVATE);
-        Gson gson = new Gson();
-        String json = pref.getString("statuses", null);
-        Type type = new TypeToken<ArrayList<State>>() {}.getType();
-        ArrayList<State> newData = gson.fromJson(json, type);
-        if (json == null) {
-            newData = new ArrayList<>();
-        }
-        GlobalModel.getInstance().setStates(newData);
-
-        for (State s : GlobalModel.getInstance().getStates()) {
-            Log.d("statukset", s.toString());
-        }
-
-
+        GlobalModel.getInstance().load(getSharedPreferences(Constant.PREF_DATA, Context.MODE_PRIVATE));
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-
-        SharedPreferences pref = getSharedPreferences("Data", Context.MODE_PRIVATE);
-        SharedPreferences.Editor  editor = pref.edit();
-        Gson gson = new Gson();
-        String json = gson.toJson(GlobalModel.getInstance().getStates());
-        editor.putString("statuses", json);
-        editor.apply();
+        GlobalModel.getInstance().save(getSharedPreferences(Constant.PREF_DATA, Context.MODE_PRIVATE));
     }
 }

@@ -7,6 +7,7 @@ import theryhma.sovellus.attribute.AttributeType;
 import theryhma.sovellus.state.State;
 import theryhma.sovellus.tools.Maths;
 
+// todo: please remove
 public class InstructionTools {
     public static ArrayList<Instruction> createPossibleInstructions(State state) {
         ArrayList<Instruction> instructions = InstructionConstants.createArrayList();

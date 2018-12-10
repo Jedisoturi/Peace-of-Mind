@@ -1,6 +1,7 @@
 package theryhma.sovellus.views.tipoftheday;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -12,9 +13,11 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 
+import theryhma.sovellus.GlobalModel;
 import theryhma.sovellus.R;
 import theryhma.sovellus.tipoftheday.TipOfTheDay;
 import theryhma.sovellus.tipoftheday.TipOfTheDayConstants;
+import theryhma.sovellus.tools.Constant;
 
 public class TipListActivity extends AppCompatActivity {
 
@@ -47,5 +50,11 @@ public class TipListActivity extends AppCompatActivity {
                 startActivity(tipDetails);
             }
         });
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        GlobalModel.getInstance().save(getSharedPreferences(Constant.PREF_DATA, Context.MODE_PRIVATE));
     }
 }

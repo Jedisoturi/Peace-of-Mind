@@ -28,7 +28,14 @@ public class Question {
         //Log.d("supergetstatus", "CREATE: " + getText() + " " + getAnswer() + " answerType:" + answerType + " status:" + this.weights);
     }
 
-    public State getResultStatus() {
+    public Question(Question reference) {
+        this.questionText = reference.getQuestionText();
+        this.answersMap = reference.getAnswerMap();
+        this.weightMap = reference.getWeightMap();
+        this.answer = reference.getAnswer();
+    }
+
+    public State createResultState() {
         ArrayList<Attribute> attributes = new ArrayList<>();
         for (Map.Entry<AttributeType, Double> entry : weightMap.entrySet())
         {

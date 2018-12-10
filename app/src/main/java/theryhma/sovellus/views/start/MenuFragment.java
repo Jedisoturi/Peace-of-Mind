@@ -10,9 +10,9 @@ import android.view.ViewGroup;
 
 import theryhma.sovellus.R;
 import theryhma.sovellus.views.calendar.CalendarActivity;
-import theryhma.sovellus.views.calendar.CalendarDetails;
 import theryhma.sovellus.views.questions.QuestionActivity;
 import theryhma.sovellus.views.settings.SettingsActivity;
+import theryhma.sovellus.views.stats.StatActivity;
 import theryhma.sovellus.views.tipoftheday.TipListActivity;
 
 
@@ -57,6 +57,8 @@ public class MenuFragment extends Fragment {
 
                     break;
                 case R.id.til:
+                    Intent statActivity = new Intent(getActivity(), StatActivity.class);
+                    startActivity(statActivity);
                     break;
                 case R.id.kys:
                     Intent nextActivity = new Intent(getActivity(), QuestionActivity.class);
