@@ -55,6 +55,40 @@ public class QuestionConstants {
                     }
                 })
             );
+            put("rentoutuminen", new Question("Oletko pystynyt rentoutumaan tänään?",
+                            new HashMap<AnswerType, String>() {
+                                {
+                                    put(AnswerType.VERY_POSITIVE, "Paljon");
+                                    put(AnswerType.POSITIVE, "Riittävästi");
+                                    put(AnswerType.NEUTRAL, "Vähän");
+                                    put(AnswerType.NEGATIVE, "En juurikaan");
+                                    put(AnswerType.VERY_NEGATIVE, "En lainkaan");
+                                }
+                            }, new HashMap<AttributeType, Double>() {
+                        {
+                            put(AttributeType.ENERGY, 0.4);
+                            put(AttributeType.MOOD, 0.25);
+                            put(AttributeType.UNSTRESS, 1.0);
+                        }
+                    })
+            );
+            put("alkoholi", new Question("Oletko nauttinut alkoholia tänään?",
+                            new HashMap<AnswerType, String>() {
+                                {
+                                    put(AnswerType.VERY_POSITIVE, "Paljon");
+                                    put(AnswerType.POSITIVE, "Huomattavasti");
+                                    put(AnswerType.NEUTRAL, "Muutaman");
+                                    put(AnswerType.NEGATIVE, "Yhden annoksen");
+                                    put(AnswerType.VERY_NEGATIVE, "En yhtään");
+                                }
+                            }, new HashMap<AttributeType, Double>() {
+                        {
+                            put(AttributeType.ENERGY, 0.25);
+                            put(AttributeType.MOOD, 0.25);
+                            put(AttributeType.UNSTRESS, 0.25);
+                        }
+                    })
+            );
             put("syöminen", new Question("Kuinka monta ateriaa olet syönyt?",
                 new HashMap<AnswerType, String>() {
                     {
@@ -66,13 +100,29 @@ public class QuestionConstants {
                     }
                 }, new HashMap<AttributeType, Double>() {
                     {
-                        put(AttributeType.ENERGY, 0.8);
-                        put(AttributeType.MOOD, 0.8);
+                        put(AttributeType.ENERGY, 1.0);
+                        put(AttributeType.MOOD, 0.75);
                         put(AttributeType.NUTRITION, 1.0);
                     }
                 })
             );
-            put("jotain", new Question("Oliko unenlaatusi mielestäsi...",
+            put("liikunta", new Question("Oletko liikkunut tänään...",
+                new HashMap<AnswerType, String>() {
+                    {
+                        put(AnswerType.VERY_POSITIVE, "Paljon");
+                        put(AnswerType.POSITIVE, "Melko paljon");
+                        put(AnswerType.NEUTRAL, "Jonkin verran");
+                        put(AnswerType.NEGATIVE, "Vähän");
+                        put(AnswerType.VERY_NEGATIVE, "En yhtään");
+                    }
+                }, new HashMap<AttributeType, Double>(){
+                {
+                    put(AttributeType.ENERGY, 1.0);
+
+                }
+            })
+            );
+            put("unenlaatu", new Question("Oliko unenlaatusi mielestäsi...",
                 new HashMap<AnswerType, String>() {
                     {
                         put(AnswerType.VERY_POSITIVE, "Erinomainen");
@@ -83,9 +133,9 @@ public class QuestionConstants {
                     }
                 }, new HashMap<AttributeType, Double>() {
                     {
-                        put(AttributeType.ENERGY, 0.8);
-                        put(AttributeType.MOOD, 0.8);
-                        put(AttributeType.NUTRITION, 1.0);
+                        put(AttributeType.ENERGY, 1.0);
+                        put(AttributeType.MOOD, 0.5);
+                        put(AttributeType.UNSTRESS, 0.4);
                     }
                 })
             );
