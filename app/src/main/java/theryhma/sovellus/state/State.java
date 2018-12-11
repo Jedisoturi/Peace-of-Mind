@@ -9,6 +9,8 @@ import theryhma.sovellus.attribute.AttributeType;
  * This is basically an AttributeContainer with a rule: "no duplicate attributes"
  */
 
+
+
 public class State {
     private ArrayList<Attribute> attributes;
 
@@ -83,16 +85,6 @@ public class State {
     public ArrayList<Attribute> getAttributes() {
         return attributes;
     }
-
-    /*public void scale(double scale) {
-        if (!isValidValue(scale)) {
-            throw new IllegalArgumentException("Scale cannot be over 1 or under -1");
-        }
-        this.energy = this.energy * scale;
-        this.mood = this.mood * scale;
-        this.anxiety = this.anxiety * scale;
-        this.stress = this.stress * scale;
-    }*/
 
     @Override
     public String toString() {
