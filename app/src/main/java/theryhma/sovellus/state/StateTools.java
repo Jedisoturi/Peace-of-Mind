@@ -13,8 +13,8 @@ public class StateTools {
             Weighted Mean = Ewx / Ew
             (E is sigma: sum over a set of like terms, w is weight, x is value)
          */
-        // todo: make this simpler
         // Add types to status, and calculate both the numerator and the denominator
+        // todo make simpler
         State meanState = new State();
         Map<AttributeType, Double> attributeNumeratorMap = new HashMap<>();
         Map<AttributeType, Double> attributeDenominatorMap = new HashMap<>();

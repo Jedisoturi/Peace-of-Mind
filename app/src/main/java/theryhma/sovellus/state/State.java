@@ -9,8 +9,6 @@ import theryhma.sovellus.attribute.AttributeType;
  * This is basically an AttributeContainer with a rule: "no duplicate attributes"
  */
 
-
-
 public class State {
     private ArrayList<Attribute> attributes;
 
@@ -39,14 +37,6 @@ public class State {
 
     public int size() {
         return attributes.size();
-    }
-
-
-
-    public void setAllAttributeValues(double value) {
-        for (Attribute a : attributes) {
-            a.setValue(value);
-        }
     }
 
     public Attribute getAttribute(AttributeType type) {

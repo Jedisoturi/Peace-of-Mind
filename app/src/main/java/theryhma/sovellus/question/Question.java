@@ -39,7 +39,7 @@ public class Question {
         ArrayList<Attribute> attributes = new ArrayList<>();
         for (Map.Entry<AttributeType, Double> entry : weightMap.entrySet())
         {
-            Attribute a = new Attribute(entry.getKey(), AnswerType.getValue(answer), entry.getValue());
+            Attribute a = new Attribute(entry.getKey(), answer.getValue(), entry.getValue());
             attributes.add(a);
         }
         State result = new State(attributes);

@@ -87,7 +87,7 @@ public class InstructionContainer {
         }
         return array;
     }
-
+    
     @Override
     public String toString() {
         String s = "Ohjeet: ";

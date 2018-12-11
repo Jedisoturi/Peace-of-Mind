@@ -5,13 +5,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 import theryhma.sovellus.attribute.AttributeType;
-/**This class includes and sets Instructions, and their parameters: title, text, attributeType, minValue & maxValue.
- * Instructions, attributetypes and values are in a Map. */
+
 public class InstructionConstants {
-    private static final Map<String, Instruction> instructions = new HashMap<String, Instruction>() {
+    private static final Map<String, Instruction> INSTRUCTIONS = new HashMap<String, Instruction>() {
         {
-
-
             put("saf", new Instruction("Oikeaan aikaan nukkumaan...", "Mene illalla nukkumaan, kun olo tuntuu väsyneeltä." +
                     " Vaikka kello olisi vasta vähän, älä viivyttele sänkyyn menemistä." +
                     " Pahimmillaan väkisin valvoessa koko väsyneisyys voi mennä ohi, ja pidemmistä yöunista ei ole todellakaa enempää haittaa kehollesi." +
@@ -78,26 +75,16 @@ public class InstructionConstants {
                     " Tämä antaa aivoillesi merkin, että asiat on hyvin, jolloin se automaattisesti antaa kehollesi käskyn rentoutua." +
                     " Esimerkiksi nauramisen seurauksena verenpaine laskee, ja kehoosi vapautuu hyvää oloa aiheuttavia hormoneja.",
                     AttributeType.UNSTRESS, 0.75, 1));
-
-
-
-
-
-
-
-
         }
     };
 
-    /**Returns the Instruction given as a key */
-    public Instruction get(String key) {
-        return new Instruction(instructions.get(key));
+    public static Instruction get(String key) {
+        return new Instruction(INSTRUCTIONS.get(key));
     }
 
-    /**Creates a new Arraylist and retuns it*/
     public static ArrayList<Instruction> createArrayList() {
         ArrayList<Instruction> array = new ArrayList<>();
-        for (Map.Entry<String, Instruction> entry : instructions.entrySet())
+        for (Map.Entry<String, Instruction> entry : INSTRUCTIONS.entrySet())
         {
             array.add(entry.getValue());
         }
