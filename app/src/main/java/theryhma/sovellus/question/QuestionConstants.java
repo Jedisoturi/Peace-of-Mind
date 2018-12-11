@@ -7,7 +7,7 @@ import java.util.Map;
 import theryhma.sovellus.attribute.AttributeType;
 
 public class QuestionConstants {
-    private static final Map<String, Question> questions = new HashMap<String, Question>() {
+    private static final Map<String, Question> QUESTIONS = new HashMap<String, Question>() {
         {
             put("pirteys", new Question("Kuinka pirteäksi koit itsesi tänään?",
                 new HashMap<AnswerType, String>() {
@@ -143,13 +143,13 @@ public class QuestionConstants {
     };
 
     public static Question get(String key) {
-        Question q = new Question(questions.get(key));
+        Question q = new Question(QUESTIONS.get(key));
         return q;
     }
 
     public static ArrayList<Question> createArray() {
         ArrayList<Question> array = new ArrayList<>();
-        for (Map.Entry<String, Question> entry : questions.entrySet())
+        for (Map.Entry<String, Question> entry : QUESTIONS.entrySet())
         {
             array.add(entry.getValue());
         }
@@ -157,7 +157,7 @@ public class QuestionConstants {
     }
 
     public static int size() {
-        return questions.size();
+        return QUESTIONS.size();
     }
 
 }

@@ -10,31 +10,18 @@ import theryhma.sovellus.tools.Maths;
 
 public class Questionnaire {
     private ArrayList<Question> questions;
-    public static final int QUESTIONS_AMOUNT = 5;
+    private static final int QUESTIONS_AMOUNT = 5;
 
     public Questionnaire() {
         ArrayList<Question> reference = QuestionConstants.createArray();
         questions = new ArrayList<>();
         for (int i = 0; i < QUESTIONS_AMOUNT; i++) {
-            questions.add(getRandomQuestion(reference));
+
+            int index = Maths.getRandomIntegerBetweenRange(0, reference.size() - 1);
+            questions.add(reference.get(index));
+            reference.remove(index);
         }
-
-        /*this.questions = new ArrayList<>();
-        this.questions.add(QuestionConstants.get("pirteys"));
-        this.questions.add(QuestionConstants.get("motivaatio"));
-        this.questions.add(QuestionConstants.get("mieliala"));
-        this.questions.add(QuestionConstants.get("syöminen"));
-        this.questions.add(QuestionConstants.get("jotain"));*/
-
     }
-
-    private static Question getRandomQuestion(ArrayList<Question> list) {
-        int i = Maths.getRandomIntegerBetweenRange(0, list.size() - 1);
-        Question q = list.get(i);
-        list.remove(i);
-        return q;
-    }
-
 
     public Question getQuestion(int i) {
         return this.questions.get(i);
