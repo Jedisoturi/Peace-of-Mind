@@ -12,7 +12,7 @@ public class Instruction {
     private double minValue;
     private double maxValue;
 
-    /** Sets the constructor.*/
+    /** Creates a new Instructor*/
     public Instruction(String title, String text, AttributeType attributeType, double minValue, double maxValue) {
         if (maxValue < minValue) {
             throw new IllegalArgumentException("Instruction maxValue cannot be less than minValue");
@@ -24,7 +24,7 @@ public class Instruction {
         this.title = title;
     }
 
-    /** This constructor copies the Instruction given as a parameter.*/
+    /** This constructor copies the Instruction given as a parameter*/
 
     public Instruction(Instruction reference) {
         this.text = reference.text;

@@ -19,12 +19,12 @@ public class InstructionContainer {
         this.instructions = createInstructions(state);
     }
 
-    /** This method creates a new HashMap for Instructions.*/
+    /** This method creates a new HashMap for Instructions*/
     public InstructionContainer() {
         this.instructions = new HashMap<>();
     }
 
-    /** This method updates the map with the given new state.*/
+    /** This method updates and creates a new Map of possible instructions for a certain state.*/
     public void update(State newState) {
         Map<AttributeType, ArrayList<Instruction>> possibleInstructions = createPossibleInstructions(newState);
         for (Map.Entry<AttributeType, ArrayList<Instruction>> entry : possibleInstructions.entrySet())
@@ -80,7 +80,7 @@ public class InstructionContainer {
         return result;
     }
 
-    /** This method creates a new ArrayList*/
+    /** Creates a new ArrayList*/
     public ArrayList<Instruction> createArray() {
         ArrayList<Instruction> array = new ArrayList<>();
         for (Map.Entry<AttributeType, Instruction> entry : instructions.entrySet())

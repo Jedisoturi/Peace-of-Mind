@@ -80,12 +80,12 @@ public class InstructionConstants {
         }
     };
 
-    /** This method returns an Instruction, which has been called with the key.*/
+    /** Returns an Instruction which has been called with the key.*/
     public static Instruction get(String key) {
         return new Instruction(INSTRUCTIONS.get(key));
     }
 
-    /** This method creates a new ArrayList of Instructions.*/
+    /** Creates a new ArrayList of Instructions.*/
     public static ArrayList<Instruction> createArrayList() {
         ArrayList<Instruction> array = new ArrayList<>();
         for (Map.Entry<String, Instruction> entry : INSTRUCTIONS.entrySet())
