@@ -81,8 +81,8 @@
 
     <TextView
         android:id="@+id/tipTitle"
-        android:layout_width="310dp"
-        android:layout_height="114dp"
+        android:layout_width="336dp"
+        android:layout_height="67dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="28dp"
         android:layout_marginEnd="8dp"
@@ -104,16 +104,12 @@
         android:layout_width="336dp"
         android:layout_height="121dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
         android:text="TextView"
         android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/til"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tipTitle"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toBottomOf="@+id/tipTitle" />
 
     <TextView
         android:id="@+id/textView2"
