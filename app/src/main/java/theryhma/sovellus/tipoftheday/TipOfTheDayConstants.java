@@ -7,8 +7,9 @@ import java.util.concurrent.ThreadPoolExecutor;
 
 import theryhma.sovellus.tipoftheday.TipOfTheDay;
 
-/*
-Contains all tips of the day
+/**
+ * Contains all tips of the day in a Map: key and Tip Of The Day
+ * Contains ArrayList creator for Tips Of The Day
  */
 
 public class TipOfTheDayConstants {
@@ -45,6 +46,9 @@ public class TipOfTheDayConstants {
         return tips;
     }
 
+    /** Contains ArrayList creator for Tips Of The Day
+     *
+     */
     public static ArrayList<TipOfTheDay> createArray() {
         ArrayList<TipOfTheDay> array = new ArrayList<>();
         for (Map.Entry<String, TipOfTheDay> entry : tips.entrySet())
