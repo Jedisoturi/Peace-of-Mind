@@ -2,6 +2,9 @@ package theryhma.sovellus.Instruction;
 
 import theryhma.sovellus.attribute.AttributeType;
 
+/** This classes purpose is to set the constructor "Instruction" and it's parameters.
+ * This class also includes methods, that return constructors parameters.
+ */
 public class Instruction {
     private String title;
     private String text;
@@ -9,6 +12,7 @@ public class Instruction {
     private double minValue;
     private double maxValue;
 
+    /** Sets the constructor.*/
     public Instruction(String title, String text, AttributeType attributeType, double minValue, double maxValue) {
         if (maxValue < minValue) {
             throw new IllegalArgumentException("Instruction maxValue cannot be less than minValue");
@@ -20,7 +24,7 @@ public class Instruction {
         this.title = title;
     }
 
-    /** This constructor copies the Instruction given as a parameter*/
+    /** This constructor copies the Instruction given as a parameter.*/
 
     public Instruction(Instruction reference) {
         this.text = reference.text;

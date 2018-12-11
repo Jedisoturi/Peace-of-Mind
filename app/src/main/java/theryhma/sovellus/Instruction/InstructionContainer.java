@@ -19,6 +19,7 @@ public class InstructionContainer {
         this.instructions = createInstructions(state);
     }
 
+    /** This method creates a new HashMap for Instructions.*/
     public InstructionContainer() {
         this.instructions = new HashMap<>();
     }
@@ -53,7 +54,7 @@ public class InstructionContainer {
         return result;
     }
 
-    /** This method returns a random Instruction from the list.*/
+    /** This method returns a random Instruction from the list of Instructions.*/
     private static Instruction getRandomInstruction(ArrayList<Instruction> list) {
         Instruction i = list.get(Maths.getRandomIntegerBetweenRange(0, list.size() - 1));
         return i;
@@ -79,6 +80,7 @@ public class InstructionContainer {
         return result;
     }
 
+    /** This method creates a new ArrayList*/
     public ArrayList<Instruction> createArray() {
         ArrayList<Instruction> array = new ArrayList<>();
         for (Map.Entry<AttributeType, Instruction> entry : instructions.entrySet())
@@ -87,7 +89,7 @@ public class InstructionContainer {
         }
         return array;
     }
-    
+
     @Override
     public String toString() {
         String s = "Ohjeet: ";
