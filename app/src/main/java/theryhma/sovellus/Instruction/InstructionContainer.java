@@ -10,6 +10,8 @@ import theryhma.sovellus.state.State;
 import theryhma.sovellus.tools.Maths;
 import theryhma.sovellus.tools.Tools;
 
+/** This class creates the lists and maps for Instructions in the application.
+ * This class also contains the Instructions and includes the method to get a random Instruction from the list.*/
 public class InstructionContainer {
     private Map<AttributeType, Instruction> instructions;
 
@@ -21,6 +23,7 @@ public class InstructionContainer {
         this.instructions = new HashMap<>();
     }
 
+    /** This method updates the map with the given new state.*/
     public void update(State newState) {
         Map<AttributeType, ArrayList<Instruction>> possibleInstructions = createPossibleInstructions(newState);
         for (Map.Entry<AttributeType, ArrayList<Instruction>> entry : possibleInstructions.entrySet())
@@ -39,6 +42,7 @@ public class InstructionContainer {
         }
     }
 
+
     private static Map<AttributeType, Instruction> createInstructions(State state) {
         Map<AttributeType, ArrayList<Instruction>> possibleInstructions = createPossibleInstructions(state);
         Map<AttributeType, Instruction> result = new HashMap<>();
@@ -49,6 +53,7 @@ public class InstructionContainer {
         return result;
     }
 
+    /** This method returns a random Instruction from the list.*/
     private static Instruction getRandomInstruction(ArrayList<Instruction> list) {
         Instruction i = list.get(Maths.getRandomIntegerBetweenRange(0, list.size() - 1));
         return i;

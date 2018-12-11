@@ -5,7 +5,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 import theryhma.sovellus.attribute.AttributeType;
-/**Set's Instructions */
+/**This class includes and sets Instructions, and their parameters: title, text, attributeType, minValue & maxValue.
+ * Instructions, attributetypes and values are in a Map. */
 public class InstructionConstants {
     private static final Map<String, Instruction> instructions = new HashMap<String, Instruction>() {
         {
@@ -88,12 +89,12 @@ public class InstructionConstants {
         }
     };
 
-    /**Return's instruction */
+    /**Returns the Instruction given as a key */
     public Instruction get(String key) {
         return new Instruction(instructions.get(key));
     }
 
-    /**Create's a new Arraylist and retuns it*/
+    /**Creates a new Arraylist and retuns it*/
     public static ArrayList<Instruction> createArrayList() {
         ArrayList<Instruction> array = new ArrayList<>();
         for (Map.Entry<String, Instruction> entry : instructions.entrySet())
