@@ -10,8 +10,6 @@ import theryhma.sovellus.state.State;
 import theryhma.sovellus.tools.Maths;
 import theryhma.sovellus.tools.Tools;
 
-import static theryhma.sovellus.Instruction.InstructionTools.getRandomInstruction;
-
 public class InstructionContainer {
     private Map<AttributeType, Instruction> instructions;
 

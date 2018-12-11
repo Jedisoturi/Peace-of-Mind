@@ -78,7 +78,7 @@ public class GlobalModel {
 
     private void loadPassword(SharedPreferences pref) {
         Gson gson = new Gson();
-        String json = pref.getString("pasword", null);
+        String json = pref.getString("password", null);
         Type type = new TypeToken<Password>() {}.getType();
         Password newData = gson.fromJson(json, type);
         if (json == null) {

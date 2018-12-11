@@ -16,7 +16,7 @@ public class TipOfTheDay {
         this.text = "";
     }
 
-    public TipOfTheDay(TipOfTheDay reference) {
+    public TipOfTheDay(TipOfTheDay reference) {     // copy constructor
         this.title = reference.getTitle();
         this.text = reference.getText();
     }
