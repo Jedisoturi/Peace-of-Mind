@@ -3,9 +3,13 @@ package theryhma.sovellus.tipoftheday;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ThreadPoolExecutor;
 
-/*
-Contains all TIPS of the day
+import theryhma.sovellus.tipoftheday.TipOfTheDay;
+
+/**
+ * Contains all tips of the day in a Map: key and Tip Of The Day
+ * Contains ArrayList creator for Tips Of The Day
  */
 
 public class TipOfTheDayConstants {
@@ -42,6 +46,9 @@ public class TipOfTheDayConstants {
         return TIPS;
     }
 
+    /** Contains ArrayList creator for Tips Of The Day
+     *
+     */
     public static ArrayList<TipOfTheDay> createArray() {
         ArrayList<TipOfTheDay> array = new ArrayList<>();
         for (Map.Entry<String, TipOfTheDay> entry : TIPS.entrySet())
