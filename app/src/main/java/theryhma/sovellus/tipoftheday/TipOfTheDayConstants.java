@@ -61,8 +61,7 @@ public class TipOfTheDayConstants {
     }
 
     public static TipOfTheDay get(String key) {
-        TipOfTheDay t = new TipOfTheDay(TIPS.get(key));
-        return t;
+        return TIPS.get(key);
     }
 
     public static int size() {

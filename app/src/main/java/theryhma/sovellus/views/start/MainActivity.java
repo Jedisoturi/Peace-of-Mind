@@ -2,36 +2,19 @@ package theryhma.sovellus.views.start;
 
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.SharedPreferences;
-import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.PopupWindow;
 
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-
-import java.lang.reflect.Type;
-import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 
 import theryhma.sovellus.GlobalModel;
-import theryhma.sovellus.Instruction.InstructionContainer;
 import theryhma.sovellus.R;
-import theryhma.sovellus.state.State;
-import theryhma.sovellus.state.StateTools;
-import theryhma.sovellus.status.Status;
 import theryhma.sovellus.tipoftheday.TipOfTheDay;
 import theryhma.sovellus.tipoftheday.TipOfTheDayGenerator;
 import theryhma.sovellus.tools.Constant;
@@ -43,7 +26,6 @@ public class MainActivity extends AppCompatActivity {
     private TipOfTheDayGenerator generator;
 
     public TipOfTheDay tipOfTheDay;
-
     private Context context;
 
     @Override
@@ -58,9 +40,7 @@ public class MainActivity extends AppCompatActivity {
         GlobalModel.getInstance().load(getSharedPreferences(Constant.PREF_DATA, Context.MODE_PRIVATE));
 
         generator = GlobalModel.getInstance().getTipOfTheDayGenerator();
-        if (!Tools.isSameDay(Calendar.getInstance(), generator.getDateGenerated())) {
-            GlobalModel.getInstance().getTipOfTheDayGenerator().generate();
-        }
+        generator.invalidate();
         tipOfTheDay = GlobalModel.getInstance().getTipOfTheDayGenerator().getCurrentTip();
         if (GlobalModel.getInstance().getPassword().isActive()) {
             passwordPopUp();
