@@ -67,7 +67,7 @@ public class StateFragment extends Fragment {
         xAxes = new ArrayList<>();
         for (int i = 0; i < attributes.size(); i++) {
             Attribute attribute = attributes.get(i);
-            entries.add(new BarEntry(i, (float) attribute.getValue() * 100, attribute.getType()));
+            entries.add(new BarEntry(i, (float) attribute.getValue() * 100, attribute.getType().toFinnish()));
             xAxes.add(Double.toString(attribute.getValue()));
         }
 
@@ -76,7 +76,7 @@ public class StateFragment extends Fragment {
         BarData data = new BarData(set);
         //data.setBarWidth(0.9f);
         barChart.setData(data);
-        barChart.getBarData().setValueTextSize(15);
+        barChart.getBarData().setValueTextSize(13);
         barChart.getDescription().setEnabled(false);
 
         set.setValueFormatter(new IValueFormatter() {
