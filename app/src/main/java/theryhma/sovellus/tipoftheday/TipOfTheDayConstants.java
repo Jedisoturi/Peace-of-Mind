@@ -8,8 +8,8 @@ import java.util.concurrent.ThreadPoolExecutor;
 import theryhma.sovellus.tipoftheday.TipOfTheDay;
 
 /**
- * Contains all tips of the day in a Map: key and Tip Of The Day
- * Contains ArrayList creator for Tips Of The Day
+ * Contains all Tips Of the Day in a Map: key and Tip Of The Day
+ *
  */
 
 public class TipOfTheDayConstants {
@@ -42,12 +42,14 @@ public class TipOfTheDayConstants {
             put("25", new TipOfTheDay("Nuku riittävästi", "Univajeella on merkittävä negatiivinen merkitys terveyteesi. Muista siis nukkua tarpeeksi paljon."));
         }
     };
+
+    /** Returns the map
+     */
     public static Map<String, TipOfTheDay> getTips() {
         return TIPS;
     }
 
     /** Contains ArrayList creator for Tips Of The Day
-     *
      */
     public static ArrayList<TipOfTheDay> createArray() {
         ArrayList<TipOfTheDay> array = new ArrayList<>();
@@ -58,6 +60,8 @@ public class TipOfTheDayConstants {
         return array;
     }
 
+    /** Creates ann ArrayList that contains keys from the map
+     */
     public static ArrayList<String> createKeyArray() {
         ArrayList<String> array = new ArrayList<>();
         for (Map.Entry<String, TipOfTheDay> entry : TIPS.entrySet())
@@ -67,10 +71,16 @@ public class TipOfTheDayConstants {
         return array;
     }
 
+    /**
+     * Returns the Tip Of The Day that is linked to the key
+     */
     public static TipOfTheDay get(String key) {
         return TIPS.get(key);
     }
 
+    /**
+     * Returns the size of the list
+     */
     public static int size() {
         return TIPS.size();
     }
