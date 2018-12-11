@@ -13,7 +13,7 @@ import theryhma.sovellus.tipoftheday.TipOfTheDay;
  */
 
 public class TipOfTheDayConstants {
-    private static final Map<String, TipOfTheDay> tips = new HashMap<String, TipOfTheDay>() {
+    private static final Map<String, TipOfTheDay> TIPS = new HashMap<String, TipOfTheDay>() {
         {
             put("1", new TipOfTheDay("Arvosta itseäsi", "Palkitse itsesi arvostuksella ja vältä itsekritiikkiä."));
             put("2", new TipOfTheDay("Pidä huolta vartalostasi", "Muista liikkua ja syödä terveellisesti."));
@@ -43,7 +43,7 @@ public class TipOfTheDayConstants {
         }
     };
     public static Map<String, TipOfTheDay> getTips() {
-        return tips;
+        return TIPS;
     }
 
     /** Contains ArrayList creator for Tips Of The Day
@@ -51,7 +51,7 @@ public class TipOfTheDayConstants {
      */
     public static ArrayList<TipOfTheDay> createArray() {
         ArrayList<TipOfTheDay> array = new ArrayList<>();
-        for (Map.Entry<String, TipOfTheDay> entry : tips.entrySet())
+        for (Map.Entry<String, TipOfTheDay> entry : TIPS.entrySet())
         {
             array.add(entry.getValue());
         }
@@ -60,7 +60,7 @@ public class TipOfTheDayConstants {
 
     public static ArrayList<String> createKeyArray() {
         ArrayList<String> array = new ArrayList<>();
-        for (Map.Entry<String, TipOfTheDay> entry : tips.entrySet())
+        for (Map.Entry<String, TipOfTheDay> entry : TIPS.entrySet())
         {
             array.add(entry.getKey());
         }
@@ -68,11 +68,11 @@ public class TipOfTheDayConstants {
     }
 
     public static TipOfTheDay get(String key) {
-        TipOfTheDay t = new TipOfTheDay(tips.get(key));
+        TipOfTheDay t = new TipOfTheDay(TIPS.get(key));
         return t;
     }
 
     public static int size() {
-        return tips.size();
+        return TIPS.size();
     }
 }

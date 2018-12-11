@@ -9,8 +9,8 @@ public enum AnswerType {
     private static final double NEGATIVE_VALUE = 0.25;
     private static final double VERY_NEGATIVE_VALUE = 0;
 
-    public static double getValue(AnswerType type) {
-        switch (type) {
+    public double getValue() {
+        switch (this) {
             case VERY_POSITIVE:
                 return VERY_POSITIVE_VALUE;
             case POSITIVE:
