@@ -24,4 +24,8 @@ public class Password {
     public String get() {
         return password;
     }
+
+    public boolean isActive() {
+        return active;
+    }
 }

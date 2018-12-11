@@ -62,8 +62,10 @@ public class MainActivity extends AppCompatActivity {
             GlobalModel.getInstance().getTipOfTheDayGenerator().generate();
         }
         tipOfTheDay = GlobalModel.getInstance().getTipOfTheDayGenerator().getCurrentTip();
+        if (GlobalModel.getInstance().getPassword().isActive()) {
+            passwordPopUp();
+        }
 
-        passwordPopUp();
     }
 
     public void passwordPopUp() {
@@ -78,13 +80,15 @@ public class MainActivity extends AppCompatActivity {
 
         final EditText userInput = (EditText) promptsView.findViewById(R.id.editTextDialogUserInput);
 
+        Log.d("password", GlobalModel.getInstance().getPassword().get());
+
         // set dialog message
         alertDialogBuilder
                 .setCancelable(false)
                 .setPositiveButton("OK",
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog,int id) {
-                                if (userInput.getText().toString() == GlobalModel.getInstance().getPassword().get()) {
+                                if (userInput.getText().toString().equals(GlobalModel.getInstance().getPassword().get())) {
                                     // you can pass
                                 } else {
                                     passwordPopUp();
