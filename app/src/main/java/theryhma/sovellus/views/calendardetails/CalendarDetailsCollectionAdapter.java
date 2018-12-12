@@ -6,7 +6,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
 import theryhma.sovellus.views.questions.QuestionFragment;
-
+/** This class includes the adapter used in calendar details view*/
 public class CalendarDetailsCollectionAdapter extends FragmentStatePagerAdapter {
 
     public CalendarDetailsCollectionAdapter(FragmentManager fm) {

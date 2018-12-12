@@ -24,7 +24,7 @@ import theryhma.sovellus.R;
 import theryhma.sovellus.state.State;
 import theryhma.sovellus.status.Status;
 import theryhma.sovellus.views.Instruction.InstructionActivity;
-
+/** This class includes the main code for the Insctruction fragment shown to the User.*/
 public class InstructionFragment extends Fragment {
 
     View v;

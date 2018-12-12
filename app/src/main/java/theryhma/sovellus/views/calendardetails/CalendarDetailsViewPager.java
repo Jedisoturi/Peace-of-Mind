@@ -4,7 +4,7 @@ import android.content.Context;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.view.View;
-
+/** This class includes the code for CalendarDetails viewPager.*/
 public class CalendarDetailsViewPager extends ViewPager {
 
     public CalendarDetailsViewPager(Context context) {
