@@ -6,9 +6,8 @@ import theryhma.sovellus.attribute.Attribute;
 import theryhma.sovellus.attribute.AttributeType;
 
 /**
- * This is basically an AttributeContainer with a rule: "no duplicate attributes"
+ * This is basically an AttributeContainer (if such thing would exist) with a rule: "no duplicate attributes".
  */
-
 public class State {
     private ArrayList<Attribute> attributes;
 
