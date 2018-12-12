@@ -6,6 +6,9 @@ import java.util.Map;
 
 import theryhma.sovellus.attribute.AttributeType;
 
+/**
+ * Stores the questions as constants, to be used in the program
+ */
 public class QuestionConstants {
     private static final Map<String, Question> QUESTIONS = new HashMap<String, Question>() {
         {
@@ -142,11 +145,17 @@ public class QuestionConstants {
         }
     };
 
+    /**
+     * Returns a copy of a question linked to the key
+     */
     public static Question get(String key) {
         Question q = new Question(QUESTIONS.get(key));
         return q;
     }
 
+    /**
+     * Creates an array from the map
+     */
     public static ArrayList<Question> createArray() {
         ArrayList<Question> array = new ArrayList<>();
         for (Map.Entry<String, Question> entry : QUESTIONS.entrySet())
@@ -156,6 +165,9 @@ public class QuestionConstants {
         return array;
     }
 
+    /**
+     * Returns the size of the Question map
+     */
     public static int size() {
         return QUESTIONS.size();
     }
