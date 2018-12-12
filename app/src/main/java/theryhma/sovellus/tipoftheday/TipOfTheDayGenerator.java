@@ -9,11 +9,6 @@ import theryhma.sovellus.tools.Maths;
 import theryhma.sovellus.tools.Tools;
 import theryhma.sovellus.views.calendardetails.CalendarDetailsViewPager;
 
-/*
-Uses:
-Tools
-Maths
- */
 
 /**
  * This generator is responsible for generating a random new TipOfTheDay object every day. The tip is selected
