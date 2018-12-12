@@ -14,14 +14,8 @@ import theryhma.sovellus.tipoftheday.TipOfTheDay;
 import theryhma.sovellus.views.calendar.CalendarActivity;
 import theryhma.sovellus.views.questions.QuestionActivity;
 import theryhma.sovellus.views.settings.SettingsActivity;
-import theryhma.sovellus.views.stats.StatActivity;
 import theryhma.sovellus.views.tipoftheday.TipListActivity;
 
-
-
-/**
- * A simple {@link Fragment} subclass.
- */
 /** This class includes the main code for the Menu activity.*/
 public class MenuFragment extends Fragment {
 
@@ -38,9 +32,12 @@ public class MenuFragment extends Fragment {
         // Inflate the layout for this fragment
         v = inflater.inflate(R.layout.fragment_menu, container, false);
 
+        // Set tip of the day
         tipOfTheDay = ((MainActivity) getActivity()).tipOfTheDay;
         ((TextView) v.findViewById(R.id.tipTitle)).setText(tipOfTheDay.getTitle());
         ((TextView) v.findViewById(R.id.tipText)).setText(tipOfTheDay.getText());
+
+        // set button listeners
         v.findViewById(R.id.tip).setOnClickListener(buttonListener);
         v.findViewById(R.id.til).setOnClickListener(buttonListener);
         v.findViewById(R.id.kys).setOnClickListener(buttonListener);
@@ -55,7 +52,6 @@ public class MenuFragment extends Fragment {
             switch (view.getId()) {
                 case R.id.settings:
                     Intent settings = new Intent(getActivity(), SettingsActivity.class);
-                    //nextActivity.putExtra("presidentIndex", i);
                     startActivity(settings);
                     break;
                 case R.id.kal:
@@ -63,12 +59,9 @@ public class MenuFragment extends Fragment {
                     startActivity(calendarActivity);
                     break;
                 case R.id.til:
-                    Intent statActivity = new Intent(getActivity(), StatActivity.class);
-                    startActivity(statActivity);
                     break;
                 case R.id.kys:
                     Intent nextActivity = new Intent(getActivity(), QuestionActivity.class);
-                    //nextActivity.putExtra("presidentIndex", i);
                     startActivity(nextActivity);
                     break;
                 case R.id.tip:
@@ -78,5 +71,4 @@ public class MenuFragment extends Fragment {
             }
         }
     };
-
 }

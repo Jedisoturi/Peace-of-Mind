@@ -53,7 +53,7 @@ public class QuestionActivity extends AppCompatActivity {
         if (status == null) {
             InstructionContainer instructions = new InstructionContainer(state);
             status = new Status(date, state, instructions);
-            GlobalModel.getInstance().addStatus(status);
+            GlobalModel.getInstance().getStatuses().add(status);
         } else {
             status.update(state);
         }

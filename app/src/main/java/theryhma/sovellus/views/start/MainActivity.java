@@ -34,36 +34,36 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // setup viewpager
         viewPager = findViewById(R.id.pager);
         adapter = new StartFragmentCollectionAdapter(getSupportFragmentManager());
         viewPager.setAdapter(adapter);
-        context = this;
 
-        GlobalModel.getInstance().load(getSharedPreferences(Constant.PREF_DATA, Context.MODE_PRIVATE));
+        context = this; // this is used in password pop up
 
+        GlobalModel.getInstance().load(getSharedPreferences(Constant.PREF_DATA, Context.MODE_PRIVATE)); // load data
+
+        // tip of the day
         generator = GlobalModel.getInstance().getTipOfTheDayGenerator();
         generator.invalidate();
         tipOfTheDay = GlobalModel.getInstance().getTipOfTheDayGenerator().getCurrentTip();
+
+        // password
         if (GlobalModel.getInstance().getPassword().isActive()) {
             passwordPopUp();
         }
-
     }
 
     /** This method shows the Password pop up for the user, and compares the given password to the saved one.*/
     public void passwordPopUp() {
-        // get prompts.xml view
         LayoutInflater li = LayoutInflater.from(context);
         View promptsView = li.inflate(R.layout.popup_window, null);
 
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
-
-        // set prompts.xml to alertdialog builder
         alertDialogBuilder.setView(promptsView);
 
-        final EditText userInput = (EditText) promptsView.findViewById(R.id.editTextDialogUserInput);
-
-        Log.d("password", GlobalModel.getInstance().getPassword().get());
+        final EditText userInput = promptsView.findViewById(R.id.editTextDialogUserInput);
 
         // set dialog message
         alertDialogBuilder
@@ -96,6 +96,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
-        GlobalModel.getInstance().save(getSharedPreferences(Constant.PREF_DATA, Context.MODE_PRIVATE));
+        GlobalModel.getInstance().save(getSharedPreferences(Constant.PREF_DATA, Context.MODE_PRIVATE)); // save data
     }
 }
