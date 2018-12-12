@@ -1,8 +1,6 @@
 package theryhma.sovellus.views.calendardetails;
 
-import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -12,7 +10,6 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -24,10 +21,10 @@ import theryhma.sovellus.R;
 import theryhma.sovellus.state.State;
 import theryhma.sovellus.status.Status;
 import theryhma.sovellus.views.Instruction.InstructionActivity;
-/** This class includes the main code for the Insctruction fragment shown to the User.*/
+/** This class includes the main code for the Instruction fragment shown to the User.*/
 public class InstructionFragment extends Fragment {
 
-    View v;
+    private View v;
     private ArrayList<Instruction> listOfInstructions;
 
     public InstructionFragment() {
@@ -40,22 +37,20 @@ public class InstructionFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         v = inflater.inflate(R.layout.fragment_instruction, container, false);
-        Status status = ((CalendarDetailsActivity) getActivity()).status;
-        Date date = status.getCalendar().getTime();
-        State state = status.getState();
+
+        Status status = ((CalendarDetailsActivity) getActivity()).status;   // get status
+
+        // get instructions array
         InstructionContainer instructions = status.getInstructions();
-        int entries = status.getEntries();
-        SimpleDateFormat format = new SimpleDateFormat("dd.MM.yyyy");
-
-
         listOfInstructions = instructions.createArray();
-        ArrayList<Instruction> l2 = instructions.createArray();
 
+        // create list
         ListView instructionsList = v.findViewById(R.id.ohjeetList);
         instructionsList.setAdapter(new ArrayAdapter<>
                 (getActivity(), android.R.layout.simple_list_item_1,
-                l2));
+                listOfInstructions));
 
+        // list onItemClick listener
         instructionsList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int i, long l) {
@@ -67,7 +62,6 @@ public class InstructionFragment extends Fragment {
 
             }
         });
-
 
         return v;
     }

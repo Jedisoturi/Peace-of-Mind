@@ -16,12 +16,16 @@ import theryhma.sovellus.question.AnswerType;
 import theryhma.sovellus.question.Question;
 import theryhma.sovellus.question.Questionnaire;
 
+/**
+ * Fragment that contains a single question and radio group for answers
+ */
 public class QuestionFragment extends Fragment {
     private View v;
     private int index;
     private Boolean isLast;
     private Questionnaire questionnaire;
     private Question q;
+
     public QuestionFragment() {
         // Required empty public constructor
     }
@@ -33,12 +37,15 @@ public class QuestionFragment extends Fragment {
         // Inflate the layout for this fragment
         v = inflater.inflate(R.layout.fragment_question, container, false);
 
+        // get extras
         index = getArguments().getInt("index");
         isLast = getArguments().getBoolean("isLast");
-        //questionnaire = GlobalModel.getInstance().getQuestionnaire();
+
+        // get question
         questionnaire = ((QuestionActivity)getActivity()).getQuestionnaire();
         q = questionnaire.getQuestion(index);
 
+        // add "done" button if last question
         if (!isLast) {
             v.findViewById(R.id.exit).setVisibility(View.GONE);
         }
@@ -47,6 +54,7 @@ public class QuestionFragment extends Fragment {
 
         v.findViewById(R.id.exit).setOnClickListener(buttonListener);
 
+        // radiobutton listeners
         RadioGroup radioGroup = v.findViewById(R.id.group);
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener()
         {
@@ -78,13 +86,11 @@ public class QuestionFragment extends Fragment {
         public void onClick(View view) {
             switch (view.getId()) {
                 case R.id.exit:
-                    ((QuestionActivity) getActivity()).done();
+                    ((QuestionActivity) getActivity()).done();  // go to done method
                     break;
             }
         }
     };
-
-
 
     private void updateUI() {
         updateUIText();

@@ -34,7 +34,7 @@ import theryhma.sovellus.status.Status;
 import theryhma.sovellus.views.calendar.CalendarActivity;
 
 /**
- * A simple {@link Fragment} subclass.
+ * Display State bar chart
  */
 public class StateFragment extends Fragment {
 
@@ -55,13 +55,14 @@ public class StateFragment extends Fragment {
         // Inflate the layout for this fragment
         v = inflater.inflate(R.layout.fragment_state, container, false);
 
-        status = ((CalendarDetailsActivity) getActivity()).status;
+        status = ((CalendarDetailsActivity) getActivity()).status;  // get status
 
+        // print date
         date = status.getCalendar().getTime();
         SimpleDateFormat format = new SimpleDateFormat("dd.MM.yyyy");
         ((TextView) v.findViewById(R.id.date)).setText(format.format(date));
 
-        barChart = v.findViewById(R.id.barchart);
+        // create bar data
         ArrayList<BarEntry> entries = new ArrayList<>();
         ArrayList<Attribute> attributes = status.getState().getAttributes();
         xAxes = new ArrayList<>();
@@ -70,55 +71,37 @@ public class StateFragment extends Fragment {
             entries.add(new BarEntry(i, (float) attribute.getValue() * 100, attribute.getType().toFinnish()));
             xAxes.add(Double.toString(attribute.getValue()));
         }
-
         BarDataSet set = new BarDataSet(entries, "State");
-
         BarData data = new BarData(set);
-        //data.setBarWidth(0.9f);
+
+        // add data barchart view
+        barChart = v.findViewById(R.id.barchart);
         barChart.setData(data);
+
+        // parameters
         barChart.getBarData().setValueTextSize(13);
         barChart.getDescription().setEnabled(false);
-
-        set.setValueFormatter(new IValueFormatter() {
-            @Override
-            public String getFormattedValue(float value, Entry entry, int dataSetIndex, ViewPortHandler viewPortHandler) {
-                //rather than diaplaying value show label
-                String s = entry.getData().toString().toLowerCase();
-                return s.substring(0, 1).toUpperCase() + s.substring(1);
-            }
-        });
-
-        /*barChart.getXAxis().setValueFormatter(new IAxisValueFormatter() {
-            @Override
-            public String getFormattedValue(float value, AxisBase axis) {
-                int index = (int) value;
-                return xAxes.get(index);
-            }
-        });*/
-        /*barChart.getXAxis().setValueFormatter(new IAxisValueFormatter() {
-            @Override
-            public String getFormattedValue(float value, AxisBase axis) {
-                return barChart.getBarData().get(i).Math.round(value);
-            }
-        });*/
         barChart.getAxisLeft().setAxisMaximum(100);
         barChart.getAxisLeft().setAxisMinimum(0);
-        //barChart.setDrawValueAboveBar(false);
-        //barChart.setDescription();
-
-        set.setColors(ColorTemplate.COLORFUL_COLORS);
-        //barChart.setFitBars(true);
         barChart.animateY(2000);
         barChart.setDragEnabled(true);
         barChart.setScaleEnabled(true);
-        //barChart.getAxisLeft().setDrawZeroLine(true);
-        //barChart.getAxisLeft().setDrawLabels(false);
         barChart.getAxisRight().setDrawLabels(false);
         barChart.getXAxis().setDrawLabels(false);
         barChart.getAxisLeft().setDrawGridLines(false);
         barChart.getXAxis().setDrawGridLines(false);
         barChart.getAxisRight().setDrawGridLines(false);
+        set.setColors(ColorTemplate.COLORFUL_COLORS);
 
+        // display label instead of value
+        set.setValueFormatter(new IValueFormatter() {
+            @Override
+            public String getFormattedValue(float value, Entry entry, int dataSetIndex, ViewPortHandler viewPortHandler) {
+                //rather than displaying value show label
+                String s = entry.getData().toString().toLowerCase();
+                return s.substring(0, 1).toUpperCase() + s.substring(1);
+            }
+        });
 
         return v;
     }

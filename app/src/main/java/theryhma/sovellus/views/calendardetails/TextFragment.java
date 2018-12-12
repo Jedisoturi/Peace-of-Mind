@@ -13,7 +13,7 @@ import theryhma.sovellus.R;
 import theryhma.sovellus.status.Status;
 
 /**
- * A simple {@link Fragment} subclass.
+ * Free text field
  */
 public class TextFragment extends Fragment {
 
@@ -23,7 +23,6 @@ public class TextFragment extends Fragment {
     public TextFragment() {
         // Required empty public constructor
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

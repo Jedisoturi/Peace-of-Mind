@@ -29,20 +29,18 @@ public class CalendarActivity extends AppCompatActivity {
             @SuppressLint("WrongConstant")
             @Override
             public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
-                //Toast.makeText(getApplicationContext(), +dayOfMonth, 0).show();
                 goToDetails(year, month, dayOfMonth);
             }
         });
 
     }
-    // todo: combine this method with question fragment's go to details
+
     private void goToDetails(int y, int m , int d) {
         Intent calendarDetailIntent = new Intent(this, CalendarDetailsActivity.class);
-
+        // put the date selected as extra
         calendarDetailIntent.putExtra(EXTRA_KEY_YEAR, y);
         calendarDetailIntent.putExtra(EXTRA_KEY_MONTH, m);
         calendarDetailIntent.putExtra(EXTRA_KEY_DAYOFMONTH, d);
-        //Log.d("TÄMÄ TESTAUS JEE JEE", Integer.toString(y) + " " + Integer.toString(m) + " " + Integer.toString(d));
         startActivity(calendarDetailIntent);
     }
 

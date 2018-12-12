@@ -5,6 +5,9 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
+/**
+ * Fragment Collection adapter for question activity
+ */
 public class QuestionFragmentCollectionAdapter extends FragmentStatePagerAdapter {
 
     public QuestionFragmentCollectionAdapter(FragmentManager fm) {
@@ -13,7 +16,7 @@ public class QuestionFragmentCollectionAdapter extends FragmentStatePagerAdapter
 
     @Override
     public Fragment getItem(int i) {
-        if (i == getCount() - 1) {
+        if (i == getCount() - 1) {  // last question
             QuestionFragment questionFragment = new QuestionFragment();
             Bundle bundle = new Bundle();
 
@@ -21,7 +24,7 @@ public class QuestionFragmentCollectionAdapter extends FragmentStatePagerAdapter
             bundle.putBoolean("isLast", true);
             questionFragment.setArguments(bundle);
             return questionFragment;
-        } else {
+        } else {    // other questions
             QuestionFragment questionFragment = new QuestionFragment();
             Bundle bundle = new Bundle();
 

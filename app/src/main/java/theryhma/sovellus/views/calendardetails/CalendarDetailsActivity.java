@@ -28,41 +28,29 @@ public class CalendarDetailsActivity extends AppCompatActivity {
     private CalendarDetailsCollectionAdapter adapter;
 
 /** This method includes the code which is called, when this Activity is opened.
- * This method sets the details page on the calendar to show each day's instructions.*/
+ * This activity sets the details page on the calendar to show each day's status.*/
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calendar_details);
 
+        // get extras
         Intent intent = getIntent();
         year = intent.getIntExtra(CalendarActivity.EXTRA_KEY_YEAR, 2018);
         month = intent.getIntExtra(CalendarActivity.EXTRA_KEY_MONTH, 1);
         dayOfMonth = intent.getIntExtra(CalendarActivity.EXTRA_KEY_DAYOFMONTH, 1);
 
+        // get status
         status = GlobalModel.getInstance().getStatus(year, month, dayOfMonth);
         if (status == null) {
             status = new Status(new GregorianCalendar(year, month, dayOfMonth).getTime(), new State(), new InstructionContainer());
             GlobalModel.getInstance().getStatuses().add(status);
         }
 
-
+        // initialize viewpager
         viewPager = findViewById(R.id.pager);
         adapter = new CalendarDetailsCollectionAdapter(getSupportFragmentManager());
         viewPager.setAdapter(adapter);
-
-
-
-        /*TextView textViewYear = findViewById(R.id.textViewYear);
-        textViewYear.setText(Integer.toString(year));
-        TextView textViewMonth = findViewById(R.id.textViewMonth);
-        textViewMonth.setText(Integer.toString(month));
-        TextView textViewDayOfMonth = findViewById(R.id.textViewDay);
-        textViewDayOfMonth.setText(Integer.toString(dayOfMonth));
-
-        for (Status s : GlobalModel.getInstance().getStatuses()) {
-            Log.d("tulokset", s.toString());
-        }*/
-
     }
 
     @Override

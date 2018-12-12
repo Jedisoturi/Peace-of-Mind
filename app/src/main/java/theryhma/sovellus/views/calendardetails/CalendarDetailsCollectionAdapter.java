@@ -1,6 +1,5 @@
 package theryhma.sovellus.views.calendardetails;
 
-import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
@@ -15,13 +14,13 @@ public class CalendarDetailsCollectionAdapter extends FragmentStatePagerAdapter 
 
     @Override
     public Fragment getItem(int i) {
-        if (i == 0) {
+        if (i == 0) {   // state as bar chart
             StateFragment stateFragment = new StateFragment();
             return stateFragment;
-        } else if (i == 1) {
+        } else if (i == 1) {    // instructions
             InstructionFragment instructionFragment = new InstructionFragment();
             return instructionFragment;
-        } else {
+        } else {    // free text
             TextFragment textFragment = new TextFragment();
             return textFragment;
         }

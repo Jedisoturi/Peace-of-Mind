@@ -18,10 +18,8 @@ public class CalendarDetailsViewPager extends ViewPager {
     }
 
     private void init() {
-        // The majority of the magic happens here
         setPageTransformer(true, new CalendarDetailsPageTransformer());
-        setOffscreenPageLimit(3);
-        // The easiest way to get rid of the overscroll drawing that happens on the left and right
+        setOffscreenPageLimit(3);   // load all pages at start
         setOverScrollMode(OVER_SCROLL_NEVER);
     }
 
@@ -29,83 +27,18 @@ public class CalendarDetailsViewPager extends ViewPager {
 
         @Override
         public void transformPage(View view, float position) {
-            //view.setTranslationX(-position*view.getWidth()); // This counteracts the normal transition effect
             if (position < -1){    // [-Infinity,-1)
-                // This page is way off-screen to the left.
-                //view.setAlpha(0);
-                /*if (view.getId() == R.id.gif) {
-                    view.setTranslationX(-position * view.getWidth());
-                    float yPosition = position * view.getHeight();
-                    view.setTranslationY(yPosition);
-                    view.setAlpha(1 - Math.abs(position));
-                }*/
+                // do not change
             }
-            else if (position < 0){    // [-1,0] Pienempi indeksi
-                // This is the top page (index is lower)
-                /*if (view.getId() == R.id.gif) {
-                    view.setTranslationX(-position * view.getWidth());
-                    float yPosition = position * view.getHeight();
-                    view.setTranslationY(yPosition);
-                    view.setAlpha(1 - Math.abs(position));
-                }*/
+            else if (position < 0){    // [-1,0]
+                // do not change
             }
-            else if (position < 1){    // (0,1] Suurempi indeksi
-                // This is the bottom page (index is higher)
-                //int page = ;
-                /*if (view.getId() == R.id.gif) {
-                    view.setTranslationX(-position * view.getWidth());
-                    float yPosition = position * view.getHeight();
-                    view.setTranslationY(yPosition);
-                    view.setAlpha(1 - Math.abs(position));
-                }
-                if (view.getId() == R.id.alku) {
-                    view.setTranslationX(-position*view.getWidth());
-                }*/
-                // Do nothing
+            else if (position < 1){    // (0,1]
+                // do not change
             }
             else {    // (1,+Infinity]
-                // This page is way off-screen to the right.
-                //view.setAlpha(0);
-                /*if (view.getId() == R.id.gif) {
-                    view.setTranslationX(-position * view.getWidth());
-                    float yPosition = position * view.getHeight();
-                    view.setTranslationY(yPosition);
-                    view.setAlpha(1 - Math.abs(position));
-                }
-                if (view.getId() == R.id.alku) {
-                    view.setTranslationX(-position*view.getWidth());
-                }*/
-
+                // do not change
             }
         }
     }
-
-    /**
-     * Swaps the X and Y coordinates of your touch event.
-     */
-    /*
-    private MotionEvent swapXY(MotionEvent ev) {
-        float width = getWidth();
-        float height = getHeight();
-
-        float newX = (ev.getY() / height) * width;
-        float newY = (ev.getX() / width) * height;
-
-        ev.setLocation(newX, newY);
-
-        return ev;
-    }
-
-    @Override
-    public boolean onInterceptTouchEvent(MotionEvent ev){
-        boolean intercepted = super.onInterceptTouchEvent(swapXY(ev));
-        swapXY(ev); // return touch coordinates to original reference frame for any child views
-        return intercepted;
-    }
-
-    @Override
-    public boolean onTouchEvent(MotionEvent ev) {
-        return super.onTouchEvent(swapXY(ev));
-    }
-    */
 }

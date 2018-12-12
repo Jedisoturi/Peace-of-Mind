@@ -21,6 +21,9 @@ import theryhma.sovellus.tools.Constant;
 import theryhma.sovellus.views.calendar.CalendarActivity;
 import theryhma.sovellus.views.calendardetails.CalendarDetailsActivity;
 
+/**
+ * This activity is for the Questionnaire of five Questions
+ */
 public class QuestionActivity extends AppCompatActivity {
     private ViewPager viewPager;
     private QuestionFragmentCollectionAdapter adapter;
@@ -31,19 +34,24 @@ public class QuestionActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_question);
 
-        questionnaire = new Questionnaire();
+        questionnaire = new Questionnaire();    // initialize questionnaire
 
+        // initialize viewpager
         viewPager = findViewById(R.id.pager);
         adapter = new QuestionFragmentCollectionAdapter(getSupportFragmentManager());
         viewPager.setAdapter(adapter);
-
-
     }
 
+    /**
+     * Return the current questionnaire
+     */
     public Questionnaire getQuestionnaire() {
         return this.questionnaire;
     }
 
+    /**
+     * Calculate final state and go to details
+     */
     public void done() {
         State state = StateTools.createMeanState(questionnaire.createResultStates());
         Date date = Calendar.getInstance().getTime();
@@ -64,11 +72,12 @@ public class QuestionActivity extends AppCompatActivity {
     private void goToDetails(int y, int m, int d) {
         Intent calendarDetailIntent = new Intent(this, CalendarDetailsActivity.class);
 
+        // send date data as extra
         calendarDetailIntent.putExtra(CalendarActivity.EXTRA_KEY_YEAR, y);
         calendarDetailIntent.putExtra(CalendarActivity.EXTRA_KEY_MONTH, m);
         calendarDetailIntent.putExtra(CalendarActivity.EXTRA_KEY_DAYOFMONTH, d);
         startActivity(calendarDetailIntent);
-        finish();
+        finish();   // close this, because we want to return to the main menu from details
     }
 
     @Override
