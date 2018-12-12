@@ -20,36 +20,34 @@ import theryhma.sovellus.tipoftheday.TipOfTheDayConstants;
 import theryhma.sovellus.tools.Constant;
 
 /**
- *
- *
+ * Show tips in a listView
  */
-
 public class TipListActivity extends AppCompatActivity {
+    private ListView tipsList;
+    private ArrayList<TipOfTheDay> listOfTips;
 
-    ListView tipsList;
-    ArrayList<String> listOfTips;
-
-    private Activity thisAcvitity;
+    private Activity thisActivity;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tip_list);
 
-        thisAcvitity = this;
+        thisActivity = this;    // get this activity, used in click listener
 
-        ArrayList<TipOfTheDay> listOfTips = TipOfTheDayConstants.createArray();
+        listOfTips = TipOfTheDayConstants.createArray();
 
-        ListView tipsList = findViewById(R.id.tipsListView);
+        // create listView
+        tipsList = findViewById(R.id.tipsListView);
         tipsList.setAdapter(new ArrayAdapter<>(this,
                         android.R.layout.simple_list_item_1,
                         TipOfTheDayConstants.createArray())
         );
-
+        // set a click listener
         tipsList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int i, long l) {
                 Log.d("supersovellus", "onItemClick(" + i + ")");
-                Intent tipDetails = new Intent(thisAcvitity, TipDetailsActivity.class);
+                Intent tipDetails = new Intent(thisActivity, TipDetailsActivity.class);
                 tipDetails.putExtra("showtips", i);
                 startActivity(tipDetails);
             }

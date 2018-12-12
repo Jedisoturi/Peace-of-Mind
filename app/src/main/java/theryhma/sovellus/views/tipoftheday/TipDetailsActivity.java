@@ -13,6 +13,9 @@ import theryhma.sovellus.tipoftheday.TipOfTheDay;
 import theryhma.sovellus.tipoftheday.TipOfTheDayConstants;
 import theryhma.sovellus.tools.Constant;
 
+/**
+ * Show the full text of a tip
+ */
 public class TipDetailsActivity extends AppCompatActivity {
 
     @Override
@@ -20,16 +23,14 @@ public class TipDetailsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tip_details);
 
-        //TipOfTheDayConstants.getTips();
-
         Bundle b = getIntent().getExtras();
         int i = b.getInt("showtips", 0);
 
+        TipOfTheDay tipOfTheDay = TipOfTheDayConstants.createArray().get(i); // get the tip from tipConstants
+
+        // update ui
         TextView tipTitle = findViewById(R.id.tipTitle);
         TextView tip = findViewById(R.id.textViewTip);
-
-        TipOfTheDay tipOfTheDay = TipOfTheDayConstants.createArray().get(i);
-
         tipTitle.setText(tipOfTheDay.getTitle());
         tip.setText(tipOfTheDay.getText());
     }
