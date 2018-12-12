@@ -17,7 +17,7 @@ import theryhma.sovellus.state.State;
 import theryhma.sovellus.status.Status;
 import theryhma.sovellus.tools.Constant;
 import theryhma.sovellus.views.calendar.CalendarActivity;
-
+/** This class includes the main code for the Calendar details activity.*/
 public class CalendarDetailsActivity extends AppCompatActivity {
     private int year;
     private int month;
@@ -27,7 +27,8 @@ public class CalendarDetailsActivity extends AppCompatActivity {
     private ViewPager viewPager;
     private CalendarDetailsCollectionAdapter adapter;
 
-
+/** This method includes the code which is called, when this Activity is opened.
+ * This method sets the details page on the calendar to show each day's instructions.*/
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

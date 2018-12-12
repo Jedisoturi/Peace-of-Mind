@@ -19,10 +19,6 @@ import theryhma.sovellus.tipoftheday.TipOfTheDay;
 import theryhma.sovellus.tipoftheday.TipOfTheDayConstants;
 import theryhma.sovellus.tools.Constant;
 
-/**
- *
- *
- */
 
 public class TipListActivity extends AppCompatActivity {
 

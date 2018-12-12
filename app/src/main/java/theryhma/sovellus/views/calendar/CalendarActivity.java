@@ -12,12 +12,13 @@ import theryhma.sovellus.GlobalModel;
 import theryhma.sovellus.R;
 import theryhma.sovellus.tools.Constant;
 import theryhma.sovellus.views.calendardetails.CalendarDetailsActivity;
-
+/** This class includes the main code for the Calendar activity.*/
 public class CalendarActivity extends AppCompatActivity {
     public static final String EXTRA_KEY_YEAR = "year";
     public static final String EXTRA_KEY_MONTH = "month";
     public static final String EXTRA_KEY_DAYOFMONTH = "dayOfMonth";
 
+    /** This method includes the things happening when the activity is opened.*/
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
