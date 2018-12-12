@@ -6,6 +6,9 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 
+/**
+ * Start activitys viewpager
+ */
 public class StartViewPager extends ViewPager {
 
     public StartViewPager(Context context) {
@@ -19,9 +22,8 @@ public class StartViewPager extends ViewPager {
     }
 
     private void init() {
-        // The majority of the magic happens here
         setPageTransformer(true, new StartPageTransformer());
-        setOffscreenPageLimit(5);
+        setOffscreenPageLimit(5);   // all views are loaded at start
         // The easiest way to get rid of the overscroll drawing that happens on the left and right
         setOverScrollMode(OVER_SCROLL_NEVER);
     }
@@ -33,31 +35,26 @@ public class StartViewPager extends ViewPager {
             view.setTranslationX(-position*view.getWidth()); // This counteracts the normal transition effect
             if (position < -1){    // [-Infinity,-1)
                 // This page is way off-screen to the left.
-                //view.setAlpha(0);
-
             }
-            else if (position < 0){    // [-1,0] Pienempi indeksi
+            else if (position < 0){    // [-1,0]
                 // This is the top page (index is lower)
+                // Make the top fragment (gif) to move away from the top and fade out
                 view.setTranslationX(-position * view.getWidth());
                 float yPosition = position * view.getHeight();
                 view.setTranslationY(yPosition);
                 view.setAlpha(1 - Math.abs(position));
             }
-            else if (position < 1){    // (0,1] Suurempi indeksi
+            else if (position < 1){    // (0,1]
                 // This is the bottom page (index is higher)
-                //int page = ;
-
             }
             else {    // (1,+Infinity]
                 // This page is way off-screen to the right.
-                //view.setAlpha(0);
-
             }
         }
     }
 
     /**
-     * Swaps the X and Y coordinates of your touch event.
+     * Swaps the X and Y coordinates of the touch event
      */
     private MotionEvent swapXY(MotionEvent ev) {
         float width = getWidth();

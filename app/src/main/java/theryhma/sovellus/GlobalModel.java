@@ -1,8 +1,6 @@
 package theryhma.sovellus;
 
-import android.content.Context;
 import android.content.SharedPreferences;
-import android.util.Log;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -11,11 +9,13 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 
 import theryhma.sovellus.password.Password;
-import theryhma.sovellus.question.Questionnaire;
-import theryhma.sovellus.state.State;
 import theryhma.sovellus.status.Status;
 import theryhma.sovellus.tipoftheday.TipOfTheDayGenerator;
 
+/**
+ * Contains all the data that needs to be saved after the app is closed. Also the list of statuses is used
+ * in many different activities.
+ */
 public class GlobalModel {
     private TipOfTheDayGenerator tipOfTheDayGenerator;
     private ArrayList<Status> statuses;
@@ -23,17 +23,22 @@ public class GlobalModel {
 
     private static final GlobalModel ourInstance = new GlobalModel();
 
+    /**
+     * Returns the singleton instance
+     */
     public static GlobalModel getInstance() {
         return ourInstance;
     }
 
-    private GlobalModel() {
+    private GlobalModel() { // initialize all objects
         tipOfTheDayGenerator = new TipOfTheDayGenerator();
         statuses = new ArrayList<>();
         password = new Password();
-        // init tipsSeen (what tips have been seen?)
     }
 
+    /**
+     * Returns a status that has the date specified by the arguments.
+     */
     public Status getStatus(int year, int month, int dayOfMonth) {
         for (Status s : statuses) {
             if (s.isDate(year, month, dayOfMonth)) {
@@ -43,33 +48,28 @@ public class GlobalModel {
         return null;
     }
 
+    /**
+     * Returns the Password object
+     */
     public Password getPassword() {
         return password;
     }
 
-    public void setPassword(Password password) {
-        this.password = password;
-    }
-
+    /**
+     * Returns the list of statuses
+     */
     public ArrayList<Status> getStatuses() { return this.statuses; }
 
+    /**
+     * Returns the TipOfTheDayGenerator object
+     */
     public TipOfTheDayGenerator getTipOfTheDayGenerator() {
         return tipOfTheDayGenerator;
     }
 
-
-    public void setStatuses(ArrayList<Status> statuses) {
-        this.statuses = statuses;
-    }
-
-    public void setTipOfTheDayGenerator(TipOfTheDayGenerator generator) {
-        this.tipOfTheDayGenerator = generator;
-    }
-
-    public void addStatus(Status s) {
-        this.statuses.add(s);
-    }
-
+    /**
+     * Loads data from preferences
+     */
     public void load(SharedPreferences pref) {
         loadStatuses(pref);
         loadTipOfTheDayGenerator(pref);
@@ -80,35 +80,38 @@ public class GlobalModel {
         Gson gson = new Gson();
         String json = pref.getString("password", null);
         Type type = new TypeToken<Password>() {}.getType();
-        Password newData = gson.fromJson(json, type);
+        Password newPassword = gson.fromJson(json, type);
         if (json == null) {
-            newData = new Password();
+            newPassword = new Password();
         }
-        GlobalModel.getInstance().setPassword(newData);
+        this.password = newPassword;
     }
 
     private void loadStatuses(SharedPreferences pref) {
         Gson gson = new Gson();
         String json = pref.getString("statuses", null);
         Type type = new TypeToken<ArrayList<Status>>() {}.getType();
-        ArrayList<Status> newData = gson.fromJson(json, type);
+        ArrayList<Status> newStatuses = gson.fromJson(json, type);
         if (json == null) {
-            newData = new ArrayList<>();
+            newStatuses = new ArrayList<>();
         }
-        GlobalModel.getInstance().setStatuses(newData);
+        this.statuses = newStatuses;
     }
 
     private void loadTipOfTheDayGenerator(SharedPreferences pref) {
         Gson gson = new Gson();
         String json = pref.getString("generator", null);
         Type type = new TypeToken<TipOfTheDayGenerator>() {}.getType();
-        TipOfTheDayGenerator newData = gson.fromJson(json, type);
+        TipOfTheDayGenerator newTipOfTheDayGenerator = gson.fromJson(json, type);
         if (json == null) {
-            newData = new TipOfTheDayGenerator();
+            newTipOfTheDayGenerator = new TipOfTheDayGenerator();
         }
-        GlobalModel.getInstance().setTipOfTheDayGenerator(newData);
+        this.tipOfTheDayGenerator = newTipOfTheDayGenerator;
     }
 
+    /**
+     * Saves data to preferences
+     */
     public void save(SharedPreferences pref) {
         saveStatuses(pref);
         saveTipOfTheDayGenerator(pref);

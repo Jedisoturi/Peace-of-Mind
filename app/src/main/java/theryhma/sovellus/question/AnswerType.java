@@ -1,5 +1,8 @@
 package theryhma.sovellus.question;
 
+/**
+ * Contains all the answer types and values for the questions.
+ */
 public enum AnswerType {
     NEUTRAL, POSITIVE, NEGATIVE, VERY_POSITIVE, VERY_NEGATIVE;
 
@@ -9,6 +12,9 @@ public enum AnswerType {
     private static final double NEGATIVE_VALUE = 0.25;
     private static final double VERY_NEGATIVE_VALUE = 0;
 
+    /**
+     * Returns the constant value of an answer
+     */
     public double getValue() {
         switch (this) {
             case VERY_POSITIVE:

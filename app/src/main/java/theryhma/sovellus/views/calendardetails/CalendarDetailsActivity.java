@@ -42,7 +42,7 @@ public class CalendarDetailsActivity extends AppCompatActivity {
         status = GlobalModel.getInstance().getStatus(year, month, dayOfMonth);
         if (status == null) {
             status = new Status(new GregorianCalendar(year, month, dayOfMonth).getTime(), new State(), new InstructionContainer());
-            GlobalModel.getInstance().addStatus(status);
+            GlobalModel.getInstance().getStatuses().add(status);
         }
 
 

@@ -14,6 +14,9 @@ import theryhma.sovellus.GlobalModel;
 import theryhma.sovellus.R;
 import theryhma.sovellus.tools.Constant;
 
+/**
+ * Settings activity of the app. Contains only the password settings
+ */
 public class SettingsActivity extends AppCompatActivity {
     private EditText password;
 
@@ -22,18 +25,19 @@ public class SettingsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
-
         password = findViewById(R.id.password);
+
+        // Save button listener
         Button save = findViewById(R.id.save);
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 GlobalModel.getInstance().getPassword().set(password.getText().toString());
-                //Log.d("password", GlobalModel.getInstance().getPassword().get());
                 password.setText("");
             }
         });
 
+        // initialize switch
         Switch switch_view = findViewById(R.id.switch_view);
         if (GlobalModel.getInstance().getPassword().isActive()) {
             switch_view.setChecked(true);
@@ -41,6 +45,7 @@ public class SettingsActivity extends AppCompatActivity {
             switch_view.setChecked(false);
         }
 
+        // password active: checked change listener
         switch_view.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {

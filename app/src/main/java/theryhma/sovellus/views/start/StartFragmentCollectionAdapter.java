@@ -12,10 +12,10 @@ public class StartFragmentCollectionAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public Fragment getItem(int i) {
-        if (i == 0) {
+        if (i == 0) {   // gif
             GifFragment gifFragment = new GifFragment();
             return gifFragment;
-        } else {
+        } else {    // menu
             MenuFragment menuFragment = new MenuFragment();
             return menuFragment;
         }

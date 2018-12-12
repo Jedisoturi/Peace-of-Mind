@@ -13,15 +13,13 @@ import theryhma.sovellus.R;
 
 
 /**
- * A simple {@link Fragment} subclass.
+ * Fragment for the gif screen
  */
 public class GifFragment extends Fragment {
-
-    private AnimationDrawable starsAnimation;
+    private AnimationDrawable gif;
     public GifFragment() {
         // Required empty public constructor
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -29,12 +27,12 @@ public class GifFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_demo, container, false);
 
+        // create gif animation
         ImageView starsImage = view.findViewById(R.id.stars_image);
         starsImage.setBackgroundResource(R.drawable.waterfall);
-        starsAnimation = (AnimationDrawable) starsImage.getBackground();
-        starsAnimation.start();
+        gif = (AnimationDrawable) starsImage.getBackground();
+        gif.start();
 
         return view;
     }
-
 }
