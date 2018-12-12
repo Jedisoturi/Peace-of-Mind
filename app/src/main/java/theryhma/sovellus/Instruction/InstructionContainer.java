@@ -10,6 +10,8 @@ import theryhma.sovellus.state.State;
 import theryhma.sovellus.tools.Maths;
 import theryhma.sovellus.tools.Tools;
 
+/** This class creates the lists and maps for Instructions in the application.
+ * This class also contains the Instructions and includes the method to get a random Instruction from the list.*/
 public class InstructionContainer {
     private Map<AttributeType, Instruction> instructions;
 
@@ -17,10 +19,12 @@ public class InstructionContainer {
         this.instructions = createInstructions(state);
     }
 
+    /** This method creates a new HashMap for Instructions*/
     public InstructionContainer() {
         this.instructions = new HashMap<>();
     }
 
+    /** This method updates and creates a new Map of possible instructions for a certain state.*/
     public void update(State newState) {
         Map<AttributeType, ArrayList<Instruction>> possibleInstructions = createPossibleInstructions(newState);
         for (Map.Entry<AttributeType, ArrayList<Instruction>> entry : possibleInstructions.entrySet())
@@ -39,6 +43,7 @@ public class InstructionContainer {
         }
     }
 
+
     private static Map<AttributeType, Instruction> createInstructions(State state) {
         Map<AttributeType, ArrayList<Instruction>> possibleInstructions = createPossibleInstructions(state);
         Map<AttributeType, Instruction> result = new HashMap<>();
@@ -49,6 +54,7 @@ public class InstructionContainer {
         return result;
     }
 
+    /** This method returns a random Instruction from the list of Instructions.*/
     private static Instruction getRandomInstruction(ArrayList<Instruction> list) {
         Instruction i = list.get(Maths.getRandomIntegerBetweenRange(0, list.size() - 1));
         return i;
@@ -74,6 +80,7 @@ public class InstructionContainer {
         return result;
     }
 
+    /** Creates a new ArrayList*/
     public ArrayList<Instruction> createArray() {
         ArrayList<Instruction> array = new ArrayList<>();
         for (Map.Entry<AttributeType, Instruction> entry : instructions.entrySet())
@@ -82,7 +89,7 @@ public class InstructionContainer {
         }
         return array;
     }
-    
+
     @Override
     public String toString() {
         String s = "Ohjeet: ";

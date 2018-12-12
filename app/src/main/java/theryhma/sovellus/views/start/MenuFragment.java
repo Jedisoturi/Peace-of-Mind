@@ -22,6 +22,7 @@ import theryhma.sovellus.views.tipoftheday.TipListActivity;
 /**
  * A simple {@link Fragment} subclass.
  */
+/** This class includes the main code for the Menu activity.*/
 public class MenuFragment extends Fragment {
 
     private View v;
@@ -30,7 +31,7 @@ public class MenuFragment extends Fragment {
         // Required empty public constructor
     }
 
-
+    /** This onCreateView includes the code which is shown or happens when the Activity is opened.*/
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

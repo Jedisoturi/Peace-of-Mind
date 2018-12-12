@@ -6,6 +6,8 @@ import java.util.Map;
 
 import theryhma.sovellus.attribute.AttributeType;
 
+/** This class includes all the Instructions in the application and every Instructions parameters (title, text, attributeType, minValue & maxValue).
+ */
 public class InstructionConstants {
     private static final Map<String, Instruction> INSTRUCTIONS = new HashMap<String, Instruction>() {
         {
@@ -78,10 +80,12 @@ public class InstructionConstants {
         }
     };
 
+    /** Returns an Instruction which has been called with the key.*/
     public static Instruction get(String key) {
         return new Instruction(INSTRUCTIONS.get(key));
     }
 
+    /** Creates a new ArrayList of Instructions.*/
     public static ArrayList<Instruction> createArrayList() {
         ArrayList<Instruction> array = new ArrayList<>();
         for (Map.Entry<String, Instruction> entry : INSTRUCTIONS.entrySet())

@@ -6,8 +6,12 @@ import android.widget.TextView;
 
 import theryhma.sovellus.R;
 
+/** This class includes the main code for the Instruction activity.*/
 public class InstructionActivity extends AppCompatActivity {
 
+    /** This method gets the users values and compares it to Instructions values.
+     * After that the method sets instruction activity's textViews to show a certain
+     * Instruction's title and text. */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

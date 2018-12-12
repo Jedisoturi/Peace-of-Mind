@@ -20,6 +20,7 @@ import theryhma.sovellus.tipoftheday.TipOfTheDayGenerator;
 import theryhma.sovellus.tools.Constant;
 import theryhma.sovellus.tools.Tools;
 
+/** This class includes the main code for the Main Activity.*/
 public class MainActivity extends AppCompatActivity {
     private ViewPager viewPager;
     private StartFragmentCollectionAdapter adapter;
@@ -28,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
     public TipOfTheDay tipOfTheDay;
     private Context context;
 
+    /** This onCreate method includes the code which is shown and happens, when the application has been opened.*/
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    /** This method shows the Password pop up for the user, and compares the given password to the saved one.*/
     public void passwordPopUp() {
         // get prompts.xml view
         LayoutInflater li = LayoutInflater.from(context);
@@ -89,6 +92,7 @@ public class MainActivity extends AppCompatActivity {
         alertDialog.show();
     }
 
+    /** This onPause method includes the code for when the Main activity has been closed.*/
     @Override
     protected void onPause() {
         super.onPause();
